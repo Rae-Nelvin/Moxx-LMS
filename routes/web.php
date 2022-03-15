@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/users/register', function () {
-    return view('users.register');
-})->name('users.register');
+// Route::get('/users/register', function () {
+//     return view('users.register');
+// })->name('users.register');
+
+Route::get('/users/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/users/register', [RegisterController::class, 'store'])->name('register');
 
 Route::get('/users/success', function () {
     return view('users.success');

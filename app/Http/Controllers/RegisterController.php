@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\UserController;
+//use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Requests\RegisterRequest;
 
 class RegisterController extends Controller
@@ -13,18 +15,24 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function index()
     {
-        return view('auth.register');
+        return view('users.register');
     }
 
-    /**
-     * Handle account registration request
-     *
-     * @param RegisterRequest $request
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|max:255',
+            'username' => ['required', 'min:3', 'max:255', 'unique:users'],
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:5|max:255',
+            'password_confirm' => 'required|min:5|max:255',
+            'phone' => 'required|min:13|max:13',
+        ]);
+
+        dd('registrasi berhasil!');
+    }
     public function register(RegisterRequest $request)
     {
         $user = User::create($request->validated());
