@@ -1,0 +1,63 @@
+.title {
+    font-size: 2.5rem;
+}
+
+.btn-reg {
+    padding: 10px;
+    background-color: #3CCAA1;
+}
+
+.btn-gg {
+    white-space: nowrap;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.btn-fb {
+    background-color: #4267B2;
+}
+
+.fa-facebook {
+    padding: 10px;
+}
+
+.register {
+    /* background-image: url('/images/mask-bg.jpg'); */
+    /* right: 0;
+    left: 0; */
+}
+
+.back {
+    z-index: 0;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.bg {
+    content: "";
+    display: block;
+    position: relative;
+    z-index: -1;
+    max-width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+form {}
+
+@media (max-width: 576px) {
+    .slogan {
+        display: none;
+    }
+    .btn {
+        width: 100%;
+    }
+}
