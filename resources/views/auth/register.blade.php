@@ -5,8 +5,8 @@
         <div class="grid md:grid-col-2">
             <div class="slogan md:col-start">
                 <div class="bg w-100 h-100" style="background-image: url('{{ asset ('images/mask-bg.jpg')}}');">
-                    <div href="{{route('welcome')}}" class="font-bold back md:pt-40 col-start">
-                        <a href="">Back to Home</a>
+                    <div class="font-bold back md:pt-40 col-start">
+                        <a href="{{ url ('/') }}">Back to Home</a>
                     </div>
                     <div class="py-12 font-bold md:text-4xl lg:text-5xl">
                         Learn Design
@@ -15,74 +15,55 @@
                     </div>
                 </div>
             </div>
-            <div class=" md:col-end-4">
+            <div class=" md:col-end-4 form-floating">
                 <div class="font-bold md:col-end-4 title md:pt-40 ">Register</a></div>
-                <form class="py-10 w-100" action="/register" method="POST">
+                <form class="py-10 w-100" method="post" action="{{ route('users.success') }}">
                     @csrf
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}"
+                        class="form-control @error('name') is-invalid @enderror">
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label" href="">Username</label>
-                        @if ($errors->has('username'))
-                        <span class="text-left text-danger">{{ $errors->first('username') }}</span>
-                        @endif
-                        <input name="username" type="text" class="form-control" id="username" value="{{ old ('username')}}" required>
+                        <label for="exampleInputname" class="form-label">Name</label>
+                        <input name="name" type="name" class="form-control" required value="{{ old('name')}}">
+                        @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
-
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label" href="">Name</label>
-                        @if ($errors->has('name'))
-                        <span class="text-left text-danger">{{ $errors->first('name') }}</span>
-                        @endif
-                        <input type="text" name="name" class="form-control" id="username" value="{{ old ('name')}}" required>
-                    </div>
-
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Email</label>
-                        @if ($errors->has('email'))
-                        <span class="text-left text-danger">{{ $errors->first('email') }}</span>
-                        @endif
-                        <input type="email" name="email" class="form-control" id="email" value="{{ old ('email')}}" required>
+                        <input name="text" type="email" class="form-control @error('email') is-invalid @enderror"
+                            placeholder="jhonbeckham@gmail.com" required value="{{ old('email')}}">
                     </div>
-
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
-                        @if ($errors->has('password'))
-                        <span class="text-left text-danger">{{ $errors->first('password') }}</span>
-                        @endif
-                        <input type="password" name="password" class="form-control" value="{{ old ('password')}}" required>
+                        <input name="password" type="password"
+                            class="form-control @error('password') is-invalid @enderror" required
+                            value="{{ old('password')}}">
                     </div>
-
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
-                        @if ($errors->has('password_confirm'))
-                        <span class="text-left text-danger">{{ $errors->first('password_confirm') }}</span>
-                        @endif
-                        <input type="password" name="password_confirm" class="form-control @error('password_confirm') is-invalid @enderror" value="{{ old ('password_confirm')}}" required>
+                        <input name="password_confirm" type="password"
+                            class="form-control @error('confirm_password') is-invalid @enderror" required
+                            value="{{ old('password_confirm')}}">
                     </div>
                     <div class="mb-3">
-                        <label for="phone" class="form-label">Phone Number</label>
-                        @if ($errors->has('phone'))
-                        <span class="text-left text-danger">{{ $errors->first('phone') }}</span>
-                        @endif
-                        <input type="text" name="phone" class="form-control" id="phone" value="{{ old ('phone')}}" required>
+                        <label for="exampleInputPassword1" class="form-label">Phone</label>
+                        <input name="phone" type="phone" class="form-control @error('phone') is-invalid @enderror"
+                            required value="{{ old('phone')}}">
                     </div>
-
-                    <button type="submit" class="mt-2 text-white btn btn-reg sm:w-full">Register</button>
-
+                    <button type=" submit" class=" text-white btn sm:w-full" id="btn-reg">Register</button>
                     <p class="py-2 text-center">or</p>
-
-                    <div class="sosmed">
-                        <div class="google-btn ">
-                            <div class="google-icon-wrapper">
-                                <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
-                            </div>
-                            <div class="text-center btn-text">Sign in with google</div>
-                        </div>
-                        <button type="submit" class="mt-3 text-white btn btn-fb sm:w-full"><i class="fa fa-facebook"></i>Sign up with
-                            facebook</button>
-                    </div>
-                    <p class="mt-2 text-sm-center">Already have account ? <a href="{{ url ('login')}}">Login</a></p>
+                    <button class="w-full" type=" submit" id="btn-gg">
+                        <a class="btn btn-outline-dark w-full" href="/users/googleauth" role="button"
+                            style="text-transform:none">
+                            <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in"
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+                            Login with Google
+                        </a>
+                    </button>
+                    <p class="mt-2 text-sm-center">Don't have account ? <a href="{{ route ('register')}}"
+                            class="text-bold">Register</a> </p>
                 </form>
             </div>
         </div>

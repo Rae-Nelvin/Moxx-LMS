@@ -7,19 +7,15 @@
     background-color: #3CCAA1;
 }
 
-.btn-gg {
+#btn-gg {
     white-space: nowrap;
     background-color: #fff;
     border-radius: 2px;
     box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
-.btn-fb {
-    background-color: #4267B2;
-}
-
-.fa-facebook {
-    padding: 10px;
+#btn-gg img {
+    display: inline;
 }
 
 .register {
