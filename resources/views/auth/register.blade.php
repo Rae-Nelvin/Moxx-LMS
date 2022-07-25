@@ -17,7 +17,7 @@
             </div>
             <div class=" md:col-end-4 form-floating">
                 <div class="font-bold md:col-end-4 title md:pt-40 ">Register</a></div>
-                <form class="py-10 w-100" method="post" action="{{ route('users.success') }}">
+                <form class="py-10 w-100" method="post" action="{{ route('register') }}">
                     @csrf
                     <input type="hidden" name="_token" value="{{ csrf_token() }}"
                         class="form-control @error('name') is-invalid @enderror">
@@ -32,25 +32,45 @@
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Email</label>
-                        <input name="text" type="email" class="form-control @error('email') is-invalid @enderror"
+                        <input name="email" type="email" class="form-control @error('email') is-invalid @enderror"
                             placeholder="jhonbeckham@gmail.com" required value="{{ old('email')}}">
+                        @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
                         <input name="password" type="password"
                             class="form-control @error('password') is-invalid @enderror" required
                             value="{{ old('password')}}">
+                        @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
                         <input name="password_confirm" type="password"
                             class="form-control @error('confirm_password') is-invalid @enderror" required
                             value="{{ old('password_confirm')}}">
+                        @error('confirm_password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Phone</label>
                         <input name="phone" type="phone" class="form-control @error('phone') is-invalid @enderror"
                             required value="{{ old('phone')}}">
+                        @error('phone')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                     <button type=" submit" class=" text-white btn sm:w-full" id="btn-reg">Register</button>
                     <p class="py-2 text-center">or</p>

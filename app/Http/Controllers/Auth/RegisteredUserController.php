@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
+// use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,15 +35,13 @@ class RegisteredUserController extends Controller
     public function store(Request $request)
     {
         // return request()->all();
-        $validatedData =  $request->validate([
+        $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:5|max:255',
             'password_confirm' => 'required|min:5|max:255',
 
         ]);
-
-        $validatedData['password'] = bcrypt($validatedData['password']);
 
         $user = User::create([
             'name' => $request->name,
@@ -56,8 +54,11 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        Auth::login($user);
+        // Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        $request->session()->flash('success', 'You have successfully registered!');
+
+        // return redirect('auth.login');
+        return redirect(route('login'));
     }
 }

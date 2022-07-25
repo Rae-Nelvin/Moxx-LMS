@@ -17,7 +17,14 @@
             </div>
             <div class=" md:col-end-4">
                 <div class="font-bold md:col-end-4 title md:pt-40 ">Login</a></div>
-                <form class="py-10 w-100" method="post" action="">
+                @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <!-- <strong>{{ Auth::user()->name }}</strong> -->
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
+                <form class="py-10 w-100" method="post" action="{{ route ('login')}}">
                     @csrf
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="mb-3">
