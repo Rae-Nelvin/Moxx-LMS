@@ -53,7 +53,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
-                        <input name="password_confirm" type="password"
+                        <input name="password_confirmation" type="password"
                             class="form-control @error('confirm_password') is-invalid @enderror" required
                             value="{{ old('password_confirm')}}">
                         @error('confirm_password')
@@ -73,17 +73,7 @@
                         @enderror
                     </div>
                     <button type=" submit" class=" text-white btn sm:w-full" id="btn-reg">Register</button>
-                    <p class="py-2 text-center">or</p>
-                    <button class="w-full" type=" submit" id="btn-gg">
-                        <a class="btn btn-outline-dark w-full" href="/users/googleauth" role="button"
-                            style="text-transform:none">
-                            <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in"
-                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
-                            Login with Google
-                        </a>
-                    </button>
-                    <p class="mt-2 text-sm-center">Don't have account ? <a href="{{ route ('register')}}"
-                            class="text-bold">Register</a> </p>
+                    <p class="mt-2 text-sm-center">Already have an account ? <a href="{{ route ('Login')}}" class="text-bold">Login</a> </p>
                 </form>
             </div>
         </div>

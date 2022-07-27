@@ -34,28 +34,27 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        // return request()->all();
         $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:5|max:255',
-            'password_confirm' => 'required|min:5|max:255',
-
+            'password' => 'required|min:5|max:255|confirmed',
+            'phone' => 'required|min:10|max:13'
         ]);
+
+        $username = substr($request->email, 0 , strpos($request->email, '@'));
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'username' => $username,
             'password' => Hash::make($request->password),
+            'phone' => $request->phone,
         ]);
 
         event(new Registered($user));
 
-        // Auth::login($user);
-
         $request->session()->flash('success', 'You have successfully registered!');
 
-        // return redirect('auth.login');
         return redirect(route('login'));
     }
 }

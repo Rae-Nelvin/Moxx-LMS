@@ -16,19 +16,21 @@ Route::middleware('guest')->group(function () {
     Route::get('/register', [RegisteredUserController::class, 'create'])
         ->name('register');
 
-
     Route::post('/register', [RegisteredUserController::class, 'store'])
         ->name('register');
 
-    Route::get('/login', [LoginController::class, 'create'])
+    Route::get('/login', [AuthenticatedSessionController::class, 'createUser'])
         ->name('login');
 
-    Route::post('/login', [LoginController::class, 'store'])
+    Route::post('/login', [AuthenticatedSessionController::class, 'store'])
         ->name('login');
 
-    Route::get('/admin/login', [AuthenticatedSessionController::class, 'create'])
+    // Socialite Routes
+    Route::get('sign-in-google', [AuthenticatedSessionController::class, 'google'])->name('google.login');
+    Route::get('auth/google/callback', [AuthenticatedSessionController::class, 'handleProviderCallback'])->name('user.google.callback');
+
+    Route::get('/admin/login', [AuthenticatedSessionController::class, 'createAdmin'])
         ->name('admin.login');
-
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
                 ->name('password.request');

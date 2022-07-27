@@ -6,16 +6,20 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth as FacadeAuth;
+use Laravel\Socialite\Facades\Socialite;
+use App\Models\User;
+use Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthenticatedSessionController extends Controller
 {
     /**
-     * Display the login view.
+     * Display the User login view.
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function createUser()
     {
         return view('auth.login');
     }
@@ -43,7 +47,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
-        Auth::guard('web')->logout();
+        FacadeAuth::guard('web')->logout();
 
         $request->session()->invalidate();
 
@@ -51,4 +55,30 @@ class AuthenticatedSessionController extends Controller
 
         return redirect('/');
     }
+
+    public function google()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function handleProviderCallback()
+    {
+        $callback = Socialite::driver('google')->stateless()->user();
+        $username = substr($callback->getEmail(), 0 , strpos($callback->getEmail(), '@'));
+
+        $data = [
+            'name' => $callback->getName(),
+            'email' => $callback->getEmail(),
+            'avatar' => $callback->getAvatar(),
+            'email_verified_at' => date('Y-m-d H:i:s', time()),
+            'username' => $username,
+            'password' => Hash::make($username),
+        ];
+        
+        $user = User::firstOrCreate(['email' => $data['email']], $data);
+        Auth::login($user, true);
+
+        return redirect()->intended(RouteServiceProvider::HOME);
+    }
+
 }

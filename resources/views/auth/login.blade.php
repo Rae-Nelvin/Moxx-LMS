@@ -17,13 +17,6 @@
             </div>
             <div class=" md:col-end-4">
                 <div class="font-bold md:col-end-4 title md:pt-40 ">Login</a></div>
-                @if (session('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <!-- <strong>{{ Auth::user()->name }}</strong> -->
-                    {{ session('success') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                @endif
                 <form class="py-10 w-100" method="post" action="{{ route ('login')}}">
                     @csrf
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -39,7 +32,7 @@
                     <button type=" submit" class="mt-2 text-white btn sm:w-full" id="btn-reg">Login</button>
                     <p class="py-2 text-center">or</p>
                     <button class="w-full " type=" submit" id="btn-gg">
-                        <a class="btn btn-outline-dark w-full" href="/users/googleauth" role="button"
+                        <a class="btn btn-outline-dark w-full" href="{{ route('google.login') }}" role="button"
                             style="text-transform:none">
                             <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in"
                                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
