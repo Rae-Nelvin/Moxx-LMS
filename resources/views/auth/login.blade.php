@@ -39,7 +39,7 @@
                             Login with Google
                         </a>
                     </button>
-                    <p class="mt-2 text-sm-center">Don't have account ? <a href="" class="text-bold">Register</a> </p>
+                    <p class="mt-2 text-sm-center">Don't have account ? <a href="{{ route('register') }}" class="text-bold">Register</a> </p>
                 </form>
             </div>
         </div>

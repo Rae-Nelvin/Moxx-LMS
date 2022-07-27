@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use App\Providers\RouteServiceProvider;
 
 
 class RegisteredUserController extends Controller
@@ -49,12 +50,14 @@ class RegisteredUserController extends Controller
             'username' => $username,
             'password' => Hash::make($request->password),
             'phone' => $request->phone,
+            'role' => 'user'
         ]);
 
         event(new Registered($user));
 
         $request->session()->flash('success', 'You have successfully registered!');
+        Auth::login($user, true);
 
-        return redirect(route('login'));
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
 }

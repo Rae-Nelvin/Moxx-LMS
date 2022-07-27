@@ -26,7 +26,7 @@ class CreateContentsTable extends Migration
 
             $table->foreign('courseid')->references('id')->on('courses')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('cover')->references('id')->on('photos');
-            $table->foreign('created_by')->references('id')->on('admins')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

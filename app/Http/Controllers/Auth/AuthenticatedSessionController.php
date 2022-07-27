@@ -73,6 +73,7 @@ class AuthenticatedSessionController extends Controller
             'email_verified_at' => date('Y-m-d H:i:s', time()),
             'username' => $username,
             'password' => Hash::make($username),
+            'role' => 'user'
         ];
         
         $user = User::firstOrCreate(['email' => $data['email']], $data);

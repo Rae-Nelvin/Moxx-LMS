@@ -73,7 +73,7 @@
                         @enderror
                     </div>
                     <button type=" submit" class=" text-white btn sm:w-full" id="btn-reg">Register</button>
-                    <p class="mt-2 text-sm-center">Already have an account ? <a href="{{ route ('Login')}}" class="text-bold">Login</a> </p>
+                    <p class="mt-2 text-sm-center">Already have an account ? <a href="{{ route ('login')}}" class="text-bold">Login</a> </p>
                 </form>
             </div>
         </div>

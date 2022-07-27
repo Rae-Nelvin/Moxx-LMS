@@ -16,7 +16,7 @@ class AddTransactionDetailsRelations extends Migration
         Schema::table('transaction_details', function (Blueprint $table) {
             $table->foreign('transactionID')->references('id')->on('transactions')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('paymentProof')->references('id')->on('photos')->onUpdate('cascade');
-            $table->foreign('accepted_by')->references('id')->on('admins')->onUpdate('cascade');
+            $table->foreign('accepted_by')->references('id')->on('users')->onUpdate('cascade');
             $table->foreign('discountID')->references('id')->on('discounts')->onDelete('cascade')->onUpdate('cascade');
         });
     }
