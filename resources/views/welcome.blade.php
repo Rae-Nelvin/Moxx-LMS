@@ -413,7 +413,7 @@
             <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline dark:text-gray-500">Dashboard</a>
             <a href="{{ url ('login')}}" class="text-sm text-gray-700 underline dark:text-gray-500">log out</a>
             @else
-            <a href="" class="text-sm text-gray-700 underline dark:text-gray-500">Log in</a>
+            <a href="{{ url ('login')}}" class="text-sm text-gray-700 underline dark:text-gray-500">Log in</a>
 
             @if (Route::has('register'))
             <a href="{{ url ('register')}}" class="ml-4 text-sm text-gray-700 underline dark:text-gray-500">Register</a>

@@ -18,6 +18,10 @@
     display: inline;
 }
 
+.text-register {
+    color: #3CCAA1;
+}
+
 .register {
     /* background-image: url('/images/mask-bg.jpg'); */
     /* right: 0;

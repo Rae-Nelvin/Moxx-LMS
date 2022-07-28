@@ -20,6 +20,12 @@ use App\Http\Controllers\RegisterController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('index', function () {
+    return view('index');
+});
+Route::get('checkout/success', function () {
+    return view('checkout.success');
+});
 
 // Route::get('users.loginn', [LoginUserController::class, 'index'])->name('loginn');
 // Route::get('login', [LoginUserController::class, 'index'])->name('login');
