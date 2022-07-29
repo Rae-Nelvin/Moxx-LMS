@@ -414,7 +414,6 @@
             <a href="{{ url ('login')}}" class="text-sm text-gray-700 underline dark:text-gray-500">log out</a>
             @else
             <a href="{{ url ('login')}}" class="text-sm text-gray-700 underline dark:text-gray-500">Log in</a>
-
             @if (Route::has('register'))
             <a href="{{ url ('register')}}" class="ml-4 text-sm text-gray-700 underline dark:text-gray-500">Register</a>
             @endif
@@ -432,7 +431,6 @@
                     </g>
                 </svg>
             </div>
-
             <div class="mt-8 overflow-hidden bg-white shadow dark:bg-gray-800 sm:rounded-lg">
                 <div class="grid grid-cols-1 md:grid-cols-2">
                     <div class="p-6">
@@ -446,7 +444,6 @@
                             <div class="ml-4 text-lg font-semibold leading-7"><a href="{{ route('login') }}"
                                     class="text-gray-900 underline dark:text-white">Documentation</a></div>
                         </div>
-
                         <div class="ml-12">
                             <div class="mt-2 text-sm text-gray-600 dark:text-gray-400">
                                 Laravel has wonderful, thorough documentation covering every aspect of the framework.
@@ -455,7 +452,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
                         <div class="flex items-center">
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -468,7 +464,6 @@
                             <div class="ml-4 text-lg font-semibold leading-7"><a href="https://laracasts.com"
                                     class="text-gray-900 underline dark:text-white">Laracasts</a></div>
                         </div>
-
                         <div class="ml-12">
                             <div class="mt-2 text-sm text-gray-600 dark:text-gray-400">
                                 Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript
@@ -477,7 +472,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="p-6 border-t border-gray-200 dark:border-gray-700">
                         <div class="flex items-center">
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"

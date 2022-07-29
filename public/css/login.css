@@ -16,20 +16,15 @@
 
 #btn-gg img {
     display: inline;
+    z-index: -1;
 }
 
 .text-register {
     color: #3CCAA1;
 }
 
-.register {
-    /* background-image: url('/images/mask-bg.jpg'); */
-    /* right: 0;
-    left: 0; */
-}
-
-.back {
-    z-index: 0;
+.arrow {
+    padding: 10px;
 }
 
 .container {
