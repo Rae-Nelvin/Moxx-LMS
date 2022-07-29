@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
 <div class="container bg-page">
     <div class="register ">
         <div class="grid md:grid-cols-2">
@@ -26,7 +25,7 @@
                 </div>
                 <div class="text-center lg:font-300 font-10">
                     you will recieve a confirmation email to verify you're not a bot
-                    <button type=" submit" class="lg:mt-10 text-white btn sm:w-1/2 font-bold" id="btn-reg"
+                    <button type=" submit" class="lg:mt-10 text-white btn sm:w-1/2 font-bold " id="btn-reg"
                         onclick="window.location.href='{{ url('login') }}'">Login</button>
                 </div>
             </div>

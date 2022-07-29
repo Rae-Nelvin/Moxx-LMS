@@ -23,8 +23,8 @@ Route::get('/', function () {
 Route::get('index', function () {
     return view('index');
 });
-Route::get('checkout/success', function () {
-    return view('checkout.success');
+Route::get('users/success', function () {
+    return view('users.success');
 });
 
 // Route::get('users.loginn', [LoginUserController::class, 'index'])->name('loginn');

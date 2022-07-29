@@ -16,8 +16,8 @@
                     <br>Expert
                 </div>
             </div>
-            <div class="form-floating lg:mt-20">
-                <div class="lg:text-center font-bold md:pt-40 text-4xl">Hello! please login</a></div>
+            <div class="form-floating lg:mt-20 mt-52">
+                <div class="lg:text-center font-bold md:pt-40 text-4xl text-center">Hello! Please Login</a></div>
                 <form class="py-10 lg:w-1/2 lg:mx-auto" method="post" action="{{ route('login') }}">
                     @csrf
                     <input type="hidden" name="_token" value="{{ csrf_token() }}"
@@ -53,8 +53,8 @@
                             Login with Google
                         </a>
                     </button>
-                    <p class="mt-2 text-sm-center">Don't have account ?<a href="{{ route ('register')}}"
-                            class="font-bold"> Register</a> </p>
+                    <p class="mt-2 text-center">Don't have account ?<a href="{{ route ('register')}}" class="font-bold">
+                            Register</a> </p>
                 </form>
             </div>
         </div>

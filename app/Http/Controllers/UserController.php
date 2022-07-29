@@ -9,10 +9,7 @@ use Auth;
 
 class UserController extends Controller
 {
-    public function index()
-    {
-        return view('users.success');
-    }
+
 
     public function store()
     {

@@ -82,8 +82,8 @@
                             Login with Google
                         </a>
                     </button>
-                    <p class="mt-2 text-sm-center">already have account ? <a href="{{ route ('register')}}"
-                            class="text-bold">Login</a> </p>
+                    <p class="mt-2 text-sm-center text-center">already have account ? <a href="{{ route ('login')}}"
+                            class="font-bold">Login</a> </p>
                 </form>
             </div>
         </div>
