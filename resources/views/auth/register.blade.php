@@ -17,7 +17,7 @@
             </div>
             <div class=" md:col-end-4 form-floating">
                 <div class="font-bold md:col-end-4 title md:pt-40 ">Register</a></div>
-                <form class="py-10 w-100" method="post" action="{{ route('register') }}">
+                <form class="py-10 lg:w-1/2 lg:mx-auto" method="post" action="{{ route('register') }}">
                     @csrf
                     <input type="hidden" name="_token" value="{{ csrf_token() }}"
                         class="form-control @error('name') is-invalid @enderror">

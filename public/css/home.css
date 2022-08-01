@@ -1,5 +1,12 @@
 .slide-img {
-    /* position: relative; */
+    position: relative;
+    z-index: 1;
+    background-image: url('images/bg-pattern.png');
+}
+
+.bg-pattern {
+    z-index: 1;
+    position: absolute;
 }
 
 nav img {
@@ -48,6 +55,18 @@ nav img {
     background-color: #3ccaa288 !important;
 }
 
+.icon-ctg {
+    color: #3CCAA1;
+}
+
+#search-icon {
+    background-color: #3CCAA1;
+}
+
+.name-testi {
+    color: #3CCAA1;
+}
+
 
 /* .mentor {
     background-image: url('images/bg-pattern.png');
@@ -66,5 +85,8 @@ nav img {
     }
     .deskripsi-slide {
         text-align: center;
+    }
+    #course-2 {
+        display: none;
     }
 }

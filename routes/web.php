@@ -18,13 +18,19 @@ use App\Http\Controllers\RegisterController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 Route::get('index', function () {
     return view('index');
 });
 Route::get('users/success', function () {
     return view('users.success');
+});
+Route::get('checkout/checkout-success', function () {
+    return view('checkout.checkout-success');
+});
+Route::get('components/navbar', function () {
+    return view('components/navbar');
 });
 
 // Route::get('users.loginn', [LoginUserController::class, 'index'])->name('loginn');
