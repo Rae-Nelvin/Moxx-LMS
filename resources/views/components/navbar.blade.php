@@ -1,5 +1,5 @@
 <header>
-    <nav class="bg-white shadow-lg">
+    <nav class="bg-white shadow-md fixed-top">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between">
                 <div class="flex space-x-7">
@@ -24,6 +24,11 @@
                     </div>
                 </div>
                 <!-- Secondary Navbar items -->
+                @auth
+                <div class="nama my-auto">
+                    Halo, {{ Auth::user()->name }}
+                </div>
+                @else
                 <div class="hidden md:flex items-center md:space-x-8 ">
                     <a href="{{ url ('login')}}"
                         class="no-underline py-2 px-2 font-medium text-gray-500 rounded-full hover:bg-green-500 hover:text-white transition duration-300">Log
@@ -33,6 +38,7 @@
                         up</a>
 
                 </div>
+                @endauth
                 <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
                     <button class="outline-none mobile-menu-button">

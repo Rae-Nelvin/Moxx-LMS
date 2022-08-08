@@ -1,30 +1,33 @@
 @extends('layouts.app')
 @section('content')
-<div class="container w-full">
-    <div class="register w-100 h-100">
-        <div class="grid md:grid-col-2">
-            <div class="slogan md:col-start">
-                <div class="bg w-100 h-100" style="background-image: url('{{ asset ('images/mask-bg.jpg')}}');">
-                    <div class="font-bold back md:pt-40 col-start">
-                        <a href="{{ url ('/') }}">Back to Home</a>
-                    </div>
-                    <div class="py-12 font-bold md:text-4xl lg:text-5xl">
-                        Learn Design
-                        <br>From the
-                        <br>Expert
-                    </div>
+<div class="container bg-page">
+    <div class="register ">
+        <div class="grid md:grid-cols-2">
+            <div class="md:relative md:block hidden">
+                <div class="flex">
+                    <img src="{{ asset ('images/mask-bg.jpg')}}" alt="" class="bg">
+                </div>
+                <!-- <div class="font-bold back md:pt-40 col-start absolute top-0">
+                    <a href="{{ url('/') }}"><i class='fas fa-long-arrow-alt-left arrow'></i>Back to Home</a>
+                </div> -->
+                <div class="py-12 font-bold md:text-7xl lg:text-7xl absolute top-0 mt-10">
+                    Learn Design
+                    <br>From the
+                    <br>Expert
                 </div>
             </div>
-            <div class=" md:col-end-4 form-floating">
-                <div class="font-bold md:col-end-4 title md:pt-40 ">Register</a></div>
-                <form class="py-10 lg:w-1/2 lg:mx-auto" method="post" action="{{ route('register') }}">
+            <div class="form-floating mt-10">
+                <div class="lg:text-center font-bold md:pt-10 text-4xl text-center">Register</a>
+                </div>
+                <form class="py-10 lg:w-1/2 lg:mx-auto" method="post" action="{{ route('login') }}">
                     @csrf
                     <input type="hidden" name="_token" value="{{ csrf_token() }}"
                         class="form-control @error('name') is-invalid @enderror">
                     <div class="mb-3">
-                        <label for="exampleInputname" class="form-label">Name</label>
-                        <input name="name" type="name" class="form-control" required value="{{ old('name')}}">
-                        @error('name')
+                        <label for="exampleInputPassword1" class="form-label">Name</label>
+                        <input name="name" type="text" class="form-control @error('email') is-invalid @enderror"
+                            placeholder="Jhon" required value="{{ old('email')}}">
+                        @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -53,10 +56,10 @@
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
-                        <input name="password_confirm" type="password"
-                            class="form-control @error('confirm_password') is-invalid @enderror" required
-                            value="{{ old('password_confirm')}}">
-                        @error('confirm_password')
+                        <input name="confirm_password" type="password"
+                            class="form-control @error('password') is-invalid @enderror" required
+                            value="{{ old('password')}}">
+                        @error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -64,9 +67,9 @@
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Phone</label>
-                        <input name="phone" type="phone" class="form-control @error('phone') is-invalid @enderror"
-                            required value="{{ old('phone')}}">
-                        @error('phone')
+                        <input name="phone" type="text" class="form-control @error('email') is-invalid @enderror"
+                            placeholder="+628" required value="{{ old('email')}}">
+                        @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -82,11 +85,12 @@
                             Login with Google
                         </a>
                     </button>
-                    <p class="mt-2 text-sm-center text-center">already have account ? <a href="{{ route ('login')}}"
-                            class="font-bold">Login</a> </p>
+                    <p class="mt-2 text-center">Don't have account ?<a href="{{ route ('register')}}" class="font-bold">
+                            Register</a> </p>
                 </form>
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection
