@@ -69,10 +69,10 @@
                         Us</a></li>
                 @auth
                 @else
-                <li><a href="#contact"
+                <li><a href="{{ url ('login')}}"
                         class="text-black no-underline block text-sm px-2 py-4 hover:bg-green-500 hover:text-white transition duration-300">Login</a>
                 </li>
-                <li><a href="#contact"
+                <li><a href="{{ url ('register')}}"
                         class="text-black no-underline block text-sm px-2 py-4 hover:bg-green-500 hover:text-white transition duration-300">Sign
                         up</a></li>
                 @endauth

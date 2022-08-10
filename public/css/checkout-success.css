@@ -17,5 +17,9 @@
 @media (max-width: 768px) {
     .checkout-price {
         text-align: center;
+        margin-top: 10px;
+    }
+    .payment {
+        /* text-align: center; */
     }
 }

@@ -11,7 +11,7 @@
     <div class=" card lg:w-1/2 mx-auto rounded-xl lg:h-1/2" id="card-checkout">
         <div class="lg:grid grid-cols-2 gap-4 grid-flow-col">
             <div class="">
-                <img src="{{ asset ('images/slide-2.jpg')}}" alt="" class="rounded-lg lg:m-5 lg:w-3/4"
+                <img src="{{ asset ('images/slide-2.jpg')}}" alt="" class="rounded-lg lg:m-5 lg:mt-14 lg:w-3/4"
                     id="img-checkout">
                 <div class="checkout-price text-white lg:m-5">
                     <h3 class="font-bold ">
@@ -20,7 +20,7 @@
                     <span>Rp.300.000</span>
                 </div>
             </div>
-            <div class="m-5 mt-5">
+            <div class="m-5 mt-5 payment">
                 <span class="text-white text-xl font-bold">
                     Payment Method
                 </span>
