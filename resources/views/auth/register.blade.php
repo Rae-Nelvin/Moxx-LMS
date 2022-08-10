@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container bg-page">
-    <div class="register ">
+    <div class="register">
         <div class="grid md:grid-cols-2">
             <div class="md:relative md:block hidden">
                 <div class="flex">

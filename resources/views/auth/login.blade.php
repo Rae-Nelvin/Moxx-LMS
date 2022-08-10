@@ -2,22 +2,22 @@
 @section('content')
 <div class="container bg-page">
     <div class="register ">
-        <div class="grid md:grid-cols-2">
-            <div class="md:relative md:block hidden">
+        <div class="grid lg:grid-cols-2">
+            <div class="lg:relative lg:block hidden">
                 <div class="flex">
                     <img src="{{ asset ('images/mask-bg.jpg')}}" alt="" class="bg">
                 </div>
-                <!-- <div class="font-bold back md:pt-40 col-start absolute top-0">
+                <!-- <div class="font-bold back lg:pt-40 col-start absolute top-0">
                     <a href="{{ url('/') }}"><i class='fas fa-long-arrow-alt-left arrow'></i>Back to Home</a>
                 </div> -->
-                <div class="py-12 font-bold md:text-7xl lg:text-7xl absolute top-0 mt-10">
+                <div class="py-12 font-bold lg:text-7xl lg:text-7xl absolute top-0 lg:mt-40">
                     Learn Design
                     <br>From the
                     <br>Expert
                 </div>
             </div>
-            <div class="form-floating mt-10">
-                <div class="lg:text-center font-bold md:pt-10 text-4xl text-center">Hello! Please Login</a></div>
+            <div class="form-floating lg:mt-10">
+                <div class="lg:text-center font-bold md:mt-40 text-4xl text-center">Hello! Please Login</a></div>
                 <form class="py-10 lg:w-1/2 lg:mx-auto" method="post" action="{{ route('login') }}">
                     @csrf
                     <input type="hidden" name="_token" value="{{ csrf_token() }}"
