@@ -14,8 +14,8 @@
     height: 2px;
 }
 
-@media (max-width: 576px) {
-    .card {
-        background-color: none;
+@media (max-width: 768px) {
+    .checkout-price {
+        text-align: center;
     }
 }

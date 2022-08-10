@@ -13,7 +13,7 @@
             <div class="">
                 <img src="{{ asset ('images/slide-2.jpg')}}" alt="" class="rounded-lg lg:m-5 lg:w-3/4"
                     id="img-checkout">
-                <div class="checkout-price text-white lg:m-5 text-center">
+                <div class="checkout-price text-white lg:m-5">
                     <h3 class="font-bold ">
                         Adobe Ilustrator
                     </h3>

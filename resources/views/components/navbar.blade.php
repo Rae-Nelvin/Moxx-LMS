@@ -11,7 +11,7 @@
                         </a>
                     </div>
                     <!-- Primary Navbar items -->
-                    <div class="hidden md:flex items-center space-x-10">
+                    <div class="hidden md:flex items-center lg:space-x-10">
                         <a href=""
                             class="no-underline py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Services</a>
                         <a href=""

@@ -37,14 +37,14 @@
 <!-- section why we different -->
 <section class="why min-vh-100" id="why">
     <div class="container">
-        <div class="row">
+        <div class="">
             <div class="title text-center mt-40 ">
                 <h1 class="text-5xl font-bold">Why we different ?</h1>
                 <p class="mt-2">This is the reason for choose our learning platform</p>
             </div>
             <!-- card -->
             <div class="why-card md:flex md:flex-row md:items-center md:justify-center w-full">
-                <div class="px-5">
+                <div class="lg:px-5">
                     <div
                         class="bg-white p-4 max-w-sm rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-20">
                         <h5 class="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">Standard plan</h5>
@@ -90,7 +90,7 @@
                             plan</button>
                     </div>
                 </div>
-                <div class="px-5">
+                <div class="lg:px-5 md:p-2">
                     <div
                         class="p-4 max-w-sm bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-20">
                         <h5 class="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">Standard plan</h5>
@@ -136,7 +136,7 @@
                             plan</button>
                     </div>
                 </div>
-                <div class="px-5">
+                <div class="lg:px-5">
                     <div
                         class="p-4 max-w-sm bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-20">
                         <h5 class="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">Standard plan</h5>
@@ -191,7 +191,7 @@
 <!-- our course -->
 <section class="course min-vh-100">
     <div class="container">
-        <div class="row">
+        <div class="">
             <div class="title-course text-center mt-40">
                 <h1 class="text-5xl font-bold">Our courses</h1>
                 <p class="mt-2">This is the reason for choose our learning platform</p>
@@ -250,16 +250,16 @@
 <!-- our course -->
 
 <!-- our mentor -->
-<section class="mentor mx-auto my-24 max-w-screen-xl w-full">
+<section class="mentor mx-auto mt-72 max-w-screen-xl w-full">
     <div class="text-center">
         <h1 class="text-5xl font-bold">Our Mentor</h1>
         <p class="my-2">This is the reason for choose our learning platform.</p>
     </div>
-    <div class="our-mentor my-12 grid md:grid-cols-12">
-        <div class=" md:col-span-3 md:col-end-6">
+    <div class="our-mentor my-12 grid lg:grid-cols-12">
+        <div class=" lg:col-span-3 lg:col-end-6">
             <img src="images/jungkook.jpg" alt="mentor" class="rounded-full w-52 overflow-hidden mx-auto">
         </div>
-        <div class="md:col-span-5 md:my-auto mentor-text">
+        <div class="lg:col-span-5 lg:my-auto mentor-text mx-auto">
             <h3 class="text-2xl font-bold">Mr. Rhemzy Putra Maulana</h3>
             <p class="font-semibold ">Undergraduate Student Designer</p>
         </div>
@@ -269,7 +269,7 @@
 <!-- our mentor -->
 
 <!-- testimonal -->
-<section class="lg:my-12 max-w-screen-xl mx-auto" id="testimonal">
+<section class="mt-72 max-w-screen-xl mx-auto" id="testimonal">
     <div class="title-testi text-center" id="">
         <h1 class="text-5xl font-bold">Testimonal</h1>
         <p class="font-semibold">This is the reason for choose our learning platform.</p>
@@ -327,14 +327,14 @@
         <h1 class="text-5xl font-bold">Contact us</h1>
         <span>Subscribe for newest information and promos!</span>
     </div>
-    <div class="flex justify-center mt-10 search" id="search">
+    <!-- <div class="flex justify-center mt-10 search" id="search">
         <div class="mb-3 md:xl:w-96 ">
             <div class="input-group relative flex flex-wrap items-stretch w-full mb-4 ">
                 <input type=" md:search"
                     class=" form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded-full transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
                 <button
-                    class="btn inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex items-center"
+                    class="btn inline-block px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-blue-700  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex items-center"
                     type="button" id="button-addon2">
                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="w-4"
                         role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -345,7 +345,7 @@
                 </button>
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="flex justify-center md:mt-32 mt-12">
         <div class="grid grid-cols-6 mb-2 mx-3">
             <div class="col-span-3">
@@ -367,7 +367,7 @@
                 </ul>
             </div>
         </div>
-        <div class="grid md:grid-cols-6 mb-2 mx-3 ">
+        <div class="grid lg:grid-cols-6 mb-2 mx-3 ">
             <div class="col-span-3">
                 <ul class="">
                     <a href="#!" type="button"
