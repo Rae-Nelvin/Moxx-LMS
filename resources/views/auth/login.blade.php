@@ -10,7 +10,7 @@
                 <!-- <div class="font-bold back lg:pt-40 col-start absolute top-0">
                     <a href="{{ url('/') }}"><i class='fas fa-long-arrow-alt-left arrow'></i>Back to Home</a>
                 </div> -->
-                <div class="py-12 font-bold lg:text-7xl lg:text-7xl absolute top-0 lg:mt-40">
+                <div class="py-12 font-bold  lg:text-7xl absolute top-0 lg:mt-40">
                     Learn Design
                     <br>From the
                     <br>Expert

@@ -3,13 +3,13 @@
 
 <!-- slide atas -->
 <div class="slide-1 overflow-hidden">
-    <div class="row">
-        <div class="w-full h-auto w-screen" id="slide">
+    <div class="">
+        <div class=" h-auto w-screen" id="slide">
             <div class="hidden md:flex">
                 <img src="{{ asset ('images/bg-pattern.png')}}" class="bg object-cover w-full h-full bg-pattern">
             </div>
-            <div class="md:px-28 md:mt-28 text-black get-started-text md:absolute top-1/3">
-                <span class="text-7xl font-bold w-full slide-text md:w-1/2">Learn design from the
+            <div class="lg:px-28 text-black get-started-text md:absolute md:top-1/4 mt-28 lg:mt-0 md:mt-0">
+                <span class="text-7xl font-bold w-full slide-text lg:w-1/2">Learn design from the
                     expert</span>
                 <!-- <span class="text-7xl font-bold ">from the expert</span> -->
                 <p class="deskripsi-slide mt-5 md:w-1/2">Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -269,12 +269,12 @@
 <!-- our mentor -->
 
 <!-- testimonal -->
-<section class="my-12 max-w-screen-xl mx-auto" id="testimonal">
+<section class="lg:my-12 max-w-screen-xl mx-auto" id="testimonal">
     <div class="title-testi text-center" id="">
         <h1 class="text-5xl font-bold">Testimonal</h1>
         <p class="font-semibold">This is the reason for choose our learning platform.</p>
     </div>
-    <div class="mt-20 grid md:grid-cols-3 ">
+    <div class="mt-20 grid lg:grid-cols-3 ">
         <div class="max-w-sm py-4 px-8 mx-auto bg-white shadow-lg rounded-lg my-20">
             <div class="flex justify-center md:justify-end -mt-16">
                 <img class="w-20 h-20 object-cover rounded-full border-2 border-green-500" alt="img"
