@@ -26,7 +26,8 @@ class User extends Authenticatable
         'password',
         'alamat',
         'phone',
-        'avatar',
+        'avatarID',
+        'roleID'
     ];
 
     /**
@@ -49,12 +50,22 @@ class User extends Authenticatable
     ];
 
     /**
+     * Get the Role associated with the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function Role(): HasOne
+    {
+        return $this->hasOne(Role::class);
+    }
+
+    /**
      * Get the Photo associated with the User
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function Photo(): HasOne
     {
-        return $this->hasOne(Photo::class, 'id', 'avatar');
+        return $this->hasOne(Photo::class);
     }
 }

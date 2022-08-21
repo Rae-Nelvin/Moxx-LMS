@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Photo extends Model
+class Discount extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +17,7 @@ class Photo extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'type',
-        'imageURL'
+        'token',
+        'discounts'
     ];
 }
