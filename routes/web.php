@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginUserController;
+use App\Http\Controllers\RegisterController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +18,29 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
+});
+Route::get('index', function () {
+    return view('index');
+});
+Route::get('users/success', function () {
+    return view('users.success');
+});
+Route::get('checkout/checkout-success', function () {
+    return view('checkout.checkout-success');
+});
+Route::get('components/navbar', function () {
+    return view('components/navbar');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('users.loginn', [LoginUserController::class, 'index'])->name('loginn');
+// Route::get('login', [LoginUserController::class, 'index'])->name('login');
+// Route::post('login', [LoginUserController::class, 'index'])->name('login');
+// Route::get('users.registerr', [RegisterController::class, 'create'])->name('registerr');
+// Route::post('users.registerr', [RegisterController::class, 'store'])->name('register');
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
