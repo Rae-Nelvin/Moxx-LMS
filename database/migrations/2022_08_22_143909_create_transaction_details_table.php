@@ -16,11 +16,12 @@ class CreateTransactionDetailsTable extends Migration
         Schema::create('transaction_details', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('transactionID');
-            $table->string('paymentType', 15);
-            $table->unsignedBigInteger('discountID')->nullable();
+            $table->foreign('transactionID')->references('id')->on('transactions')->onDelete('cascade');
+            $table->string('paymentType', 25);
+            $table->double('totalPrice');
             $table->unsignedBigInteger('paymentProof')->nullable();
+            $table->foreign('paymentProof')->references('id')->on('photos')->onDelete('SET NULL');
             $table->boolean('isPaid')->default(0);
-            $table->unsignedBigInteger('acceptorID');
         });
     }
 

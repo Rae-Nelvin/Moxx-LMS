@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Feedback extends Model
+class Lesson extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -16,17 +17,17 @@ class Feedback extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'userID',
-        'feedbacks'
+        'lessonGroupID',
+        'file'
     ];
 
     /**
-     * Get the Users that owns the Feedback
+     * Get the LessonGroup that owns the Lesson
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function Users(): BelongsTo
+    public function LessonGroup(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(LessonGroup::class);
     }
 }

@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Photo extends Model
+class CourseType extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +16,6 @@ class Photo extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'types',
-        'imageURL'
+        'name'
     ];
 }

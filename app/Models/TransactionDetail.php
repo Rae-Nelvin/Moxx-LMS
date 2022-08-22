@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class TransactionDetail extends Model
 {
     use HasFactory;
-    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -18,12 +17,11 @@ class TransactionDetail extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'transasctionID',
+        'transactionID',
         'paymentType',
-        'discountID',
+        'totalPrice',
         'paymentProof',
-        'isPaid',
-        'acceptorID'
+        'isPaid'
     ];
 
     /**
@@ -37,16 +35,6 @@ class TransactionDetail extends Model
     }
 
     /**
-     * Get the Discount associated with the TransactionDetail
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function Discount(): HasOne
-    {
-        return $this->hasOne(Discount::class);
-    }
-
-    /**
      * Get the PaymentProof associated with the TransactionDetail
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
@@ -54,15 +42,5 @@ class TransactionDetail extends Model
     public function PaymentProof(): HasOne
     {
         return $this->hasOne(Photo::class);
-    }
-
-    /**
-     * Get the Acceptor associated with the TransactionDetail
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function Acceptor(): HasOne
-    {
-        return $this->hasOne(User::class);
     }
 }
