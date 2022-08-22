@@ -9,16 +9,26 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+        <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css">
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.2/dist/flowbite.min.css" />
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body>
-        <div class="font-sans text-gray-900 antialiased">
-            {{ $slot }}
+
+        @include('components.guest-navbar')
+        
+        <div class="h-screen flex flex-row flex-wrap">
+            @include('components.guest-sidebar')
+            <div class="flex-1 bg-[#FDF9F7] flex-col flex-nowrap py-16 pl-[72px] pr-[110px] w-full">
+                @yield('content')
+            </div>
         </div>
+
+        <script src="{{ asset('js/flowbite.js') }}"></script>
     </body>
 </html>

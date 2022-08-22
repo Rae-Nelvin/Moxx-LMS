@@ -33,14 +33,23 @@ Route::get('components/navbar', function () {
     return view('components/navbar');
 });
 
-// Route::get('users.loginn', [LoginUserController::class, 'index'])->name('loginn');
-// Route::get('login', [LoginUserController::class, 'index'])->name('login');
-// Route::post('login', [LoginUserController::class, 'index'])->name('login');
-// Route::get('users.registerr', [RegisterController::class, 'create'])->name('registerr');
-// Route::post('users.registerr', [RegisterController::class, 'store'])->name('register');
+Route::get('/dashboard', function () {
+    return view('admins.dashboard');
+})->name('dashboard');
+Route::get('/payment', function () {
+    return view('admins.payment');
+})->name('payment');
+Route::get('/sites', function () {
+    return view('admins.sites');
+})->name('sites');
+Route::get('/myClass', function () {
+    return view('tutors.myClass');
+})->name('myClass');
+Route::get('/classes', function () {
+    return view('tutors.classes');
+})->name('classes');
+Route::get('/newClass', function () {
+    return view('tutors.newClass');
+})->name('newClass');
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
