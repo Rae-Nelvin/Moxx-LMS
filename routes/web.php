@@ -1,10 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\PaymentController as AdminPaymentController;
+use App\Http\Controllers\Tutor\DashboardController as TutorDashboardController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\LoginUserController;
-use App\Http\Controllers\RegisterController;
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -33,23 +32,35 @@ Route::get('components/navbar', function () {
     return view('components/navbar');
 });
 
-Route::get('/dashboard', function () {
-    return view('admins.dashboard');
-})->name('dashboard');
-Route::get('/payment', function () {
-    return view('admins.payment');
-})->name('payment');
-Route::get('/sites', function () {
-    return view('admins.sites');
-})->name('sites');
-Route::get('/myClass', function () {
-    return view('tutors.myClass');
-})->name('myClass');
-Route::get('/classes', function () {
-    return view('tutors.classes');
-})->name('classes');
-Route::get('/newClass', function () {
-    return view('tutors.newClass');
-})->name('newClass');
+Route::group(['middleware' => ['isAdmin']], function () {
+    Route::prefix('admin/')->name('admin.')->group(function () {
+        Route::get('/dashboard', [AdminDashboardController::class, 'render'])->name('dashboard');
+        Route::get('/payment', [AdminPaymentController::class, 'payment'])->name('payment');
+        Route::get('/sites', function () {
+            return view('admins.sites');
+        })->name('sites');
+    });
+});
+
+Route::group(['middleware' => ['isTutor']], function () {
+    Route::prefix('tutor/')->name('tutor.')->group(function () {
+        Route::get('/myClass', function () {
+            return view('tutors.myClass');
+        })->name('myClass');
+        Route::get('/classes', [TutorDashboardController::class, 'render'])->name('classes');
+        Route::get('/newClass', function () {
+            return view('tutors.newClass');
+        })->name('newClass');
+    });
+});
+
+Route::group(['middleware' => ['isUser']], function () {
+    Route::prefix('user/')->name('user.')->group(function () {
+    });
+});
+
+Route::fallback(function () {
+    return "The Address does not registered";
+});
 
 require __DIR__ . '/auth.php';

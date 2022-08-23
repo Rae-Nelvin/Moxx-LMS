@@ -22,7 +22,10 @@
                 <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-[#3CCAA1]/50 transition-all ease-in-out duration-300">Earnings</a>
                 </li>
                 <li>
-                <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-[#3CCAA1]/50 transition-all ease-in-out duration-300">Sign out</a>
+                    <form action="{{ route('logout') }}" method="POST" class="block py-2 px-4 text-sm text-gray-700 hover:bg-[#3CCAA1]/50 transition-all ease-in-out duration-300">
+                    @csrf
+                        <button>Sign out</button>
+                    </form>
                 </li>
             </ul>
             </div>
