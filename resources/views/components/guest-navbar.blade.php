@@ -6,7 +6,7 @@
     <div class="flex items-center md:order-2">
         <button type="button" class="flex mr-3 text-sm rounded-full md:mr-0 items-center" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
           <img class="w-[34px] h-[34px] rounded-full" src="{{ asset('images/jungkook.jpg') }}" alt="user photo">
-          <p class="ml-[14px] font-normal text-lg mr-[29px]">Hi, Administrator</p>
+          <p class="ml-[14px] font-normal text-lg mr-[29px]">Hi, {{ Auth::user()->name }}</p>
           <img src="{{ asset('images/guest-icon/dropdown.svg') }}" alt="dropdown icon">
         </button>
         <!-- Dropdown menu -->

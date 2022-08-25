@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\PaymentController as AdminPaymentController;
+use App\Http\Controllers\Tutor\ClassController as TutorClassController;
 use App\Http\Controllers\Tutor\DashboardController as TutorDashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,13 +45,10 @@ Route::group(['middleware' => ['isAdmin']], function () {
 
 Route::group(['middleware' => ['isTutor']], function () {
     Route::prefix('tutor/')->name('tutor.')->group(function () {
-        Route::get('/myClass', function () {
-            return view('tutors.myClass');
-        })->name('myClass');
-        Route::get('/classes', [TutorDashboardController::class, 'render'])->name('classes');
-        Route::get('/newClass', function () {
-            return view('tutors.newClass');
-        })->name('newClass');
+        Route::get('/dashboard', [TutorDashboardController::class, 'render'])->name('dashboard');
+        Route::get('/newClass', [TutorClassController::class, 'renderNewClass'])->name('newClass');
+        Route::post('/newClass', [TutorClassController::class, 'storeNewClass'])->name('newClass');
+        Route::post('/newType', [TutorClassController::class, 'storeNewType'])->name('storeType');
     });
 });
 
