@@ -17,7 +17,7 @@ class LessonGroup extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'classID',
+        'courseID',
         'title'
     ];
 

@@ -49,6 +49,9 @@ Route::group(['middleware' => ['isTutor']], function () {
         Route::get('/newClass', [TutorClassController::class, 'renderNewClass'])->name('newClass');
         Route::post('/newClass', [TutorClassController::class, 'storeNewClass'])->name('newClass');
         Route::post('/newType', [TutorClassController::class, 'storeNewType'])->name('storeType');
+        Route::get('/course/detail/{id}', [TutorClassController::class, 'courseDetail'])->name('courseDetail');
+        Route::post('/newSection', [TutorClassController::class, 'newSection'])->name('newSection');
+        Route::post('/newContent', [TutorClassController::class, 'newContent'])->name('newContent');
     });
 });
 
