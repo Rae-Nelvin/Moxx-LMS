@@ -24,6 +24,12 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [AuthenticatedSessionController::class, 'store'])
         ->name('login');
 
+    Route::get('/google/login', [AuthenticatedSessionController::class, 'renderGoogleLogin'])
+        ->name('googleLogin');
+
+    Route::get('auth/google/callback', [AuthenticatedSessionController::class, 'handleProviderCallback'])
+        ->name('user.google.callback');
+
     Route::get('/admin/login', [AuthenticatedSessionController::class, 'createAdmin'])
         ->name('admin.login');
 

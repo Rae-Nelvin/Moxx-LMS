@@ -14,7 +14,6 @@
     <div class="flex flex-row flex-wrap mt-7 space-x-10">
     @if(!$data->isEmpty())
         @foreach ($data as $datas)
-            
                 <div class="w-1/4">
                     <div class="bg-[#3CCAA1]/30 relative rounded-lg flex flex-row ">
                         <img src="{{ asset('storage/'. $datas->imageURL) }}" class="w-full" alt="Class Cover" />

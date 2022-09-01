@@ -48,7 +48,7 @@ class ClassController extends Controller
 
         Course::create([
             'title' => $data['title'],
-            'subtitle' => $data['subtitle'],
+            'description' => $data['subtitle'],
             'coverID' => $photo->id,
             'courseTypeID' => $data['type'],
             'creatorID' => Auth::user()->id,
@@ -94,7 +94,7 @@ class ClassController extends Controller
         $lessonGroup = DB::table('lesson_groups')
             ->join('courses', 'lesson_groups.courseID', '=', 'courses.id')
             ->where('courses.id', '=', $id)
-            ->select('lesson_groups.title as groupTitle', 'lesson_groups.id as sectionID')
+            ->select('lesson_groups.title as groupTitle', 'lesson_groups.id as sectionID', 'lesson_groups.id')
             ->get();
 
         $lesson = DB::table('lessons')
@@ -139,6 +139,7 @@ class ClassController extends Controller
     {
         $request->validate([
             'groupID' => 'required',
+            'title' => 'required',
             'content' => 'required|file|mimes:ppt,pptx'
         ]);
 
@@ -148,6 +149,7 @@ class ClassController extends Controller
         $filePath = str_replace('public/', '', $filePath);
 
         Lesson::create([
+            'title' => $data['title'],
             'lessonGroupID' => $data['groupID'],
             'file' => $filePath,
         ]);

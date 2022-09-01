@@ -10,7 +10,7 @@
           <img src="{{ asset('images/guest-icon/dropdown.svg') }}" alt="dropdown icon">
         </button>
         <!-- Dropdown menu -->
-        <div class="z-50 my-4 text-base list-none bg-[#3CCAA1]/30 rounded divide-y divide-gray-100 shadow hidden" id="user-dropdown" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="bottom" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(644px, 82px);">
+        <div class="z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow hidden" id="user-dropdown" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="bottom" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(644px, 82px);">
             <ul class="py-1" aria-labelledby="user-menu-button">
                 <li>
                 <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-[#3CCAA1]/50 transition-all ease-in-out duration-300">Dashboard</a>

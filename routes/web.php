@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\PaymentController as AdminPaymentController;
 use App\Http\Controllers\Tutor\ClassController as TutorClassController;
 use App\Http\Controllers\Tutor\DashboardController as TutorDashboardController;
+use App\Http\Controllers\User\ClassController as UserClassController;
+use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -57,6 +59,9 @@ Route::group(['middleware' => ['isTutor']], function () {
 
 Route::group(['middleware' => ['isUser']], function () {
     Route::prefix('user/')->name('user.')->group(function () {
+        Route::get('/dashboard', [UserDashboardController::class, 'render'])->name('dashboard');
+        Route::get('/course/detail', [UserClassController::class, 'renderCourseDetail'])->name('renderCourseDetail');
+        Route::get('/course', [UserClassController::class, 'renderCourse'])->name('renderCourse');
     });
 });
 

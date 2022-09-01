@@ -15,6 +15,7 @@ class CreateLessonsTable extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
             $table->unsignedBigInteger('lessonGroupID');
             $table->foreign('lessonGroupID')->references('id')->on('lessons')->onDelete('cascade');
             $table->string('file');

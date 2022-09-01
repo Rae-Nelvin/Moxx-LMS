@@ -17,6 +17,7 @@ class Lesson extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'title',
         'lessonGroupID',
         'file'
     ];
