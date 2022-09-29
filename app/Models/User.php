@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
@@ -19,16 +20,14 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'id',
         'username',
         'name',
         'email',
-        'email_verified_at',
         'password',
-        'password_confirm',
+        'alamat',
         'phone',
-        'avatar',
-        'is_admin'
+        'avatarID',
+        'roleID'
     ];
 
     /**
@@ -49,4 +48,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the Role associated with the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function Role(): HasOne
+    {
+        return $this->hasOne(Role::class);
+    }
+
+    /**
+     * Get the Photo associated with the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function Photo(): HasOne
+    {
+        return $this->hasOne(Photo::class);
+    }
 }

@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
-
 class RegisteredUserController extends Controller
 {
     /**
@@ -34,22 +33,16 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        // return request()->all();
         $request->validate([
-            'name' => 'required|max:255',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:5|max:255',
-            'password_confirm' => 'required|min:5|max:255',
-
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'email_verified_at' => date('Y-m-d H:i:s', time()),
             'password' => Hash::make($request->password),
-            'password_confirm' => Hash::make($request->password),
-            'phone' => $request->phone,
         ]);
 
         event(new Registered($user));

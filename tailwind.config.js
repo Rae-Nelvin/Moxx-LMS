@@ -5,6 +5,13 @@ module.exports = {
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        './node_modules/flowbite/**/*.js',
+    ],
+
+    purge: [
+        './resources/**/*.blade.php',
+        './resources/**/*,js',
+        './resources/**/*.vue',
     ],
 
     theme: {
@@ -25,9 +32,8 @@ module.exports = {
             'bubble-gum': '#ff77e9',
             'bermuda': '#78dcca',
             'green': '#3CCAA1',
-
         },
     },
 
-    plugins: [require('@tailwindcss/forms')],
+    plugins: [require('@tailwindcss/forms'), require('flowbite/plugin')],
 };

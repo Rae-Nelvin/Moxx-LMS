@@ -19,8 +19,7 @@
                         <a href=""
                             class="no-underline py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">About</a>
                         <a href=""
-                            class="no-underline py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Contact
-                            Us</a>
+                            class="no-underline py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Contact Us</a>
                     </div>
                 </div>
                 <!-- Secondary Navbar items -->
@@ -30,10 +29,10 @@
                 </div>
                 @else
                 <div class="hidden md:flex items-center md:space-x-8 ">
-                    <a href="{{ url ('login')}}"
+                    <a href="{{ route('login') }}"
                         class="no-underline py-2 px-2 font-medium text-gray-500 rounded-full hover:bg-green-500 hover:text-white transition duration-300">Log
                         In</a>
-                    <a href="{{ url ('register')}}"
+                    <a href="{{ route('register') }}"
                         class="no-underline py-2 px-2 font-medium text-gray-500 rounded-full hover:bg-green-500 hover:text-white transition duration-300">Sign
                         up</a>
 

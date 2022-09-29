@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\PaymentController as AdminPaymentController;
+use App\Http\Controllers\Tutor\ClassController as TutorClassController;
+use App\Http\Controllers\Tutor\DashboardController as TutorDashboardController;
+use App\Http\Controllers\User\ClassController as UserClassController;
+use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\LoginUserController;
-use App\Http\Controllers\RegisterController;
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -33,14 +35,39 @@ Route::get('components/navbar', function () {
     return view('components/navbar');
 });
 
-// Route::get('users.loginn', [LoginUserController::class, 'index'])->name('loginn');
-// Route::get('login', [LoginUserController::class, 'index'])->name('login');
-// Route::post('login', [LoginUserController::class, 'index'])->name('login');
-// Route::get('users.registerr', [RegisterController::class, 'create'])->name('registerr');
-// Route::post('users.registerr', [RegisterController::class, 'store'])->name('register');
+Route::group(['middleware' => ['isAdmin']], function () {
+    Route::prefix('admin/')->name('admin.')->group(function () {
+        Route::get('/dashboard', [AdminDashboardController::class, 'render'])->name('dashboard');
+        Route::get('/payment', [AdminPaymentController::class, 'payment'])->name('payment');
+        Route::get('/sites', function () {
+            return view('admins.sites');
+        })->name('sites');
+    });
+});
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
+Route::group(['middleware' => ['isTutor']], function () {
+    Route::prefix('tutor/')->name('tutor.')->group(function () {
+        Route::get('/dashboard', [TutorDashboardController::class, 'render'])->name('dashboard');
+        Route::get('/newClass', [TutorClassController::class, 'renderNewClass'])->name('newClass');
+        Route::post('/newClass', [TutorClassController::class, 'storeNewClass']);
+        Route::post('/newType', [TutorClassController::class, 'storeNewType'])->name('storeType');
+        Route::get('/course/detail/{id}', [TutorClassController::class, 'courseDetail'])->name('courseDetail');
+        Route::get('/course/detail/{courseID}/{sectionID}/{lessonID}', [TutorClassController::class, 'renderLesson'])->name('renderLesson');
+        Route::post('/newSection', [TutorClassController::class, 'newSection'])->name('newSection');
+        Route::post('/newContent', [TutorClassController::class, 'newContent'])->name('newContent');
+    });
+});
+
+Route::group(['middleware' => ['isUser']], function () {
+    Route::prefix('user/')->name('user.')->group(function () {
+        Route::get('/dashboard', [UserDashboardController::class, 'render'])->name('dashboard');
+        Route::get('/course/detail', [UserClassController::class, 'renderCourseDetail'])->name('renderCourseDetail');
+        Route::get('/course', [UserClassController::class, 'renderCourse'])->name('renderCourse');
+    });
+});
+
+Route::fallback(function () {
+    return "The Address does not registered";
+});
 
 require __DIR__ . '/auth.php';
