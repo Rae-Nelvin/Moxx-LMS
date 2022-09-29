@@ -18,7 +18,7 @@ class CreateLessonsTable extends Migration
             $table->string('title');
             $table->unsignedBigInteger('lessonGroupID');
             $table->foreign('lessonGroupID')->references('id')->on('lessons')->onDelete('cascade');
-            $table->string('file');
+            $table->longText('file');
         });
     }
 

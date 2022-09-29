@@ -17,7 +17,7 @@ class isTutor
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!(session() && Auth::user() && Auth::user()->roleID == 2)) {
+        if (!(session() && Auth::user() && (Auth::user()->roleID == 2 || Auth::user()->roleID == 1))) {
             return redirect('/');
         }
 

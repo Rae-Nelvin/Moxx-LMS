@@ -8,3 +8,13 @@
     background-position: center;
     background-size: cover;
 }
+
+.h_iframe iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.h_iframe {
+    width: 100%;
+    height: 100%;
+}

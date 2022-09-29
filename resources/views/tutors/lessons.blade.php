@@ -2,24 +2,28 @@
 
 @section('content')
 
-    <div class="flex flex-col flex-nowrap pr-[126px]">
+    <div class="flex flex-col flex-nowrap">
         <div class="flex flex-row justify-between items-center">
             <div class="w-full">
                 <h1 class="font-bold text-[40px]">{{ $course->title }}</h1>
-                <h2 class="mt-2 font-normal text-[19px]">Introduction</h2>
+                <h2 class="mt-2 font-normal text-[19px]">{{ $file->title }}</h2>
             </div>
             <p class="font-normal text-lg text-right">{{ $course->description }}</p>
         </div>
-        <div class="flex flex-row mt-11 justify-between space-x-10">
-            <img src="{{ asset('images/slide-1.jpg') }}" alt="cover-img" class="w-3/4 mt-4">
-            <div class="w-full justify-between flex flex-col">
+        <div class="flex flex-row mt-11 justify-between space-x-10 w-full h-[70vh]">
+            <div class="w-4/5">
+                <div class="h_iframe">
+                    {!! $file->file !!}
+                </div>
+            </div>
+            <div class="justify-between flex flex-col w-1/5">
                 <div>
-                    <div class="flex flex-row justify-between items-center">
+                    <div class="flex flex-row justify-between items-center mb-4">
                         <h1 class="font-bold text-base">{{ $course->title }}</h1>
-                        {{-- <p class="font-base text-[10px]">1 hours learning</p> --}}
                     </div>
+
                     @foreach ($lessonGroup as $lessonGroups)           
-                        <div id="accordion-collapse" data-accordion="collapse" class="max-w-[330px] w-screen border border-1 border-[#3CCAA1] rounded-t-lg mt-4" data-active-classes="bg-[#3CCAA1]/30 text-black">
+                        <div id="accordion-collapse" data-accordion="collapse" class="max-w-[300px] w-screen border border-1 border-[#3CCAA1]" data-active-classes="bg-[#3CCAA1]/30 text-black">
                             <h2 id="accordion-collapse-heading-{{ $lessonGroups->id }}" class="w-full bg-[#3CCAA1]/30">
                             <button type="button" class="flex items-center justify-between w-full py-2 px-5 text-left rounded-t-lg text-black" data-accordion-target="#accordion-collapse-body-{{ $lessonGroups->id }}" aria-expanded="true" aria-controls="accordion-collapse-body-{{ $lessonGroups->id }}">
                                 <span class="font-bold text-xs">{{ $lessonGroups->groupTitle }}</span>
@@ -33,7 +37,7 @@
                                 <div class="py-3 px-5 flex flex-col space-y-4 w-full">
                                     @foreach ($lesson as $lessons)
                                         @if ($lessons->lessonGroupID == $lessonGroups->id)
-                                            <a href="/tutor/course/detail/{{ $courseID }}/{{ $lessonGroups->id }}/{{ $lessons->id }}">
+                                            <a href="/tutor/course/detail/{{ $course->id }}/{{ $lessonGroups->id }}/{{ $lessons->id }}">
                                                 <div class="flex flex-row space-x-2 items-center w-full">
                                                     <img src="{{ asset('images/guest-icon/play-button.svg') }}" alt="play-button" class="w-3 h-3">
                                                     <p class="font-normal text-[10px]">{{ $lessons->title }}</p>
@@ -45,12 +49,12 @@
                             </div>
                         </div>
                     @endforeach
-                    
-                    <div class="flex flex-row flex-nowrap justify-between mt-10 space-x-5">
-                        <button class="bg-[#3CCAA1]/30 hover:bg-[#3CCAA1] focus:bg-[#3CCAA1] py-3 px-5 border-1 border border-[#3CCAA1] text-center font-semibold text-sm rounded-xl duration-500 transition-all ease-in-out" data-modal-toggle="addSection-modal">Add Section+</button>
-                        <button class="bg-[#3CCAA1]/30 hover:bg-[#3CCAA1] focus:bg-[#3CCAA1] py-3 px-5 border-1 border border-[#3CCAA1] text-center font-semibold text-sm rounded-xl duration-500 transition-all ease-in-out" data-modal-toggle="addContent-modal">Add Content+</button>
-                    </div>
+                
                 </div>  
+                <div class="flex flex-row flex-nowrap justify-between mt-10 space-x-5">
+                    <button class="bg-[#3CCAA1]/30 hover:bg-[#3CCAA1] focus:bg-[#3CCAA1] py-3 px-5 border-1 border border-[#3CCAA1] text-center font-semibold text-sm rounded-xl duration-500 transition-all ease-in-out" data-modal-toggle="addSection-modal">Add Section+</button>
+                    <button class="bg-[#3CCAA1]/30 hover:bg-[#3CCAA1] focus:bg-[#3CCAA1] py-3 px-5 border-1 border border-[#3CCAA1] text-center font-semibold text-sm rounded-xl duration-500 transition-all ease-in-out" data-modal-toggle="addContent-modal">Add Content+</button>
+                </div>
             </div>
         </div>
     </div>

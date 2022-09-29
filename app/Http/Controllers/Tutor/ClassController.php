@@ -103,7 +103,7 @@ class ClassController extends Controller
             ->where('courses.id', '=', $id)
             ->get();
 
-        return view('tutors.courseDetail', ['course' => $course, 'lessonGroup' => $lessonGroup, 'lesson' => $lesson]);
+        return view('tutors.courseDetail', ['course' => $course, 'lessonGroup' => $lessonGroup, 'lesson' => $lesson, 'courseID' => $id]);
     }
 
     /**
@@ -140,20 +140,52 @@ class ClassController extends Controller
         $request->validate([
             'groupID' => 'required',
             'title' => 'required',
-            'content' => 'required|file|mimes:ppt,pptx'
+            'content' => 'required'
         ]);
 
         $data = $request->all();
 
-        $filePath = $request->file('content')->store('/public/' . 'course/' . 'testing/' . $data['groupID'] . '/content');
-        $filePath = str_replace('public/', '', $filePath);
-
         Lesson::create([
             'title' => $data['title'],
             'lessonGroupID' => $data['groupID'],
-            'file' => $filePath,
+            'file' => $data['content'],
         ]);
 
         return redirect()->back()->with('success', 'Your New Content has been created successfully');
+    }
+
+    /**
+     * renderLesson
+     *
+     * @param  mixed $courseID
+     * @param  mixed $sectionID
+     * @param  mixed $lessonID
+     * @return void
+     */
+    public function renderLesson($courseID, $sectionID, $lessonID)
+    {
+        $course = DB::table('courses')
+            ->join('photos', 'courses.coverID', '=', 'photos.id')
+            ->where('courses.id', '=', $courseID)
+            ->select('courses.*', 'photos.*')
+            ->first();
+
+        $lessonGroup = DB::table('lesson_groups')
+            ->join('courses', 'lesson_groups.courseID', '=', 'courses.id')
+            ->where('courses.id', '=', $courseID)
+            ->select('lesson_groups.title as groupTitle', 'lesson_groups.id as sectionID', 'lesson_groups.id')
+            ->get();
+
+        $lesson = DB::table('lessons')
+            ->join('lesson_groups', 'lessons.lessonGroupID', '=', 'lesson_groups.id')
+            ->where('lesson_groups.courseID', '=', $courseID)
+            ->select('lessons.*')
+            ->get();
+
+        $file = DB::table('lessons')
+            ->where('lessons.id', '=', $lessonID)
+            ->first();
+
+        return view('tutors.lessons', compact('course', 'lessonGroup', 'lesson', 'file'));
     }
 }
