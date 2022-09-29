@@ -26,7 +26,7 @@ Route::middleware('guest')->group(function () {
     Route::get('auth/google/callback', [AuthenticatedSessionController::class, 'handleProviderCallback'])
         ->name('user.google.callback');
 
-    Route::get('/admin/login', [AuthenticatedSessionController::class, 'createAdmin']);
+    Route::get('/admin/login', [AuthenticatedSessionController::class, 'createAdmin'])->name('admin.login');
 
     Route::post('/admin/login', [AuthenticatedSessionController::class, 'storeAdmin']);
 

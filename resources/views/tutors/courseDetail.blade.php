@@ -104,11 +104,11 @@
                         </select>
                         <div>
                             <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Content Title</label>
-                            <input type="text" id="file-cover" name="title" class="bg-white border-b-1 border-t-0 border-l-0 border-r-0 w-full mt-[19px]">
+                            <input type="text" id="file-cover" name="title" class="bg-white border-black w-full mt-[19px]">
                         </div>
                         <div>
                             <label for="File" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Content</label>
-                            <input type="text" id="file-cover" name="content" class="bg-white border-b-1 border-t-0 border-l-0 border-r-0 w-full mt-[19px]">
+                            <input type="text" id="file-cover" name="content" class="bg-white border-black w-full mt-[19px]">
                         </div>
                         <div class="flex flex-row space-x-5">
                             <button type="submit" class="w-full bg-[#3CCAA1]/30 hover:bg-[#3CCAA1] py-3 px-3 border-1 border border-[#3CCAA1] text-center font-semibold text-sm rounded-xl duration-500 transition-all ease-in-out">Create New Content</button>

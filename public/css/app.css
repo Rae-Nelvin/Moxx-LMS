@@ -1861,6 +1861,10 @@ input[type="range"]::-ms-fill-lower {
   --tw-border-opacity: 1;
   border-right-color: rgb(60 202 161 / var(--tw-border-opacity));
 }
+.border-b-black {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -2528,6 +2532,14 @@ input[type="range"]::-ms-fill-lower {
 }
 .hover\:bg-\[\#bebebe\]\/20:hover {
   background-color: rgb(190 190 190 / 0.2);
+}
+.hover\:bg-\[\#2f9e7f\]:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(47 158 127 / var(--tw-bg-opacity));
+}
+.hover\:bg-\[\#af4040\]:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(175 64 64 / var(--tw-bg-opacity));
 }
 .hover\:bg-opacity-5:hover {
   --tw-bg-opacity: 0.05;

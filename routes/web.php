@@ -38,10 +38,11 @@ Route::get('components/navbar', function () {
 Route::group(['middleware' => ['isAdmin']], function () {
     Route::prefix('admin/')->name('admin.')->group(function () {
         Route::get('/dashboard', [AdminDashboardController::class, 'render'])->name('dashboard');
-        Route::get('/payment', [AdminPaymentController::class, 'payment'])->name('payment');
+        Route::get('/payment', [AdminDashboardController::class, 'renderPayment'])->name('renderPayment');
         Route::get('/sites', function () {
             return view('admins.sites');
         })->name('sites');
+        Route::get('/course', [AdminDashboardController::class, 'renderCourse'])->name('renderCourse');
     });
 });
 

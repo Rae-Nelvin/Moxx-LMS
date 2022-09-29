@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Course extends Model
@@ -28,42 +29,32 @@ class Course extends Model
     ];
 
     /**
-     * Get the Cover associated with the Course
+     * Get the user associated with the Course
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function Cover(): HasOne
+    public function user(): HasOne
     {
-        return $this->hasOne(Photo::class);
+        return $this->hasOne(User::class, 'id', 'creatorID');
     }
 
     /**
-     * Get the CourseType associated with the Course
+     * Get the courseType associated with the Course
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function CourseType(): HasOne
+    public function courseType(): HasOne
     {
-        return $this->hasOne(CourseType::class);
+        return $this->hasOne(CourseType::class, 'id', 'courseTypeID');
     }
 
     /**
-     * Get the User that owns the Course
+     * Get all of the lessonGroup for the Course
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function User(): BelongsTo
+    public function lessonGroup(): HasMany
     {
-        return $this->belongsTo(User::class);
-    }
-
-    /**
-     * Get the Discount associated with the Course
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function Discount(): HasOne
-    {
-        return $this->hasOne(Discount::class);
+        return $this->hasMany(LessonGroup::class, 'courseID', 'id');
     }
 }
