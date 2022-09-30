@@ -16,7 +16,6 @@
                 <div>
                     <div class="flex flex-row justify-between items-center">
                         <h1 class="font-bold text-base">{{ $course->title }}</h1>
-                        {{-- <p class="font-base text-[10px]">1 hours learning</p> --}}
                     </div>
                     @foreach ($lessonGroup as $lessonGroups)           
                         <div id="accordion-collapse" data-accordion="collapse" class="max-w-[330px] w-screen border border-1 border-[#3CCAA1] rounded-t-lg mt-4" data-active-classes="bg-[#3CCAA1]/30 text-black">

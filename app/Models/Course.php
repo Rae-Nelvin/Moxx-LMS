@@ -57,4 +57,14 @@ class Course extends Model
     {
         return $this->hasMany(LessonGroup::class, 'courseID', 'id');
     }
+
+    /**
+     * Get the cover associated with the Course
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function cover(): HasOne
+    {
+        return $this->hasOne(Photo::class, 'id', 'coverID');
+    }
 }
