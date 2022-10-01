@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -17,7 +19,11 @@ class DashboardController extends Controller
      */
     public function render()
     {
-        return view('admins.dashboard');
+        $user = User::where('roleiD', '=', 3)->count();
+        $course = Course::where('isActive', '=', 1)->count();
+        $transaction = Transaction::where('acceptorID', '!=', null)->count();
+
+        return view('admins.dashboard', compact('user', 'course', 'transaction'));
     }
 
     /**
@@ -45,6 +51,21 @@ class DashboardController extends Controller
      */
     public function renderPayment()
     {
-        return view('admins.payment');
+        $success = Transaction::where('acceptorID', '!=', null)->count();
+        $pending = Transaction::where('acceptorID', '=', null)->count();
+
+        return view('admins.payment', compact('success', 'pending'));
+    }
+
+    /**
+     * renderUserList
+     *
+     * @return void
+     */
+    public function renderUserList()
+    {
+        $user = User::where('roleID', '=', 3)->count();
+        $tutor = User::where('roleID', '=', 2)->count();
+        return view('admins.userList', compact('user', 'tutor'));
     }
 }

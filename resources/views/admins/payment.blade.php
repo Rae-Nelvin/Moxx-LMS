@@ -2,11 +2,29 @@
 
 @section('content')
 
-    <div class="flex flex-row justify-between items-end">
-        <h1 class="font-bold text-[40px]">Payment</h1>
+    <h1 class="font-bold text-[40px]">Payment</h1>
+    <div class="flex flex-row flex-nowrap mt-[39px] space-x-10">
+        <div class="bg-white flex flex-row items-center py-[31px] px-[33px] w-1/3">
+            <div class="bg-[#3CCAA1]/30 rounded-full w-[54px] h-[54px]">
+            </div>
+            <div class="ml-[35px] space-y-1">
+                <h1 class="font-bold text-[32px]">{{ $success }}</h1>
+                <h2 class="font-normal text-[22px]">Successfull Transactions</h2>
+            </div>
+        </div>
+        <div class="bg-white flex flex-row items-center py-[31px] px-[33px] w-1/3">
+            <div class="bg-[#3CCAA1]/30 rounded-full w-[54px] h-[54px]">
+            </div>
+            <div class="ml-[35px] space-y-1">
+                <h1 class="font-bold text-[32px]">{{ $pending }}</h1>
+                <h2 class="font-normal text-[22px]">Pending Transactions</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex flex-row justify-end">
         <h3 class="underline font-normal text-base">Filter</h3>
     </div>
-    
     <div class="overflow-x-hidden flex flex-nowrap relative shadow-md sm:rounded-lg mt-[28px]">
         <table class="w-full text-sm text-left text-gray-500">
             <thead class="text-xs text-gray-700 bg-gray-50">
@@ -59,7 +77,7 @@
                     </td>
                     <td>
                         <div class="bg-[#3CCAA1] rounded-2xl items-center flex justify-center p-2 w-auto">
-                            <span class="font-base text-[10px] text-white text-center">Done</span>
+                            <span class="font-base text-[10px] text-white text-center">Accept</span>
                         </div>
                     </td>
                     <td class="pl-4 pr-2">

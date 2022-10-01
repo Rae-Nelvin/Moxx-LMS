@@ -24,10 +24,6 @@ Route::get('/', function () {
     return view('index');
 });
 
-// Route::get('/', function (Request $request) {
-//     $request->session()->flush();
-// });
-
 Route::get('users/success', function () {
     return view('users.success');
 });
@@ -50,6 +46,7 @@ Route::group(['middleware' => ['isAdmin']], function () {
         Route::get('/course/detail/{courseID}/{sectionID}/{lessonID}', [AdminCourseController::class, 'renderLesson'])->name('renderLesson');
         Route::get('/reject/course/{id}', [AdminCourseController::class, 'rejectCourse'])->name('rejectCourse');
         Route::get('/accept/course/{id}', [AdminCourseController::class, 'acceptCourse'])->name('acceptCourse');
+        Route::get('/userList', [AdminDashboardController::class, 'renderUserList'])->name('renderUserList');
     });
 });
 

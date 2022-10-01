@@ -18,7 +18,7 @@
         </a>
      </li>
      <li>
-         <a href="#" class="flex items-center py-[18px] text-base font-normal text-center justify-center text-gray-900 hover:bg-[#FDF9F7] focus:bg-[#FDF9F7] border-4 border-t-0 border-b-0 border-l-0 focus:border-r-[#3CCAA1]">
+         <a href="{{ route('admin.renderUserList') }}" class="{{ request()->is('admin/userList') ? 'bg-[#FDF9F7] flex items-center py-[18px] text-base font-normal text-center justify-center text-gray-900 hover:bg-[#FDF9F7] focus:bg-[#FDF9F7] border-4 border-t-0 border-b-0 border-l-0 border-r-[#3CCAA1] focus:border-r-[#3CCAA1]' : 'flex items-center py-[18px] text-base font-normal text-center justify-center text-gray-900 hover:bg-[#FDF9F7] focus:bg-[#FDF9F7] border-4 border-t-0 border-b-0 border-l-0 focus:border-r-[#3CCAA1]' }}">
             <h1 class="font-light text-lg">List User</h1>
          </a>
       </li> 
