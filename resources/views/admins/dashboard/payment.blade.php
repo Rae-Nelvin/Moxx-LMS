@@ -50,9 +50,6 @@
                     <th scope="col">
                         Payment
                     </th>
-                    <th scope="col" class="py-3 px-6">
-                        Edit
-                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -75,14 +72,9 @@
                     <td class="py-4 px-6">
                         Rp124.250.000
                     </td>
-                    <td>
-                        <div class="bg-[#3CCAA1] rounded-2xl items-center flex justify-center p-2 w-auto">
-                            <span class="font-base text-[10px] text-white text-center">Accept</span>
-                        </div>
-                    </td>
                     <td class="pl-4 pr-2">
                         <a href="#" type="button" class="bg-blue-400 hover:bg-blue-600 rounded-2xl items-center flex justify-center p-2 w-auto font-base text-[10px] text-white text-center cursor-pointer transition-all duration-300 ease-in-out">
-                            Edit
+                            View
                         </a>
                     </td>
                 </tr>
@@ -105,14 +97,9 @@
                     <td class="py-4 px-6">
                         Rp124.250.000
                     </td>
-                    <td>
-                        <div class="bg-[#FBBC05] rounded-2xl items-center flex justify-center p-2 w-auto">
-                            <span class="font-base text-[10px] text-white text-center">Process</span>
-                        </div>
-                    </td>
                     <td class="pl-4 pr-2">
                         <a href="#" type="button" class="bg-blue-400 hover:bg-blue-600 rounded-2xl items-center flex justify-center p-2 w-auto font-base text-[10px] text-white text-center cursor-pointer transition-all duration-300 ease-in-out">
-                            Edit
+                            View
                         </a>
                     </td>
                 </tr>

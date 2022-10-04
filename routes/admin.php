@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\LandingPageController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['isAdmin']], function () {
@@ -17,5 +18,11 @@ Route::group(['middleware' => ['isAdmin']], function () {
         Route::get('/reject/course/{id}', [CourseController::class, 'rejectCourse'])->name('rejectCourse');
         Route::get('/accept/course/{id}', [CourseController::class, 'acceptCourse'])->name('acceptCourse');
         Route::get('/userList', [DashboardController::class, 'renderUserList'])->name('renderUserList');
+        Route::prefix('landing-page/')->group(function () {
+            Route::get('/plans', [LandingPageController::class, 'renderPlans'])->name('renderPlans');
+            Route::get('/courses', [LandingPageController::class, 'renderCourses'])->name('renderCourses');
+            Route::get('/mentors', [LandingPageController::class, 'renderMentors'])->name('renderMentors');
+            Route::get('/testimonies', [LandingPageController::class, 'renderTestimonies'])->name('renderTestimonies');
+        });
     });
 });

@@ -28,7 +28,7 @@ class CourseController extends Controller
 
         $lesson = Lesson::get();
 
-        return view('admins.courseDetail', ['course' => $course, 'lessonGroup' => $lessonGroup, 'lesson' => $lesson, 'courseID' => $id]);
+        return view('admins.dashboard.courseDetail', ['course' => $course, 'lessonGroup' => $lessonGroup, 'lesson' => $lesson, 'courseID' => $id]);
     }
 
     /**
@@ -53,7 +53,7 @@ class CourseController extends Controller
 
         $file = Lesson::where('lessons.id', '=', $lessonID)->first();
 
-        return view('admins.lessons', compact('course', 'lessonGroup', 'lesson', 'file'));
+        return view('admins.dashboard.lessons', compact('course', 'lessonGroup', 'lesson', 'file'));
     }
 
     /**

@@ -23,7 +23,7 @@ class DashboardController extends Controller
         $course = Course::where('isActive', '=', 1)->count();
         $transaction = Transaction::where('acceptorID', '!=', null)->count();
 
-        return view('admins.dashboard', compact('user', 'course', 'transaction'));
+        return view('admins.dashboard.dashboard', compact('user', 'course', 'transaction'));
     }
 
     /**
@@ -41,7 +41,7 @@ class DashboardController extends Controller
 
         $pendingData = Course::where('isActive', '=', 0)->get();
 
-        return view('admins.course', compact('active', 'pending', 'denied', 'pendingData'));
+        return view('admins.dashboard.course', compact('active', 'pending', 'denied', 'pendingData'));
     }
 
     /**
@@ -54,7 +54,7 @@ class DashboardController extends Controller
         $success = Transaction::where('acceptorID', '!=', null)->count();
         $pending = Transaction::where('acceptorID', '=', null)->count();
 
-        return view('admins.payment', compact('success', 'pending'));
+        return view('admins.dashboard.payment', compact('success', 'pending'));
     }
 
     /**
@@ -66,6 +66,6 @@ class DashboardController extends Controller
     {
         $user = User::where('roleID', '=', 3)->count();
         $tutor = User::where('roleID', '=', 2)->count();
-        return view('admins.userList', compact('user', 'tutor'));
+        return view('admins.dashboard.userList', compact('user', 'tutor'));
     }
 }
