@@ -14,11 +14,12 @@
             <img src="{{ asset('storage/'. $course->cover->imageURL) }}" alt="cover-img" class="w-3/4 mt-4">
             <div class="w-full justify-between flex flex-col">
                 <div>
-                    <div class="flex flex-row justify-between items-center">
+                    <div class="flex flex-row justify-between items-center mb-4">
                         <h1 class="font-bold text-base">{{ $course->title }}</h1>
                     </div>
+
                     @foreach ($lessonGroup as $lessonGroups)           
-                        <div id="accordion-collapse" data-accordion="collapse" class="max-w-[330px] w-screen border border-1 border-[#3CCAA1] rounded-t-lg mt-4" data-active-classes="bg-[#3CCAA1]/30 text-black">
+                        <div id="accordion-collapse" data-accordion="collapse" class="max-w-[330px] w-screen border border-1 border-[#3CCAA1]" data-active-classes="bg-[#3CCAA1]/30 text-black">
                             <h2 id="accordion-collapse-heading-{{ $lessonGroups->id }}" class="w-full bg-[#3CCAA1]/30">
                             <button type="button" class="flex items-center justify-between w-full py-2 px-5 text-left rounded-t-lg text-black" data-accordion-target="#accordion-collapse-body-{{ $lessonGroups->id }}" aria-expanded="true" aria-controls="accordion-collapse-body-{{ $lessonGroups->id }}">
                                 <span class="font-bold text-xs">{{ $lessonGroups->groupTitle }}</span>

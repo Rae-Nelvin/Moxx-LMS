@@ -21,5 +21,6 @@
             </div>
         </div>
     </div>
+    <h1 class="font-bold text-[40px] mt-8">Pending Tutor Requests</h1>
 
 @endsection

@@ -97,7 +97,6 @@
                                             <span class="sr-only">Close modal</span>
                                         </button>
                                         <div class="py-6 px-8 text-center items-center flex flex-col">
-                                            <img src="{{ asset('DashboardIcon/img/trash-logo.png') }}" alt="trash-logo" class="w-20 h-20">
                                             <h3 class="mb-2 text-2xl font-medium text-[#23262F] mt-4">Apakah anda yakin ingin menerima course ini?</h3>
                                             <p class="text-base font-medium text-[#87898E]">Tindakan ini tidak dapat dikembalikan</p>
                                             <div class="flex flex-row mt-8 space-x-[16px]">
@@ -121,7 +120,6 @@
                                             <span class="sr-only">Close modal</span>
                                         </button>
                                         <div class="py-6 px-8 text-center items-center flex flex-col">
-                                            <img src="{{ asset('DashboardIcon/img/trash-logo.png') }}" alt="trash-logo" class="w-20 h-20">
                                             <h3 class="mb-2 text-2xl font-medium text-[#23262F] mt-4">Apakah anda yakin ingin menolak course ini?</h3>
                                             <p class="text-base font-medium text-[#87898E]">Tindakan ini tidak dapat dikembalikan</p>
                                             <div class="flex flex-row mt-8 space-x-[16px]">

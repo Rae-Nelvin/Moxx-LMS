@@ -37,7 +37,7 @@
                                 <div class="py-3 px-5 flex flex-col space-y-4 w-full">
                                     @foreach ($lesson as $lessons)
                                         @if ($lessons->lessonGroupID == $lessonGroups->id)
-                                            <a href="/tutor/course/detail/{{ $course->id }}/{{ $lessonGroups->id }}/{{ $lessons->id }}">
+                                            <a href="/admin/course/detail/{{ $course->id }}/{{ $lessonGroups->id }}/{{ $lessons->id }}">
                                                 <div class="flex flex-row space-x-2 items-center w-full">
                                                     <img src="{{ asset('images/guest-icon/play-button.svg') }}" alt="play-button" class="w-3 h-3">
                                                     <p class="font-normal text-[10px]">{{ $lessons->title }}</p>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Lesson;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -25,11 +26,7 @@ class CourseController extends Controller
             ->select('lesson_groups.title as groupTitle', 'lesson_groups.id as sectionID', 'lesson_groups.id')
             ->get();
 
-        $lesson = DB::table('lessons')
-            ->join('lesson_groups', 'lessons.lessonGroupID', '=', 'lesson_groups.id')
-            ->join('courses', 'lesson_groups.courseID', '=', 'courses.id')
-            ->where('courses.id', '=', $id)
-            ->get();
+        $lesson = Lesson::get();
 
         return view('admins.courseDetail', ['course' => $course, 'lessonGroup' => $lessonGroup, 'lesson' => $lesson, 'courseID' => $id]);
     }
@@ -44,7 +41,7 @@ class CourseController extends Controller
      */
     public function renderLesson($courseID, $sectionID, $lessonID)
     {
-        $course = Course::where('id', $courseID);
+        $course = Course::where('id', '=', 2)->first();
 
         $lessonGroup = DB::table('lesson_groups')
             ->join('courses', 'lesson_groups.courseID', '=', 'courses.id')
@@ -52,17 +49,11 @@ class CourseController extends Controller
             ->select('lesson_groups.title as groupTitle', 'lesson_groups.id as sectionID', 'lesson_groups.id')
             ->get();
 
-        $lesson = DB::table('lessons')
-            ->join('lesson_groups', 'lessons.lessonGroupID', '=', 'lesson_groups.id')
-            ->where('lesson_groups.courseID', '=', $courseID)
-            ->select('lessons.*')
-            ->get();
+        $lesson = Lesson::get();
 
-        $file = DB::table('lessons')
-            ->where('lessons.id', '=', $lessonID)
-            ->first();
+        $file = Lesson::where('lessons.id', '=', $lessonID)->first();
 
-        return view('tutors.lessons', compact('course', 'lessonGroup', 'lesson', 'file'));
+        return view('admins.lessons', compact('course', 'lessonGroup', 'lesson', 'file'));
     }
 
     /**
