@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\Admin\CourseController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\LandingPageController;
+use App\Http\Controllers\Admin\Dashboard\CourseController;
+use App\Http\Controllers\Admin\Dashboard\DashboardController;
+use App\Http\Controllers\Admin\LandingPage\PlanController;
+use App\Http\Controllers\Admin\LandingPage\LandingPageController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['isAdmin']], function () {
@@ -20,6 +21,11 @@ Route::group(['middleware' => ['isAdmin']], function () {
         Route::get('/userList', [DashboardController::class, 'renderUserList'])->name('renderUserList');
         Route::prefix('landing-page/')->group(function () {
             Route::get('/plans', [LandingPageController::class, 'renderPlans'])->name('renderPlans');
+            Route::post('/newPlan', [PlanController::class, 'newPlan'])->name('newPlan');
+            Route::post('/newFeature', [PlanController::class, 'newFeature'])->name('newFeature');
+            Route::post('/editPlan', [PlanController::class, 'editPlan'])->name('editPlan');
+            Route::get('/deletePlan/{id}', [PlanController::class, 'deletePlan'])->name('deletePlan');
+            Route::get('/actionPlan/{id}', [PlanController::class, 'actionPlan'])->name('actionPlan');
             Route::get('/courses', [LandingPageController::class, 'renderCourses'])->name('renderCourses');
             Route::get('/mentors', [LandingPageController::class, 'renderMentors'])->name('renderMentors');
             Route::get('/testimonies', [LandingPageController::class, 'renderTestimonies'])->name('renderTestimonies');

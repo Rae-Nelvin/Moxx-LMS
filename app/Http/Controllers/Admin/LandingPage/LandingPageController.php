@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\LandingPage;
 
 use App\Http\Controllers\Controller;
+use App\Models\Plan;
+use App\Models\PlanDetail;
+use App\Models\PlanFeature;
 use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
@@ -14,7 +17,11 @@ class LandingPageController extends Controller
      */
     public function renderPlans()
     {
-        return view('admins.landingPage.plans');
+        $active = Plan::where('status', 1)->get();
+        $detail = PlanDetail::get();
+        $plan = Plan::get();
+        $feature = PlanFeature::get();
+        return view('admins.landingPage.plans', compact('active', 'plan', 'detail', 'feature'));
     }
 
     /**

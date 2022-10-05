@@ -44,7 +44,6 @@
                             </div>
                         </div>
                     @endforeach
-                    
                     <div class="flex flex-row flex-nowrap justify-between mt-10 space-x-5">
                         <button class="bg-[#3CCAA1]/30 hover:bg-[#3CCAA1] focus:bg-[#3CCAA1] py-3 px-5 border-1 border border-[#3CCAA1] text-center font-semibold text-sm rounded-xl duration-500 transition-all ease-in-out" data-modal-toggle="addSection-modal">Add Section+</button>
                         <button class="bg-[#3CCAA1]/30 hover:bg-[#3CCAA1] focus:bg-[#3CCAA1] py-3 px-5 border-1 border border-[#3CCAA1] text-center font-semibold text-sm rounded-xl duration-500 transition-all ease-in-out" data-modal-toggle="addContent-modal">Add Content+</button>
