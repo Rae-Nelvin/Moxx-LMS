@@ -2000,6 +2000,10 @@ input[type="range"]::-ms-fill-lower {
   --tw-bg-opacity: 1;
   background-color: rgb(224 36 36 / var(--tw-bg-opacity));
 }
+.bg-\[\#FBBC05\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(251 188 5 / var(--tw-bg-opacity));
+}
 .bg-clip-padding {
   background-clip: padding-box;
 }
