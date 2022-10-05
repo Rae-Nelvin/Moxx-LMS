@@ -16,7 +16,6 @@
                 <div>
                     <div class="flex flex-row justify-between items-center">
                         <h1 class="font-bold text-base">{{ $course->title }}</h1>
-                        {{-- <p class="font-base text-[10px]">1 hours learning</p> --}}
                     </div>
                     @foreach ($lessonGroup as $lessonGroups)           
                         <div id="accordion-collapse" data-accordion="collapse" class="max-w-[330px] w-screen border border-1 border-[#3CCAA1] rounded-t-lg mt-4" data-active-classes="bg-[#3CCAA1]/30 text-black">
@@ -45,7 +44,6 @@
                             </div>
                         </div>
                     @endforeach
-                    
                     <div class="flex flex-row flex-nowrap justify-between mt-10 space-x-5">
                         <button class="bg-[#3CCAA1]/30 hover:bg-[#3CCAA1] focus:bg-[#3CCAA1] py-3 px-5 border-1 border border-[#3CCAA1] text-center font-semibold text-sm rounded-xl duration-500 transition-all ease-in-out" data-modal-toggle="addSection-modal">Add Section+</button>
                         <button class="bg-[#3CCAA1]/30 hover:bg-[#3CCAA1] focus:bg-[#3CCAA1] py-3 px-5 border-1 border border-[#3CCAA1] text-center font-semibold text-sm rounded-xl duration-500 transition-all ease-in-out" data-modal-toggle="addContent-modal">Add Content+</button>
@@ -104,11 +102,11 @@
                         </select>
                         <div>
                             <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Content Title</label>
-                            <input type="text" id="file-cover" name="title" class="bg-white border-b-1 border-t-0 border-l-0 border-r-0 w-full mt-[19px]">
+                            <input type="text" id="file-cover" name="title" class="bg-white border-black w-full mt-[19px]">
                         </div>
                         <div>
                             <label for="File" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Content</label>
-                            <input type="text" id="file-cover" name="content" class="bg-white border-b-1 border-t-0 border-l-0 border-r-0 w-full mt-[19px]">
+                            <input type="text" id="file-cover" name="content" class="bg-white border-black w-full mt-[19px]">
                         </div>
                         <div class="flex flex-row space-x-5">
                             <button type="submit" class="w-full bg-[#3CCAA1]/30 hover:bg-[#3CCAA1] py-3 px-3 border-1 border border-[#3CCAA1] text-center font-semibold text-sm rounded-xl duration-500 transition-all ease-in-out">Create New Content</button>

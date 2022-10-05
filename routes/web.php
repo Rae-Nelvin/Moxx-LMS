@@ -1,11 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\CourseController as AdminCourseController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
-use App\Http\Controllers\Admin\PaymentController as AdminPaymentController;
-use App\Http\Controllers\Tutor\ClassController as TutorClassController;
+use App\Http\Controllers\Tutor\CourseController as TutorCourseController;
 use App\Http\Controllers\Tutor\DashboardController as TutorDashboardController;
 use App\Http\Controllers\User\ClassController as UserClassController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,9 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
-Route::get('index', function () {
-    return view('index');
-});
+
 Route::get('users/success', function () {
     return view('users.success');
 });
@@ -33,29 +32,6 @@ Route::get('checkout/checkout-success', function () {
 });
 Route::get('components/navbar', function () {
     return view('components/navbar');
-});
-
-Route::group(['middleware' => ['isAdmin']], function () {
-    Route::prefix('admin/')->name('admin.')->group(function () {
-        Route::get('/dashboard', [AdminDashboardController::class, 'render'])->name('dashboard');
-        Route::get('/payment', [AdminPaymentController::class, 'payment'])->name('payment');
-        Route::get('/sites', function () {
-            return view('admins.sites');
-        })->name('sites');
-    });
-});
-
-Route::group(['middleware' => ['isTutor']], function () {
-    Route::prefix('tutor/')->name('tutor.')->group(function () {
-        Route::get('/dashboard', [TutorDashboardController::class, 'render'])->name('dashboard');
-        Route::get('/newClass', [TutorClassController::class, 'renderNewClass'])->name('newClass');
-        Route::post('/newClass', [TutorClassController::class, 'storeNewClass']);
-        Route::post('/newType', [TutorClassController::class, 'storeNewType'])->name('storeType');
-        Route::get('/course/detail/{id}', [TutorClassController::class, 'courseDetail'])->name('courseDetail');
-        Route::get('/course/detail/{courseID}/{sectionID}/{lessonID}', [TutorClassController::class, 'renderLesson'])->name('renderLesson');
-        Route::post('/newSection', [TutorClassController::class, 'newSection'])->name('newSection');
-        Route::post('/newContent', [TutorClassController::class, 'newContent'])->name('newContent');
-    });
 });
 
 Route::group(['middleware' => ['isUser']], function () {

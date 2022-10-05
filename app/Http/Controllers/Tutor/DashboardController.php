@@ -21,6 +21,7 @@ class DashboardController extends Controller
         $data = DB::table('courses')
             ->join('photos', 'courses.coverID', '=', 'photos.id')
             ->select('courses.*', 'photos.*')
+            ->where('creatorID', '=', Auth::user()->id)
             ->get();
         return view('tutors.dashboard', compact('data'));
     }

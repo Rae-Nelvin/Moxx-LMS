@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class ClassController extends Controller
+class CourseController extends Controller
 {
     public function renderNewClass()
     {
@@ -85,11 +85,7 @@ class ClassController extends Controller
      */
     public function courseDetail($id)
     {
-        $course = DB::table('courses')
-            ->join('photos', 'courses.coverID', '=', 'photos.id')
-            ->where('courses.id', '=', $id)
-            ->select('courses.*', 'photos.*')
-            ->first();
+        $course = Course::where('id', $id);
 
         $lessonGroup = DB::table('lesson_groups')
             ->join('courses', 'lesson_groups.courseID', '=', 'courses.id')
@@ -164,11 +160,7 @@ class ClassController extends Controller
      */
     public function renderLesson($courseID, $sectionID, $lessonID)
     {
-        $course = DB::table('courses')
-            ->join('photos', 'courses.coverID', '=', 'photos.id')
-            ->where('courses.id', '=', $courseID)
-            ->select('courses.*', 'photos.*')
-            ->first();
+        $course = Course::where('id', $courseID);
 
         $lessonGroup = DB::table('lesson_groups')
             ->join('courses', 'lesson_groups.courseID', '=', 'courses.id')
