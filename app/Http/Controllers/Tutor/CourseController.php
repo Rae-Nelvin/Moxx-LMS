@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Tutor;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\CourseType;
+use App\Models\Discount;
 use App\Models\Lesson;
 use App\Models\LessonGroup;
 use App\Models\Photo;
@@ -14,10 +15,11 @@ use Illuminate\Support\Facades\DB;
 
 class CourseController extends Controller
 {
-    public function renderNewClass()
+    public function renderNewCourse()
     {
         $data = CourseType::all();
-        return view('tutors.newClass', compact('data'));
+        $discount = Discount::all();
+        return view('tutors.newClass', compact('data', 'discount'));
     }
 
     /**
@@ -26,7 +28,7 @@ class CourseController extends Controller
      * @param  mixed $request
      * @return void
      */
-    public function storeNewClass(Request $request)
+    public function storeNewCourse(Request $request)
     {
         $request->validate([
             'title' => 'required|string|max:255',
@@ -53,6 +55,7 @@ class CourseController extends Controller
             'courseTypeID' => $data['type'],
             'creatorID' => Auth::user()->id,
             'price' => $data['price'],
+            'discountID' => $data['discountID']
         ]);
 
         return redirect()->route('tutor.dashboard')->with('success', 'A new Class has successfully created!');
@@ -75,6 +78,80 @@ class CourseController extends Controller
         ]);
 
         return redirect()->back()->with('success', 'A new Class Type has successfully created!');
+    }
+
+    /**
+     * storeNewDiscount
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function storeNewDiscount(Request $request)
+    {
+        $request->validate([
+            'token' => 'required|string',
+            'discount' => 'required|numeric|min:1|max:100'
+        ]);
+
+        Discount::create([
+            'token' => $request->token,
+            'discounts' => $request->discount,
+        ]);
+
+        return redirect()->back()->with('success', 'A new Discount has successfully created!');
+    }
+
+    /**
+     * editCourse
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function editCourse(Request $request)
+    {
+        $request->validate([
+            'courseID' => 'required',
+        ]);
+
+        $data = $request->all();
+        $course = Course::find($data['courseID']);
+        if ($data['title'])
+            $course->title = $data['title'];
+        if ($data['subtitle'])
+            $course->description = $data['subtitle'];
+        if ($data['type'])
+            $course->courseTypeID = $data['type'];
+        if ($data['price'])
+            $course->price = $data['price'];
+        if ($data['discountID']) {
+            $course->discountID = $data['discountID'];
+        }
+        if ($request->cover) {
+            $imageName = str_replace(' ', '-', $data['title']);
+            $imagePath = $request->file('cover')->store('/public/' . 'course/' . $imageName . '/cover');
+            $imagePath = str_replace('public/', '', $imagePath);
+            $photo = Photo::where('id', $course->coverID)->update([
+                'imageURL' => $imagePath,
+            ]);
+        }
+        $course->save();
+
+        return redirect()->back()->with('success', $course->title . ' has been updated successfully!');
+    }
+
+    /**
+     * deleteCourse
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function deleteCourse($id)
+    {
+        $course = Course::find($id);
+        Course::findOrFail($id)->delete();
+        Photo::where('id', $course->coverID)->delete();
+
+        return redirect()->back()->with('fail', $course->title . ' has been deleted successfully!');
     }
 
     /**

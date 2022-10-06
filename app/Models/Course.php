@@ -25,46 +25,27 @@ class Course extends Model
         'creatorID',
         'price',
         'discountID',
-        'isActive'
+        'isActive',
+        'reviews'
     ];
 
     /**
-     * Get the user associated with the Course
+     * Get the photo associated with the Course
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function user(): HasOne
-    {
-        return $this->hasOne(User::class, 'id', 'creatorID');
-    }
-
-    /**
-     * Get the courseType associated with the Course
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function courseType(): HasOne
-    {
-        return $this->hasOne(CourseType::class, 'id', 'courseTypeID');
-    }
-
-    /**
-     * Get all of the lessonGroup for the Course
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function lessonGroup(): HasMany
-    {
-        return $this->hasMany(LessonGroup::class, 'courseID', 'id');
-    }
-
-    /**
-     * Get the cover associated with the Course
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function cover(): HasOne
+    public function photo(): HasOne
     {
         return $this->hasOne(Photo::class, 'id', 'coverID');
+    }
+
+    /**
+     * Get the discount associated with the Course
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function discount(): HasOne
+    {
+        return $this->hasOne(Discount::class, 'id', 'discountID');
     }
 }

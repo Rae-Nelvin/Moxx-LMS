@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Tutor;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\CourseType;
+use App\Models\Discount;
 use App\Models\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,11 +20,9 @@ class DashboardController extends Controller
      */
     public function render()
     {
-        $data = DB::table('courses')
-            ->join('photos', 'courses.coverID', '=', 'photos.id')
-            ->select('courses.*', 'photos.*')
-            ->where('creatorID', '=', Auth::user()->id)
-            ->get();
-        return view('tutors.dashboard', compact('data'));
+        $data = Course::where('creatorID', Auth::user()->id)->get();
+        $type = CourseType::get();
+        $discount = Discount::get();
+        return view('tutors.dashboard', compact('data', 'type', 'discount'));
     }
 }
