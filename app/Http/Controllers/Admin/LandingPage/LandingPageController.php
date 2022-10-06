@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\LandingPage;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
 use App\Models\Plan;
 use App\Models\PlanDetail;
 use App\Models\PlanFeature;
@@ -31,7 +32,8 @@ class LandingPageController extends Controller
      */
     public function renderCourses()
     {
-        return view('admins.landingPage.courses');
+        $course = Course::orderBy('reviews', 'desc')->take(3)->get();
+        return view('admins.landingPage.courses', compact('course'));
     }
 
     /**
