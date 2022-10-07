@@ -81,7 +81,7 @@
                     @endif
                     </div>
                     <div class="flex items-baseline text-gray-900 dark:text-black">
-                        <span class="text-3xl font-semibold">$</span>
+                        <span class="text-3xl font-semibold">Rp</span>
                         <span class="text-3xl font-bold tracking-tight">{{ $plans->price }}</span>
                         <span class="ml-1 text-xl font-normal text-gray-500 dark:text-gray-400">/month</span>
                     </div>

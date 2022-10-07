@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -27,7 +28,9 @@ class User extends Authenticatable
         'alamat',
         'phone',
         'avatarID',
-        'roleID'
+        'roleID',
+        'reviews',
+        'isShown'
     ];
 
     /**
@@ -50,22 +53,12 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the Role associated with the User
+     * Get the photo associated with the User
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function Role(): HasOne
+    public function photo(): HasOne
     {
-        return $this->hasOne(Role::class);
-    }
-
-    /**
-     * Get the Photo associated with the User
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function Photo(): HasOne
-    {
-        return $this->hasOne(Photo::class);
+        return $this->hasOne(Photo::class, 'id', 'avatarID');
     }
 }

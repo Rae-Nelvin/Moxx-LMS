@@ -26,7 +26,8 @@ class Course extends Model
         'price',
         'discountID',
         'isActive',
-        'reviews'
+        'reviews',
+        'isShown'
     ];
 
     /**

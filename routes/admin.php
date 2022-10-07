@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Admin\Dashboard\CourseController;
 use App\Http\Controllers\Admin\Dashboard\DashboardController;
+use App\Http\Controllers\Admin\LandingPage\CoursesController;
 use App\Http\Controllers\Admin\LandingPage\PlanController;
 use App\Http\Controllers\Admin\LandingPage\LandingPageController;
+use App\Http\Controllers\Admin\LandingPage\MentorController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['isAdmin']], function () {
@@ -27,7 +29,11 @@ Route::group(['middleware' => ['isAdmin']], function () {
             Route::get('/deletePlan/{id}', [PlanController::class, 'deletePlan'])->name('deletePlan');
             Route::get('/actionPlan/{id}', [PlanController::class, 'actionPlan'])->name('actionPlan');
             Route::get('/courses', [LandingPageController::class, 'renderCourses'])->name('renderCourses');
+            Route::get('/courses/showCourses/{id}', [CoursesController::class, 'showToLandingPage'])->name('showCourses');
+            Route::get('/courses/unshowCourses/{id}', [CoursesController::class, 'unshowToLandingPage'])->name('unshowCourses');
             Route::get('/mentors', [LandingPageController::class, 'renderMentors'])->name('renderMentors');
+            Route::get('/mentors/showMentors/{id}', [MentorController::class, 'showToLandingPage'])->name('showMentors');
+            Route::get('/mentors/unshowMentors/{id}', [MentorController::class, 'unshowToLandingPage'])->name('unshowMentors');
             Route::get('/testimonies', [LandingPageController::class, 'renderTestimonies'])->name('renderTestimonies');
         });
     });

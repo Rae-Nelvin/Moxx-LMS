@@ -4,10 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class CourseReview extends Model
+class TutorReview extends Model
 {
     use HasFactory;
 
@@ -18,13 +17,13 @@ class CourseReview extends Model
      */
     protected $fillable = [
         'userID',
-        'courseID',
+        'mentorID',
         'reviews',
         'stars',
     ];
 
     /**
-     * Get the user associated with the CourseReview
+     * Get the user associated with the TutorReview
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
@@ -34,12 +33,12 @@ class CourseReview extends Model
     }
 
     /**
-     * Get the course associated with the CourseReview
+     * Get the mentor associated with the TutorReview
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function course(): HasOne
+    public function mentor(): HasOne
     {
-        return $this->hasOne(Course::class, 'id', 'courseID');
+        return $this->hasOne(User::class, 'id', 'mentorID');
     }
 }

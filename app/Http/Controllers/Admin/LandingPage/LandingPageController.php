@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Admin\LandingPage;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\CourseReview;
 use App\Models\Plan;
 use App\Models\PlanDetail;
 use App\Models\PlanFeature;
+use App\Models\TutorReview;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
@@ -20,7 +23,7 @@ class LandingPageController extends Controller
     {
         $active = Plan::where('status', 1)->get();
         $detail = PlanDetail::get();
-        $plan = Plan::get();
+        $plan = Plan::where('status', 0)->get();
         $feature = PlanFeature::get();
         return view('admins.landingPage.plans', compact('active', 'plan', 'detail', 'feature'));
     }
@@ -32,8 +35,9 @@ class LandingPageController extends Controller
      */
     public function renderCourses()
     {
-        $course = Course::orderBy('reviews', 'desc')->take(3)->get();
-        return view('admins.landingPage.courses', compact('course'));
+        $shownCourse = Course::where('isShown', 1)->get();
+        $unshownCourse = Course::where('isShown', 0)->get();
+        return view('admins.landingPage.courses', compact('shownCourse', 'unshownCourse'));
     }
 
     /**
@@ -43,7 +47,10 @@ class LandingPageController extends Controller
      */
     public function renderMentors()
     {
-        return view('admins.landingPage.mentors');
+        $shownMentor = User::where('roleID', 2)->where('isShown', 1)->get();
+        $unshownMentor = User::where('roleID', 2)->where('isShown', 0)->get();
+
+        return view('admins.landingPage.mentors', compact('shownMentor', 'unshownMentor'));
     }
 
     /**
@@ -53,6 +60,8 @@ class LandingPageController extends Controller
      */
     public function renderTestimonies()
     {
-        return view('admins.landingPage.testimonies');
+        $course = CourseReview::get();
+        $mentor = TutorReview::get();
+        return view('admins.landingPage.testimonies', compact('course', 'mentor'));
     }
 }

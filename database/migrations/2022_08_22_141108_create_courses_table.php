@@ -23,7 +23,8 @@ class CreateCoursesTable extends Migration
             $table->double('price');
             $table->unsignedBigInteger('discountID')->nullable();
             $table->boolean('isActive')->default(0);
-            $table->double('reviews')->nullable();
+            $table->boolean('isShown')->default(0);
+            $table->double('reviews')->nullable()->default(0);
             $table->timestamps();
         });
     }

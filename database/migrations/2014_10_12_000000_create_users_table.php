@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('phone', 15)->nullable();
             $table->unsignedBigInteger('avatarID')->nullable();
             $table->unsignedBigInteger('roleID')->nullable();
+            $table->double('reviews')->nullable()->default(0);
+            $table->boolean('isShown')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

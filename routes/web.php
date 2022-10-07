@@ -1,12 +1,8 @@
 <?php
 
-use App\Http\Controllers\Admin\CourseController as AdminCourseController;
-use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
-use App\Http\Controllers\Tutor\CourseController as TutorCourseController;
-use App\Http\Controllers\Tutor\DashboardController as TutorDashboardController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\User\ClassController as UserClassController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [LandingPageController::class, 'index']);
 
 Route::get('users/success', function () {
     return view('users.success');
