@@ -79,4 +79,14 @@ class Course extends Model
     {
         return $this->hasMany(LessonGroup::class, 'courseID', 'id');
     }
+
+    /**
+     * Get all of the courseReview for the Course
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function courseReview(): HasMany
+    {
+        return $this->hasMany(CourseReview::class, 'courseID', 'id');
+    }
 }

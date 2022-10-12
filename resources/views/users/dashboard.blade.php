@@ -16,74 +16,24 @@
             </button>
         </div>
         <div class="flex flex-row flex-wrap mt-6 w-full">
-            <div class="max-w-[318px] w-full mr-[37px] mb-[31px]">
-                <div class="bg-[#3CCAA1]/30 relative rounded-lg flex flex-row ">
-                    {{-- <img src="{{ asset('storage/'. $datas->imageURL) }}" class="w-full" alt="Class Cover" /> --}}
-                    <img src="{{ asset('images/slide-1.jpg') }}" alt="" class="w-full">
-                </div>
-                <div class="bg-white py-[18px] px-[20px]">
-                    <h1 class="font-bold text-2xl">PowerPoint Design</h1>
-                    <div class="flex flex-row flex-nowrap justify-between items-center mt-1">
-                        <h2 class="font-light text-lg">Rp. 300.000</h2>
-                        <div class="flex flex-row items-center">
-                            <img src="{{ asset('images/guest-icon/star-icon.svg') }}" alt="star-icon" class="w-[18px] h-[18px] mr-[5px]">
-                            <span class="font-light text-base">4.5</span>
-                            <span class="font-light text-base">(1920)</span>
+            @foreach ($course as $courses)
+                <div class="max-w-[318px] w-full mr-[37px] mb-[31px]">
+                    <div class="bg-[#3CCAA1]/30 relative rounded-lg flex flex-row ">
+                        <img src="{{ asset('storage/'. $courses->photo->imageURL) }}" alt="" class="w-full">
+                    </div>
+                    <div class="bg-white py-[18px] px-[20px]">
+                        <h1 class="font-bold text-2xl">{{ $courses->title }}</h1>
+                        <div class="flex flex-row flex-nowrap justify-between items-center mt-1">
+                            <h2 class="font-light text-lg">Rp. {{ $courses->price }}</h2>
+                            <div class="flex flex-row items-center">
+                                <img src="{{ asset('images/guest-icon/star-icon.svg') }}" alt="star-icon" class="w-[18px] h-[18px] mr-[5px]">
+                                <span class="font-light text-base">{{ $courses->reviews }}</span>
+                                <span class="font-light text-base">({{ $courses->courseReview->count() }})</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="max-w-[318px] w-full mr-[37px] mb-[31px]">
-                <div class="bg-[#3CCAA1]/30 relative rounded-lg flex flex-row ">
-                    {{-- <img src="{{ asset('storage/'. $datas->imageURL) }}" class="w-full" alt="Class Cover" /> --}}
-                    <img src="{{ asset('images/slide-1.jpg') }}" alt="" class="w-full">
-                </div>
-                <div class="bg-white py-[18px] px-[20px]">
-                    <h1 class="font-bold text-2xl">PowerPoint Design</h1>
-                    <div class="flex flex-row flex-nowrap justify-between items-center mt-1">
-                        <h2 class="font-light text-lg">Rp. 300.000</h2>
-                        <div class="flex flex-row items-center">
-                            <img src="{{ asset('images/guest-icon/star-icon.svg') }}" alt="star-icon" class="w-[18px] h-[18px] mr-[5px]">
-                            <span class="font-light text-base">4.5</span>
-                            <span class="font-light text-base ml-1">(1920)</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="max-w-[318px] w-full mr-[37px] mb-[31px]">
-                <div class="bg-[#3CCAA1]/30 relative rounded-lg flex flex-row ">
-                    {{-- <img src="{{ asset('storage/'. $datas->imageURL) }}" class="w-full" alt="Class Cover" /> --}}
-                    <img src="{{ asset('images/slide-1.jpg') }}" alt="" class="w-full">
-                </div>
-                <div class="bg-white py-[18px] px-[20px]">
-                    <h1 class="font-bold text-2xl">PowerPoint Design</h1>
-                    <div class="flex flex-row flex-nowrap justify-between items-center mt-1">
-                        <h2 class="font-light text-lg">Rp. 300.000</h2>
-                        <div class="flex flex-row items-center">
-                            <img src="{{ asset('images/guest-icon/star-icon.svg') }}" alt="star-icon" class="w-[18px] h-[18px] mr-[5px]">
-                            <span class="font-light text-base">4.5</span>
-                            <span class="font-light text-base">(1920)</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="max-w-[318px] w-full mr-[37px] mb-[31px]">
-                <div class="bg-[#3CCAA1]/30 relative rounded-lg flex flex-row ">
-                    {{-- <img src="{{ asset('storage/'. $datas->imageURL) }}" class="w-full" alt="Class Cover" /> --}}
-                    <img src="{{ asset('images/slide-1.jpg') }}" alt="" class="w-full">
-                </div>
-                <div class="bg-white py-[18px] px-[20px]">
-                    <h1 class="font-bold text-2xl">PowerPoint Design</h1>
-                    <div class="flex flex-row flex-nowrap justify-between items-center mt-1">
-                        <h2 class="font-light text-lg">Rp. 300.000</h2>
-                        <div class="flex flex-row items-center">
-                            <img src="{{ asset('images/guest-icon/star-icon.svg') }}" alt="star-icon" class="w-[18px] h-[18px] mr-[5px]">
-                            <span class="font-light text-base">4.5</span>
-                            <span class="font-light text-base">(1920)</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 

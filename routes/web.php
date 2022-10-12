@@ -33,6 +33,9 @@ Route::group(['middleware' => ['isUser']], function () {
         Route::get('/dashboard', [UserDashboardController::class, 'render'])->name('dashboard');
         Route::get('/course/detail', [UserClassController::class, 'renderCourseDetail'])->name('renderCourseDetail');
         Route::get('/course', [UserClassController::class, 'renderCourse'])->name('renderCourse');
+        Route::get('/myCourse', [UserDashboardController::class, 'renderMyCourse'])->name('myCourse');
+        Route::get('/transaction', [UserDashboardController::class, 'renderTransaction'])->name('transaction');
+        Route::get('/setting', [UserDashboardController::class, 'renderSetting'])->name('setting');
     });
 });
 
