@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\LandingPageController;
-use App\Http\Controllers\User\ClassController as UserClassController;
-use App\Http\Controllers\User\DashboardController as UserDashboardController;
+use App\Http\Controllers\User\CourseController;
+use App\Http\Controllers\User\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,12 +30,12 @@ Route::get('components/navbar', function () {
 
 Route::group(['middleware' => ['isUser']], function () {
     Route::prefix('user/')->name('user.')->group(function () {
-        Route::get('/dashboard', [UserDashboardController::class, 'render'])->name('dashboard');
-        Route::get('/course/detail', [UserClassController::class, 'renderCourseDetail'])->name('renderCourseDetail');
-        Route::get('/course', [UserClassController::class, 'renderCourse'])->name('renderCourse');
-        Route::get('/myCourse', [UserDashboardController::class, 'renderMyCourse'])->name('myCourse');
-        Route::get('/transaction', [UserDashboardController::class, 'renderTransaction'])->name('transaction');
-        Route::get('/setting', [UserDashboardController::class, 'renderSetting'])->name('setting');
+        Route::get('/dashboard', [DashboardController::class, 'render'])->name('dashboard');
+        Route::get('/course/detail/{id}', [CourseController::class, 'renderCourseDetail'])->name('courseDetail');
+        Route::get('/course', [CourseController::class, 'renderCourse'])->name('renderCourse');
+        Route::get('/myCourse', [DashboardController::class, 'renderMyCourse'])->name('myCourse');
+        Route::get('/transaction', [DashboardController::class, 'renderTransaction'])->name('transaction');
+        Route::get('/setting', [DashboardController::class, 'renderSetting'])->name('setting');
     });
 });
 

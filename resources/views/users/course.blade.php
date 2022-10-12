@@ -5,7 +5,7 @@
     <div class="flex flex-col flex-nowrap pr-[126px]">
         <div class="flex flex-row justify-between items-center">
             <div class="w-full">
-                <h1 class="font-bold text-[40px]">UX Fundamentals</h1>
+                <h1 class="font-bold text-[40px]">{{ $course->title }}</h1>
                 <h2 class="mt-2 font-normal text-[19px]">Introduction</h2>
             </div>
             <p class="font-normal text-lg text-right">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque accusamus esse animi eos veniam, tempore unde voluptatem, delectus magnam vitae impedit dicta officiis inventore neque sed, quas quos exercitationem architecto.</p>
