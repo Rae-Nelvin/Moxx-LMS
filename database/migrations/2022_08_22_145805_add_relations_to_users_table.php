@@ -14,7 +14,6 @@ class AddRelationsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreign('avatarID')->references('id')->on('photos')->onDelete('SET NULL');
             $table->foreign('roleID')->references('id')->on('roles')->onDelete('SET NULL');
         });
     }

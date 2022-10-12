@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable();
             $table->string('alamat')->nullable();
             $table->string('phone', 15)->nullable();
-            $table->unsignedBigInteger('avatarID')->nullable();
+            $table->longText('avatar')->nullable();
             $table->unsignedBigInteger('roleID')->nullable();
             $table->double('reviews')->nullable()->default(0);
             $table->boolean('isShown')->default(0);

@@ -49,4 +49,34 @@ class Course extends Model
     {
         return $this->hasOne(Discount::class, 'id', 'discountID');
     }
+
+    /**
+     * Get the user associated with the Course
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function user(): HasOne
+    {
+        return $this->hasOne(User::class, 'id', 'creatorID');
+    }
+
+    /**
+     * Get the courseType associated with the Course
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function courseType(): HasOne
+    {
+        return $this->hasOne(CourseType::class, 'id', 'courseTypeID');
+    }
+
+    /**
+     * Get all of the lessonGroup for the Course
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function lessonGroup(): HasMany
+    {
+        return $this->hasMany(LessonGroup::class, 'courseID', 'id');
+    }
 }

@@ -113,11 +113,6 @@ class AuthenticatedSessionController extends Controller
             'roleID' => 3,
         ];
 
-        Photo::create([
-            'types' => 'avatar',
-            'imageURL' => $data['avatar'],
-        ]);
-
         $user = User::firstOrCreate(['email' => $data['email']], $data);
         Auth::login($user, true);
 

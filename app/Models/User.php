@@ -27,7 +27,7 @@ class User extends Authenticatable
         'password',
         'alamat',
         'phone',
-        'avatarID',
+        'avatar',
         'roleID',
         'reviews',
         'isShown'
@@ -51,14 +51,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    /**
-     * Get the photo associated with the User
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function photo(): HasOne
-    {
-        return $this->hasOne(Photo::class, 'id', 'avatarID');
-    }
 }

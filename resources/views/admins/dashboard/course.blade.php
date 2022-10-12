@@ -24,7 +24,7 @@
             <div class="bg-[#3CCAA1]/30 rounded-full w-[54px] h-[54px]">
             </div>
             <div class="ml-[35px] space-y-1">
-                <h1 class="font-bold text-[32px]">{{ $active }}</h1>
+                <h1 class="font-bold text-[32px]">{{ $denied }}</h1>
                 <h2 class="font-normal text-[22px]">Denied Courses</h2>
             </div>
         </div>
