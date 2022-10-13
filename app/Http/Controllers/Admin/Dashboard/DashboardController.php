@@ -21,7 +21,7 @@ class DashboardController extends Controller
     {
         $user = User::where('roleiD', '=', 3)->count();
         $course = Course::where('isActive', '=', 1)->count();
-        $transaction = Transaction::where('acceptorID', '!=', null)->count();
+        $transaction = Transaction::where('status', '!=', 'waiting')->count();
 
         return view('admins.dashboard.dashboard', compact('user', 'course', 'transaction'));
     }
@@ -51,8 +51,8 @@ class DashboardController extends Controller
      */
     public function renderPayment()
     {
-        $success = Transaction::where('acceptorID', '!=', null)->count();
-        $pending = Transaction::where('acceptorID', '=', null)->count();
+        $success = Transaction::where('status', '!=', 'waiting')->count();
+        $pending = Transaction::where('status', '=', 'waiting')->count();
 
         return view('admins.dashboard.payment', compact('success', 'pending'));
     }

@@ -20,47 +20,29 @@ class Transaction extends Model
         'userID',
         'courseID',
         'token',
-        'discountID',
-        'acceptorID'
+        'totalPrice',
+        'status',
+        'midtrans_url',
+        'midtrans_booking_code'
     ];
 
     /**
-     * Get the Users that owns the Transaction
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function Users(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    /**
-     * Get the Courses associated with the Transaction
+     * Get the user associated with the Transaction
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function Courses(): HasOne
+    public function user(): HasOne
     {
-        return $this->hasOne(Course::class);
+        return $this->hasOne(User::class, 'id', 'userID');
     }
 
     /**
-     * Get the Discounts associated with the Transaction
+     * Get the course associated with the Transaction
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function Discounts(): HasOne
+    public function course(): HasOne
     {
-        return $this->hasOne(Discount::class);
-    }
-
-    /**
-     * Get the Acceptor associated with the Transaction
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function Acceptor(): HasOne
-    {
-        return $this->hasOne(User::class);
+        return $this->hasOne(Course::class, 'id', 'courseID');
     }
 }

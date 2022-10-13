@@ -1451,9 +1451,6 @@ input[type="range"]::-ms-fill-lower {
 .h-\[28px\] {
   height: 28px;
 }
-.h-\[554px\] {
-  height: 554px;
-}
 .h-\[18px\] {
   height: 18px;
 }
@@ -1886,9 +1883,6 @@ input[type="range"]::-ms-fill-lower {
 .border-\[\#bebebe\] {
   --tw-border-opacity: 1;
   border-color: rgb(190 190 190 / var(--tw-border-opacity));
-}
-.border-\[\#3CCAA1\]\/30 {
-  border-color: rgb(60 202 161 / 0.3);
 }
 .border-r-\[\#3CCAA1\] {
   --tw-border-opacity: 1;

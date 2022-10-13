@@ -20,10 +20,10 @@ class CreateTransactionsTable extends Migration
             $table->unsignedBigInteger('courseID')->nullable();
             $table->foreign('courseID')->references('id')->on('courses')->onDelete('SET NULL');
             $table->string('token')->nullable();
-            $table->unsignedBigInteger('discountID')->nullable();
-            $table->foreign('discountID')->references('id')->on('discounts')->onDelete('SET NULL');
-            $table->unsignedBigInteger('acceptorID')->nullable();
-            $table->foreign('acceptorID')->references('id')->on('users')->onDelete('SET NULL');
+            $table->double('totalPrice');
+            $table->string('status')->default('waiting');
+            $table->longText('midtrans_url')->nullable();
+            $table->string('midtrans_booking_code')->nullable();
             $table->timestamps();
         });
     }

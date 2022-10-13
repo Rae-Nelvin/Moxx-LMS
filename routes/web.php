@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\CourseController;
 use App\Http\Controllers\User\DashboardController;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,10 @@ Route::group(['middleware' => ['isUser']], function () {
         Route::get('/myCourse', [DashboardController::class, 'renderMyCourse'])->name('myCourse');
         Route::get('/transaction', [DashboardController::class, 'renderTransaction'])->name('transaction');
         Route::get('/setting', [DashboardController::class, 'renderSetting'])->name('setting');
+        Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout');
+        // Midtrans Routes
+        Route::get('/payment/succes', [CheckoutController::class, 'midtransCallback']);
+        Route::post('/payment/success', [CheckoutController::class, 'midtransCallback']);
     });
 });
 

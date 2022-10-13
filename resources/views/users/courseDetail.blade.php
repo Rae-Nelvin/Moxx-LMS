@@ -22,22 +22,19 @@
                 <h1 class="font-bold text-xl">About this course</h1>
                 <p class="mt-6 font-normal text-lg text-justify">{{ $course->description }}</p>
             </div>
-            <div class="border-1 border py-7 pr-[65px] items-end mt-10 justify-end flex flex-col">
+            <form class="border-1 border py-7 pr-[65px] items-end mt-10 justify-end flex flex-col" action="{{ route('user.checkout') }}" method="POST">
+                @csrf
+                <input type="hidden" name="courseID" value="{{ $course->id }}">
                 <div class="flex flex-row items-center space-x-[31px]">
-                    <h2 class="font-normal text-xl">Discount : </h2>
-                    @if ($course->discountID)
-                        <h1 class="font-bold text-[27px]">{{ $course->discount->discounts }}</h1>
-                    @else
-                        <h1 class="font-bold text-[27px]">0</h1>
-                    @endif
-
+                    <label class="font-light text-xl">Masukkan token Discount :  </label>
+                    <input type="text" name="token">
                 </div>
                 <div class="flex flex-row items-center space-x-[31px]">
                     <h2 class="font-normal text-xl">Total :  </h2>
                     <h1 class="font-bold text-[27px]">Rp {{ $course->price }}</h1>
                 </div>
-                <button class="mt-5 bg-white rounded-full hover:bg-[#3CCAA1] border-1 border border-[#3CCAA1] focus:bg-[#3CCAA1] active:bg-[#3CCAA1] hover:text-white focus:text-white active:text-white py-2 px-5 font-light hover:font-bold active:font-bold focus:font-bold text-lg w-auto duration-500 ease-in-out transition-all">Payment -></button>
-            </div>
+                <button type="submit" class="mt-5 bg-white rounded-full hover:bg-[#3CCAA1] border-1 border border-[#3CCAA1] focus:bg-[#3CCAA1] active:bg-[#3CCAA1] hover:text-white focus:text-white active:text-white py-2 px-5 font-light hover:font-bold active:font-bold focus:font-bold text-lg w-auto duration-500 ease-in-out transition-all">Payment -></button>
+            </form>
         </div>
     </div>
 
