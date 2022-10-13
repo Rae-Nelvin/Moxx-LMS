@@ -22,6 +22,7 @@ class CoursesController extends Controller
             $course = Course::find($id);
             return redirect()->back()->with('success', $course->title . ' berhasil ditampilkan pada halaman utama!');
         }
+
         return redirect()->back()->with('fail', 'Tolong Unshow 1 atau lebih Course yang terdapat pada Top Courses!');
     }
 
@@ -35,6 +36,7 @@ class CoursesController extends Controller
     {
         $course = Course::where('id', $id)->update(['isShown' => 0]);
         $course = Course::find($id);
+
         return redirect()->back()->with('fail', $course->title . ' berhasil tidak ditampilkan pada halaman utama!');
     }
 }

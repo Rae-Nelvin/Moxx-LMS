@@ -22,6 +22,7 @@ class MentorController extends Controller
             $user = User::find($id);
             return redirect()->back()->with('success', $user->name . ' berhasil ditampilkan pada halaman utama!');
         }
+
         return redirect()->back()->with('fail', 'Tolong Unshow 1 atau lebih Mentor yang terdapat pada Top Mentors!');
     }
 
@@ -35,6 +36,7 @@ class MentorController extends Controller
     {
         $user = User::where('id', $id)->update(['isShown' => 0]);
         $user = User::find($id);
+
         return redirect()->back()->with('fail', $user->name . ' berhasil tidak ditampilkan pada halaman utama!');
     }
 }

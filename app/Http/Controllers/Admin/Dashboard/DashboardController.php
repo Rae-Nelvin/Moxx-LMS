@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\CourseType;
+use App\Models\Discount;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -34,11 +36,8 @@ class DashboardController extends Controller
     public function renderCourse()
     {
         $active = Course::where('isActive', '=', 1)->count();
-
         $pending = Course::where('isActive', '=', 0)->count();
-
         $denied = Course::where('isActive', '=', 2)->count();
-
         $pendingData = Course::where('isActive', '=', 0)->get();
 
         return view('admins.dashboard.course', compact('active', 'pending', 'denied', 'pendingData'));
@@ -66,6 +65,16 @@ class DashboardController extends Controller
     {
         $user = User::where('roleID', '=', 3)->count();
         $tutor = User::where('roleID', '=', 2)->count();
+
         return view('admins.dashboard.userList', compact('user', 'tutor'));
+    }
+
+    public function renderCreateCourse()
+    {
+        $data = Course::where('creatorID', Auth::user()->id)->get();
+        $type = CourseType::get();
+        $discount = Discount::get();
+
+        return view('admins.dashboard.createCourse', compact('data', 'type', 'discount'));
     }
 }

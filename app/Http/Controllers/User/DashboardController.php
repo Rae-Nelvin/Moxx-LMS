@@ -16,6 +16,7 @@ class DashboardController extends Controller
     public function render()
     {
         $course = Course::get();
+
         return view('users.dashboard', compact('course'));
     }
 

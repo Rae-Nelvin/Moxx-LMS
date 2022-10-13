@@ -23,6 +23,7 @@ class DashboardController extends Controller
         $data = Course::where('creatorID', Auth::user()->id)->get();
         $type = CourseType::get();
         $discount = Discount::get();
+
         return view('tutors.dashboard', compact('data', 'type', 'discount'));
     }
 }

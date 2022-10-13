@@ -28,7 +28,7 @@ class CourseController extends Controller
 
         $lesson = Lesson::get();
 
-        return view('admins.dashboard.courseDetail', ['course' => $course, 'lessonGroup' => $lessonGroup, 'lesson' => $lesson, 'courseID' => $id]);
+        return view('admins.dashboard.courseDetail', compact('course', 'lessonGroup', 'lesson'));
     }
 
     /**
@@ -41,7 +41,7 @@ class CourseController extends Controller
      */
     public function renderLesson($courseID, $sectionID, $lessonID)
     {
-        $course = Course::where('id', '=', 2)->first();
+        $course = Course::where('id', $courseID)->first();
 
         $lessonGroup = DB::table('lesson_groups')
             ->join('courses', 'lesson_groups.courseID', '=', 'courses.id')

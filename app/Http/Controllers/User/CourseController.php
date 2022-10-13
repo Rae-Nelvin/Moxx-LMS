@@ -17,6 +17,7 @@ class CourseController extends Controller
     public function renderCourseDetail($id)
     {
         $course = Course::find($id)->first();
+
         return view('users.courseDetail', compact('course'));
     }
 }

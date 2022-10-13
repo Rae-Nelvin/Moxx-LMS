@@ -19,6 +19,7 @@ class CourseController extends Controller
     {
         $data = CourseType::all();
         $discount = Discount::all();
+
         return view('tutors.newClass', compact('data', 'discount'));
     }
 
@@ -170,13 +171,9 @@ class CourseController extends Controller
             ->select('lesson_groups.title as groupTitle', 'lesson_groups.id as sectionID', 'lesson_groups.id')
             ->get();
 
-        $lesson = DB::table('lessons')
-            ->join('lesson_groups', 'lessons.lessonGroupID', '=', 'lesson_groups.id')
-            ->join('courses', 'lesson_groups.courseID', '=', 'courses.id')
-            ->where('courses.id', '=', $id)
-            ->get();
+        $lesson = Lesson::get();
 
-        return view('tutors.courseDetail', ['course' => $course, 'lessonGroup' => $lessonGroup, 'lesson' => $lesson, 'courseID' => $id]);
+        return view('tutors.courseDetail', compact('course', 'lessonGroup', 'lesson'));
     }
 
     /**

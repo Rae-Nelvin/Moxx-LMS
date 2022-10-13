@@ -25,6 +25,7 @@ class LandingPageController extends Controller
         $detail = PlanDetail::get();
         $plan = Plan::where('status', 0)->get();
         $feature = PlanFeature::get();
+
         return view('admins.landingPage.plans', compact('active', 'plan', 'detail', 'feature'));
     }
 
@@ -37,6 +38,7 @@ class LandingPageController extends Controller
     {
         $shownCourse = Course::where('isShown', 1)->get();
         $unshownCourse = Course::where('isShown', 0)->get();
+
         return view('admins.landingPage.courses', compact('shownCourse', 'unshownCourse'));
     }
 
@@ -62,6 +64,7 @@ class LandingPageController extends Controller
     {
         $course = CourseReview::get();
         $mentor = TutorReview::get();
+
         return view('admins.landingPage.testimonies', compact('course', 'mentor'));
     }
 }

@@ -12,9 +12,7 @@ Route::group(['middleware' => ['isAdmin']], function () {
     Route::prefix('admin/')->name('admin.')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'render'])->name('dashboard');
         Route::get('/payment', [DashboardController::class, 'renderPayment'])->name('renderPayment');
-        Route::get('/sites', function () {
-            return view('admins.sites');
-        })->name('sites');
+        Route::get('/createCourse', [DashboardController::class, 'renderCreateCourse'])->name('renderCreateCourse');
         Route::get('/course', [DashboardController::class, 'renderCourse'])->name('renderCourse');
         Route::get('/course/detail/{id}', [CourseController::class, 'courseDetail'])->name('courseDetail');
         Route::get('/course/detail/{courseID}/{sectionID}/{lessonID}', [CourseController::class, 'renderLesson'])->name('renderLesson');
