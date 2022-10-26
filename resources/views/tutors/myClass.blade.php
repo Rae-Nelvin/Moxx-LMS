@@ -1,7 +1,6 @@
 @extends('layouts.guest')
 
 @section('content')
-
     <div class="flex flex-row justify-between items-end">
         <h1 class="font-bold text-[40px]">My Class</h1>
         <h3 class="underline font-normal text-base">Search</h3>
@@ -88,5 +87,4 @@
             </tbody>
         </table>
     </div>
-
 @endsection

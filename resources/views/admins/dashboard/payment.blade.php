@@ -1,7 +1,6 @@
 @extends('layouts.guest')
 
 @section('content')
-
     <h1 class="font-bold text-[40px]">Payment</h1>
     <div class="flex flex-row flex-nowrap mt-[39px] space-x-10">
         <div class="bg-white flex flex-row items-center py-[31px] px-[33px] w-1/3">
@@ -73,7 +72,8 @@
                         Rp124.250.000
                     </td>
                     <td class="pl-4 pr-2">
-                        <a href="#" type="button" class="bg-blue-400 hover:bg-blue-600 rounded-2xl items-center flex justify-center p-2 w-auto font-base text-[10px] text-white text-center cursor-pointer transition-all duration-300 ease-in-out">
+                        <a href="#" type="button"
+                            class="bg-blue-400 hover:bg-blue-600 rounded-2xl items-center flex justify-center p-2 w-auto font-base text-[10px] text-white text-center cursor-pointer transition-all duration-300 ease-in-out">
                             View
                         </a>
                     </td>
@@ -98,7 +98,8 @@
                         Rp124.250.000
                     </td>
                     <td class="pl-4 pr-2">
-                        <a href="#" type="button" class="bg-blue-400 hover:bg-blue-600 rounded-2xl items-center flex justify-center p-2 w-auto font-base text-[10px] text-white text-center cursor-pointer transition-all duration-300 ease-in-out">
+                        <a href="#" type="button"
+                            class="bg-blue-400 hover:bg-blue-600 rounded-2xl items-center flex justify-center p-2 w-auto font-base text-[10px] text-white text-center cursor-pointer transition-all duration-300 ease-in-out">
                             View
                         </a>
                     </td>
@@ -106,5 +107,4 @@
             </tbody>
         </table>
     </div>
-
 @endsection

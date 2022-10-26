@@ -1,7 +1,6 @@
 @extends('layouts.guest')
 
 @section('content')
-
     <h1 class="font-bold text-[40px]">User List</h1>
     <div class="flex flex-row flex-nowrap mt-[39px] space-x-10">
         <div class="bg-white flex flex-row items-center py-[31px] px-[33px] w-1/3">
@@ -22,5 +21,4 @@
         </div>
     </div>
     <h1 class="font-bold text-[40px] mt-8">Pending Tutor Requests</h1>
-
 @endsection
