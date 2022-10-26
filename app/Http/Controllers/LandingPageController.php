@@ -22,7 +22,7 @@ class LandingPageController extends Controller
     {
         $plan = Plan::where('status', 1)->get();
         $planDetail = PlanDetail::get();
-        $course = Course::where('isShown', 1)->get();
+        $course = Course::where('isShown', 1)->take(3)->get();
         $mentor = User::where('isShown', 1)->get();
         $tutorReview = TutorReview::take(3)->get();
         $courseReview = CourseReview::take(3)->get();

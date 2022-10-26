@@ -24,9 +24,8 @@
                         </a>
                     </div>
                     <div class="text-center lg:font-300 font-10">
-                        you will recieve a confirmation email to verify you're not a bot
-                        <button type=" submit" class="lg:mt-10 text-white btn sm:w-1/2 font-bold " id="btn-reg"
-                            onclick="window.location.href='{{ url('login') }}'">Login</button>
+                        Continue for the payment
+                        <a href="{{ $checkout->midtrans_url }}">Pay Here</a>
                     </div>
                 </div>
             </div>

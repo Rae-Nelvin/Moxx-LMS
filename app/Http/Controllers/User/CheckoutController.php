@@ -31,21 +31,19 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
-
         $request->validate([
             'courseID' => 'required|exists:courses,id'
         ]);
 
-        $course = Course::find($request->courseID);
+        $course = Course::where('id', '=', $request->courseID)->first();
         $user = User::find(Auth::user()->id);
         $totalPrice = $course->price;
-        if ($request->token) {
-            $check = Discount::where('token', $request->token)->first();
-            if ($check) {
-                $totalPrice = $totalPrice + ($totalPrice * ($check->discounts / 100));
-            }
-        }
+        // if ($request->token) {
+        //     $check = Discount::where('token', $request->token)->first();
+        //     if ($check) {
+        //         $totalPrice = $totalPrice + ($totalPrice * ($check->discounts / 100));
+        //     }
+        // }
 
         $checkout = Transaction::create([
             'userID' => $user->id,
@@ -56,7 +54,7 @@ class CheckoutController extends Controller
 
         $this->getSnapRedirect($checkout);
 
-        return view('users.success');
+        return view('users.success', ['checkout' => $checkout]);
     }
 
     /**
@@ -122,7 +120,7 @@ class CheckoutController extends Controller
 
     public function midtransCallback(Request $request)
     {
-        $notif = new Midtrans\Notification();
+        $notif = $request->method() == 'POST' ? new Midtrans\Notification() : Midtrans\Transaction::status($request->order_id);
 
         $transaction_status = $notif->transaction_status;
         $fraud = $notif->fraud_status;
@@ -153,6 +151,6 @@ class CheckoutController extends Controller
         }
 
         $checkout->save();
-        return view('users.success');
+        return view('users.success', compact($checkout));
     }
 }

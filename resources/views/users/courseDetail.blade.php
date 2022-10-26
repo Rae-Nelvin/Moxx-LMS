@@ -26,10 +26,10 @@
                 action="{{ route('user.checkout') }}" method="POST">
                 @csrf
                 <input type="hidden" name="courseID" value="{{ $course->id }}">
-                <div class="flex flex-row items-center space-x-[31px]">
+                {{-- <div class="flex flex-row items-center space-x-[31px]">
                     <label class="font-light text-xl">Masukkan token Discount : </label>
                     <input type="text" name="token">
-                </div>
+                </div> --}}
                 <div class="flex flex-row items-center space-x-[31px]">
                     <h2 class="font-normal text-xl">Total : </h2>
                     <h1 class="font-bold text-[27px]">Rp {{ $course->price }}</h1>
