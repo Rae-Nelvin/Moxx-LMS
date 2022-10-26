@@ -13,6 +13,7 @@ Route::group(['middleware' => ['isAdmin']], function () {
         Route::get('/dashboard', [DashboardController::class, 'render'])->name('dashboard');
         Route::get('/payment', [DashboardController::class, 'renderPayment'])->name('renderPayment');
         Route::get('/createCourse', [DashboardController::class, 'renderCreateCourse'])->name('renderCreateCourse');
+        Route::post('/newCourse', [CourseController::class, 'renderNewCourse'])->name('renderNewCourse');
         Route::get('/course', [DashboardController::class, 'renderCourse'])->name('renderCourse');
         Route::get('/course/detail/{id}', [CourseController::class, 'courseDetail'])->name('courseDetail');
         Route::get('/course/detail/{courseID}/{sectionID}/{lessonID}', [CourseController::class, 'renderLesson'])->name('renderLesson');

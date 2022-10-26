@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Lesson;
+use App\Models\Photo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class CourseController extends Controller
@@ -29,6 +31,45 @@ class CourseController extends Controller
         $lesson = Lesson::get();
 
         return view('admins.dashboard.courseDetail', compact('course', 'lessonGroup', 'lesson'));
+    }
+
+    /**
+     * newCourse
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function renderNewCourse(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'type' => 'required',
+            'price' => 'required',
+            'cover' => 'required|mimes:jpeg,png,jpg',
+        ]);
+
+        $data = $request->all();
+
+        $imageName = str_replace(' ', '-', $data['title']);
+        $imagePath = $request->file('cover')->store('/public/' . 'course/' . $imageName . '/cover');
+        $imagePath = str_replace('public/', '', $imagePath);
+
+        $photo = Photo::create([
+            'types' => 'Course Cover',
+            'imageURL' => $imagePath,
+        ]);
+
+        Course::create([
+            'title' => $data['title'],
+            'description' => $data['subtitle'],
+            'coverID' => $photo->id,
+            'courseTypeID' => $data['type'],
+            'creatorID' => Auth::user()->id,
+            'price' => $data['price'],
+            // 'discountID' => $data['discountID']
+        ]);
+
+        return redirect()->route('admin.renderCreateCourse')->with('success', 'A new Class has successfully created!');
     }
 
     /**

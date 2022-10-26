@@ -164,8 +164,6 @@
             </div>
         </div>
     @endforeach
-    
-    </div>
 </section>
 <!-- our mentor -->
 

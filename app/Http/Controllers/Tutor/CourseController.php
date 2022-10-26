@@ -56,7 +56,7 @@ class CourseController extends Controller
             'courseTypeID' => $data['type'],
             'creatorID' => Auth::user()->id,
             'price' => $data['price'],
-            'discountID' => $data['discountID']
+            // 'discountID' => $data['discountID']
         ]);
 
         return redirect()->route('tutor.dashboard')->with('success', 'A new Class has successfully created!');

@@ -65,7 +65,6 @@ class DashboardController extends Controller
     {
         $user = User::where('roleID', '=', 3)->count();
         $tutor = User::where('roleID', '=', 2)->count();
-
         return view('admins.dashboard.userList', compact('user', 'tutor'));
     }
 
