@@ -2,7 +2,7 @@
 
 @section('content')
     @foreach ($course as $courses)
-        <a href="{{ route('user.courseDetail', $courses->id) }}">
+        <a href="/user/course/detail/{{ $courses->id }}/1/1">
             <div class="max-w-[318px] w-full mr-[37px] mb-[31px]">
                 <div class="bg-[#3CCAA1]/30 relative rounded-lg flex flex-row ">
                     <img src="{{ asset('storage/' . $courses->imageURL) }}" alt="" class="w-full">

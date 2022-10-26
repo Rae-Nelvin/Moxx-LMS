@@ -34,6 +34,7 @@ class DashboardController extends Controller
             ->join('courses', 'transactions.courseID', '=', 'courses.id')
             ->join('photos', 'courses.coverID', '=', 'photos.id')
             ->where('transactions.userID', '=', Auth::user()->id)
+            ->select('courses.id as id', 'imageURL as imageURL', 'title as title', 'price as price')
             ->get();
 
         return view('users.myCourse', compact('course'));
@@ -46,7 +47,9 @@ class DashboardController extends Controller
      */
     public function renderTransaction()
     {
-        return view('users.transaction');
+        $transaction = Transaction::where('userID', Auth::user()->id)->get();
+
+        return view('users.transaction', compact('transaction'));
     }
 
     /**

@@ -35,6 +35,7 @@ Route::group(['middleware' => ['isUser']], function () {
         Route::get('/course/detail/{id}', [CourseController::class, 'renderCourseDetail'])->name('courseDetail');
         Route::get('/course', [CourseController::class, 'renderCourse'])->name('renderCourse');
         Route::get('/myCourse', [DashboardController::class, 'renderMyCourse'])->name('myCourse');
+        Route::get('/course/detail/{courseID}/{sectionID}/{lessonID}', [CourseController::class, 'renderLesson'])->name('renderLesson');
         Route::get('/transaction', [DashboardController::class, 'renderTransaction'])->name('transaction');
         Route::get('/setting', [DashboardController::class, 'renderSetting'])->name('setting');
         Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout');
