@@ -44,6 +44,13 @@
                                 {{ $datas->price * ($datas->discount->discounts / 100) }}
                             </h2>
                         @endif
+                        <div class="rating py-3">
+                        <span class="fa fa-star checked "></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        </div>
                         <div class="flex flex-row flex-wrap space-x-4">
                             <button data-modal-toggle="edit-course-{{ $datas->id }}"
                                 class="bg-blue-400 rounded-2xl items-center flex justify-center py-2 px-4 cursor-pointer hover:bg-blue-700 transition-all duration-300 ease-in-out">
