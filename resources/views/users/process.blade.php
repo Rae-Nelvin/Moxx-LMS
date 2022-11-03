@@ -18,12 +18,15 @@
                 </div>
                 <div class="lg:mt-52 text-center mt-72">
                     <div class="font-bold md:col-end-4 md:pt-40 md:text-center lg:text-5xl text-2xl">
-                        Payment
+                        Register
                         Completed!
-                        <br>Thank you for buying products with us.
+                        <br>Thank you for registering with us.
                         </a>
                     </div>
-                    <a href="{{ route('user.dashboard') }}">Click here to go back to home</a>
+                    <div class="text-center lg:font-300 font-10">
+                        Continue for the payment
+                        <a href="{{ $checkout->midtrans_url }}">Pay Here</a>
+                    </div>
                 </div>
             </div>
         </div>

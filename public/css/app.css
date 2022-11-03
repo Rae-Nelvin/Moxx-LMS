@@ -1292,6 +1292,9 @@ input[type="range"]::-ms-fill-lower {
 .mr-\[29px\] {
   margin-right: 29px;
 }
+.ml-10 {
+  margin-left: 2.5rem;
+}
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -1342,9 +1345,6 @@ input[type="range"]::-ms-fill-lower {
 }
 .mt-\[28px\] {
   margin-top: 28px;
-}
-.ml-10 {
-  margin-left: 2.5rem;
 }
 .mr-\[5px\] {
   margin-right: 5px;

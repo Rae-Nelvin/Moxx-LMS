@@ -18,7 +18,7 @@ class CourseController extends Controller
      */
     public function renderCourseDetail($id)
     {
-        $course = Course::find($id)->first();
+        $course = Course::where('id', $id)->first();
 
         return view('users.courseDetail', compact('course'));
     }

@@ -40,7 +40,7 @@ Route::group(['middleware' => ['isUser']], function () {
         Route::get('/setting', [DashboardController::class, 'renderSetting'])->name('setting');
         Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout');
         // Midtrans Routes
-        Route::get('/payment/succes', [CheckoutController::class, 'midtransCallback']);
+        Route::get('/payment/success', [CheckoutController::class, 'midtransCallback'])->name('paymentSuccess');
         Route::post('/payment/success', [CheckoutController::class, 'midtransCallback']);
     });
 });

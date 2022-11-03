@@ -54,7 +54,7 @@ class CheckoutController extends Controller
 
         $this->getSnapRedirect($checkout);
 
-        return view('users.success', ['checkout' => $checkout]);
+        return view('users.process', ['checkout' => $checkout]);
     }
 
     /**
@@ -130,27 +130,27 @@ class CheckoutController extends Controller
 
         if ($transaction_status == 'capture') {
             if ($fraud == 'challenge') {
-                $checkout->payment_status = 'pending';
+                $checkout->status = 'pending';
             } else if ($fraud == 'accept') {
-                $checkout->payment_status = 'paid';
+                $checkout->status = 'paid';
             }
         } else if ($transaction_status == 'cancel') {
             if ($fraud == 'challenge') {
-                $checkout->payment_status = 'failed';
+                $checkout->status = 'failed';
             } else if ($fraud == 'accept') {
-                $checkout->payment_status = 'failed';
+                $checkout->status = 'failed';
             }
         } else if ($transaction_status == 'deny') {
-            $checkout->payment_status = 'failed';
+            $checkout->status = 'failed';
         } else if ($transaction_status == 'settlement') {
-            $checkout->payment_status = 'paid';
+            $checkout->status = 'paid';
         } else if ($transaction_status == 'pending') {
-            $checkout->payment_status = 'pending';
+            $checkout->status = 'pending';
         } else if ($transaction_status == 'expire') {
-            $checkout->payment_status = 'failed';
+            $checkout->status = 'failed';
         }
 
         $checkout->save();
-        return view('users.success', compact($checkout));
+        return view('users.success');
     }
 }
