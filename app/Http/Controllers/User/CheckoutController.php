@@ -5,8 +5,11 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Discount;
+use App\Models\Lesson;
+use App\Models\LessonGroup;
 use App\Models\Transaction;
 use App\Models\User;
+use App\Models\UserCourse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Str;
@@ -34,6 +37,11 @@ class CheckoutController extends Controller
         $request->validate([
             'courseID' => 'required|exists:courses,id'
         ]);
+
+        $check = Transaction::where('userID', Auth::user()->id)->where('courseID', $request->courseID)->first();
+        if ($check) {
+            return back()->with('fail', 'You already purchased this course');
+        }
 
         $course = Course::where('id', '=', $request->courseID)->first();
         $user = User::find(Auth::user()->id);
@@ -151,6 +159,17 @@ class CheckoutController extends Controller
         }
 
         $checkout->save();
+        $lessonGroupFileID = LessonGroup::where('courseID', $checkout->courseID)->first();
+        $startLesson = Lesson::where('lessonGroupID', $lessonGroupFileID->id)->first();
+        $endLesson = Lesson::where('lessonGroupID', $lessonGroupFileID->id)->orderBy('id', 'DESC')->first();
+        $userCourse = UserCourse::create([
+            'userID' => Auth::user()->id,
+            'courseID' => $checkout->id,
+            'startLessonID' => $startLesson->id,
+            'endLessonID' => $endLesson->id,
+            'progressLessonID' => $endLesson->id
+        ]);
+        $userCourse->save();
         return view('users.success');
     }
 }

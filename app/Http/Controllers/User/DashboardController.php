@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Transaction;
+use App\Models\UserCourse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -30,12 +31,7 @@ class DashboardController extends Controller
      */
     public function renderMyCourse()
     {
-        $course = DB::table('transactions')
-            ->join('courses', 'transactions.courseID', '=', 'courses.id')
-            ->join('photos', 'courses.coverID', '=', 'photos.id')
-            ->where('transactions.userID', '=', Auth::user()->id)
-            ->select('courses.id as id', 'imageURL as imageURL', 'title as title', 'price as price')
-            ->get();
+        $course = UserCourse::where('userID', Auth::user()->id)->get();
 
         return view('users.myCourse', compact('course'));
     }

@@ -26,52 +26,22 @@ class UserCourse extends Model
     ];
 
     /**
-     * Get the Users that owns the UserCourse
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function Users(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    /**
-     * Get the Courses associated with the UserCourse
+     * Get the course associated with the UserCourse
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function Courses(): HasOne
+    public function course(): HasOne
     {
-        return $this->hasOne(Course::class);
+        return $this->hasOne(Course::class, 'id', 'courseID');
     }
 
     /**
-     * Get the StartLessonID associated with the UserCourse
+     * Get the lesson associated with the UserCourse
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function StartLessonID(): HasOne
+    public function lesson(): HasOne
     {
-        return $this->hasOne(Lesson::class);
-    }
-
-    /**
-     * Get the EndLessonID associated with the UserCourse
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function EndLessonID(): HasOne
-    {
-        return $this->hasOne(Lesson::class);
-    }
-
-    /**
-     * Get the ProgressLessonID associated with the UserCourse
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function ProgressLessonID(): HasOne
-    {
-        return $this->hasOne(Lesson::class);
+        return $this->hasOne(Lesson::class, 'id', 'progressLessonID');
     }
 }

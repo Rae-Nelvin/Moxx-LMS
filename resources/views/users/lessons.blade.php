@@ -4,21 +4,21 @@
     <div class="flex flex-col flex-nowrap">
         <div class="flex flex-row justify-between items-center">
             <div class="w-full">
-                <h1 class="font-bold text-[40px]">{{ $course->title }}</h1>
-                <h2 class="mt-2 font-normal text-[19px]">{{ $file->title }}</h2>
+                <h1 class="font-bold text-[40px]">{{ $userCourse->course->title }}</h1>
+                <h2 class="mt-2 font-normal text-[19px]">{{ $content->title }}</h2>
             </div>
-            <p class="font-normal text-lg text-right">{{ $course->description }}</p>
+            <p class="font-normal text-lg text-right">{{ $userCourse->course->description }}</p>
         </div>
         <div class="flex flex-row mt-11 justify-between space-x-10 w-full h-[70vh]">
             <div class="w-4/5">
                 <div class="h_iframe">
-                    {!! $file->file !!}
+                    {!! $content->file !!}
                 </div>
             </div>
             <div class="justify-between flex flex-col w-1/5">
                 <div>
                     <div class="flex flex-row justify-between items-center mb-4">
-                        <h1 class="font-bold text-base">{{ $course->title }}</h1>
+                        <h1 class="font-bold text-base">{{ $userCourse->course->title }}</h1>
                     </div>
 
                     @foreach ($lessonGroup as $lessonGroups)
@@ -30,9 +30,9 @@
                                     class="flex items-center justify-between w-full py-2 px-5 text-left rounded-t-lg text-black"
                                     data-accordion-target="#accordion-collapse-body-{{ $lessonGroups->id }}"
                                     aria-expanded="true" aria-controls="accordion-collapse-body-{{ $lessonGroups->id }}">
-                                    <span class="font-bold text-xs">{{ $lessonGroups->groupTitle }}</span>
+                                    <span class="font-bold text-xs">{{ $lessonGroups->title }}</span>
                                     <div class="flex flex-row space-x-2 items-center">
-                                        <span class="font-normal text-[10px]">(0/10)</span>
+                                        <span class="font-normal text-[10px]"></span>
                                         <svg data-accordion-icon="" class="w-6 h-6 rotate-180 shrink-0" fill="currentColor"
                                             viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
@@ -48,7 +48,7 @@
                                     @foreach ($lesson as $lessons)
                                         @if ($lessons->lessonGroupID == $lessonGroups->id)
                                             <a
-                                                href="/user/course/detail/{{ $course->id }}/{{ $lessonGroups->id }}/{{ $lessons->id }}">
+                                                href="/user/course/detail/{{ $userCourse->course->id }}/{{ $lessons->id }}">
                                                 <div class="flex flex-row space-x-2 items-center w-full">
                                                     <img src="{{ asset('images/guest-icon/play-button.svg') }}"
                                                         alt="play-button" class="w-3 h-3">
@@ -63,6 +63,11 @@
                     @endforeach
 
                 </div>
+                @if ($content->id == $userCourse->endLessonID)
+                    <a href="{{ route('user.myCourse') }}" class="py-4 px-10 mt-4 bg-[#3CCAA1]/30 hover:bg-[#3CCAA1] transition-all duration-300 ease-out text-center rounded-xl hover:text-white">Done</a>
+                @else
+                    <a href="/user/course/detail/{{ $userCourse->course->id }}/{{ $content->id + 1 }}" class="py-4 px-10 mt-4 bg-[#3CCAA1]/30 hover:bg-[#3CCAA1] transition-all duration-300 ease-out text-center rounded-xl hover:text-white">Next</a>
+                @endif
             </div>
         </div>
     </div>

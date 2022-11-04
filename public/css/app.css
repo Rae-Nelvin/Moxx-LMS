@@ -2135,6 +2135,10 @@ input[type="range"]::-ms-fill-lower {
   padding-left: 11px;
   padding-right: 11px;
 }
+.px-10 {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
 .pt-8 {
   padding-top: 2rem;
 }
@@ -2396,6 +2400,10 @@ input[type="range"]::-ms-fill-lower {
 .text-\[\#898989\] {
   --tw-text-opacity: 1;
   color: rgb(137 137 137 / var(--tw-text-opacity));
+}
+.text-green-400 {
+  --tw-text-opacity: 1;
+  color: rgb(49 196 141 / var(--tw-text-opacity));
 }
 .underline {
   -webkit-text-decoration-line: underline;
