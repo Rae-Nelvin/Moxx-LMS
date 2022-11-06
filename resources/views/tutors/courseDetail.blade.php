@@ -18,7 +18,7 @@
                     </div>
                     @foreach ($lessonGroup as $lessonGroups)
                         <div id="accordion-collapse" data-accordion="collapse"
-                            class="max-w-[330px] w-screen border border-1 border-[#3CCAA1] rounded-t-lg mt-4"
+                            class="max-w-[300px] w-screen border border-1 border-[#3CCAA1]"
                             data-active-classes="bg-[#3CCAA1]/30 text-black">
                             <h2 id="accordion-collapse-heading-{{ $lessonGroups->id }}" class="w-full bg-[#3CCAA1]/30">
                                 <button type="button"

@@ -5,7 +5,7 @@ use App\Http\Controllers\Tutor\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['isTutor']], function () {
-    Route::name('tutor.')->group(function () {
+    Route::prefix('/tutor')->name('tutor.')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'render'])->name('dashboard');
         Route::get('/newCourse', [CourseController::class, 'renderNewCourse'])->name('newCourse');
         Route::post('/newCourse', [CourseController::class, 'storeNewCourse']);

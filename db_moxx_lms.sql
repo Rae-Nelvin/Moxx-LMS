@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2022 at 12:13 PM
+-- Generation Time: Nov 06, 2022 at 07:07 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `courses` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `coverID` bigint(20) UNSIGNED DEFAULT NULL,
   `courseTypeID` bigint(20) UNSIGNED DEFAULT NULL,
   `creatorID` bigint(20) UNSIGNED DEFAULT NULL,
@@ -41,16 +41,7 @@ CREATE TABLE `courses` (
   `reviews` double DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `courses`
---
-
-INSERT INTO `courses` (`id`, `title`, `description`, `coverID`, `courseTypeID`, `creatorID`, `price`, `discountID`, `isActive`, `isShown`, `reviews`, `created_at`, `updated_at`) VALUES
-(2, 'Course 2', 'Subtitle Course 2', 2, 2, 1, 300000, NULL, 1, 0, 0, '2022-10-18 02:05:11', '2022-10-18 02:13:25'),
-(3, 'Course 3', 'Course 3 Subtitle', 3, 1, 1, 250000, NULL, 1, 0, 0, '2022-10-25 19:36:02', '2022-10-25 19:54:52'),
-(4, 'Course 4', 'Subtitle Course 4', 5, 1, 1, 150000, NULL, 1, 0, 0, '2022-10-25 19:44:55', '2022-10-25 19:54:54');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -62,11 +53,11 @@ CREATE TABLE `course_reviews` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `userID` bigint(20) UNSIGNED NOT NULL,
   `courseID` bigint(20) UNSIGNED DEFAULT NULL,
-  `reviews` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `reviews` longtext COLLATE utf8_unicode_ci NOT NULL,
   `stars` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -76,17 +67,8 @@ CREATE TABLE `course_reviews` (
 
 CREATE TABLE `course_types` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `course_types`
---
-
-INSERT INTO `course_types` (`id`, `name`) VALUES
-(1, 'Type 1'),
-(2, 'Type 2'),
-(3, 'Type 2');
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -96,10 +78,10 @@ INSERT INTO `course_types` (`id`, `name`) VALUES
 
 CREATE TABLE `discounts` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `discounts` double NOT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -109,13 +91,13 @@ CREATE TABLE `discounts` (
 
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -126,10 +108,10 @@ CREATE TABLE `failed_jobs` (
 CREATE TABLE `feedback` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `userID` bigint(20) UNSIGNED NOT NULL,
-  `feedbacks` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `feedbacks` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -139,20 +121,10 @@ CREATE TABLE `feedback` (
 
 CREATE TABLE `lessons` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `lessonGroupID` bigint(20) UNSIGNED NOT NULL,
-  `file` longtext COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `lessons`
---
-
-INSERT INTO `lessons` (`id`, `title`, `lessonGroupID`, `file`) VALUES
-(1, 'Content 1', 1, '<iframe width=\"1856\" height=\"778\" src=\"https://www.youtube.com/embed/bbJin10Tiik\" title=\"This Game was Made for Me - Broken Through\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>'),
-(2, 'Content 2', 1, '<iframe width=\"1856\" height=\"778\" src=\"https://www.youtube.com/embed/cii6ruuycQA?list=RDyIvnvI0Mlpk\" title=\"Olivia Rodrigo - deja vu (Official Video)\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>'),
-(3, 'Content 1', 2, '<iframe width=\"1856\" height=\"778\" src=\"https://www.youtube.com/embed/dPFF49cbKls\" title=\"APEX RANK #4 ( Dropped ) ROAD TO RANK #1 With The R-301 & The VOLT - APEX LEGENDS SEASON 14\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>'),
-(4, 'Content 3', 2, '<iframe width=\"1062\" height=\"597\" src=\"https://www.youtube.com/embed/goxmvGJkoi0\" title=\"Kami カミ ☯ Japanese Lofi HipHop Mix\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>');
+  `file` longtext COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -163,15 +135,8 @@ INSERT INTO `lessons` (`id`, `title`, `lessonGroupID`, `file`) VALUES
 CREATE TABLE `lesson_groups` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `courseID` bigint(20) UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `lesson_groups`
---
-
-INSERT INTO `lesson_groups` (`id`, `courseID`, `title`) VALUES
-(2, 2, 'Section 2');
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -181,9 +146,9 @@ INSERT INTO `lesson_groups` (`id`, `courseID`, `title`) VALUES
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -219,10 +184,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -232,15 +197,15 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -250,21 +215,11 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `photos` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `types` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `imageURL` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `types` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `imageURL` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `photos`
---
-
-INSERT INTO `photos` (`id`, `types`, `imageURL`, `created_at`, `updated_at`) VALUES
-(2, 'Course Cover', 'course/Course-2/cover/XP9w9oc86WBC1xPrDkeLNYbixsifBXRaHhypMycJ.jpg', '2022-10-18 02:05:11', '2022-10-18 02:05:11'),
-(3, 'Course Cover', 'course/Course-3/cover/2Ybf4EKFtHPXHd66xKq4NbDaHrJ4k6v28eseKSYj.jpg', '2022-10-25 19:36:02', '2022-10-25 19:36:02'),
-(4, 'Course Cover', 'course/Course-4/cover/K3Oy3sKZVVS1mtZUYdOzChnRUAhTz4xU2IbAuiwG.png', '2022-10-25 19:44:43', '2022-10-25 19:44:43'),
-(5, 'Course Cover', 'course/Course-4/cover/WhXtGYZAob38CyyZRFAaJeh6E4BgV4kA7PTjeyE6.png', '2022-10-25 19:44:55', '2022-10-25 19:44:55');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -274,19 +229,12 @@ INSERT INTO `photos` (`id`, `types`, `imageURL`, `created_at`, `updated_at`) VAL
 
 CREATE TABLE `plans` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `price` double NOT NULL,
   `status` tinyint(1) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `plans`
---
-
-INSERT INTO `plans` (`id`, `title`, `price`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Plan 1', 25000, 1, '2022-10-18 02:11:31', '2022-10-18 02:11:36');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -298,14 +246,7 @@ CREATE TABLE `plan_details` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `planID` bigint(20) UNSIGNED NOT NULL,
   `featureID` bigint(20) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `plan_details`
---
-
-INSERT INTO `plan_details` (`id`, `planID`, `featureID`) VALUES
-(1, 1, 1);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -315,15 +256,8 @@ INSERT INTO `plan_details` (`id`, `planID`, `featureID`) VALUES
 
 CREATE TABLE `plan_features` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `plan_features`
---
-
-INSERT INTO `plan_features` (`id`, `name`) VALUES
-(1, 'Fast Learning');
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -333,8 +267,8 @@ INSERT INTO `plan_features` (`id`, `name`) VALUES
 
 CREATE TABLE `roles` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `roles`
@@ -355,22 +289,14 @@ CREATE TABLE `transactions` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `userID` bigint(20) UNSIGNED DEFAULT NULL,
   `courseID` bigint(20) UNSIGNED DEFAULT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `discountID` bigint(20) UNSIGNED DEFAULT NULL,
+  `token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `totalPrice` double NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'waiting',
-  `midtrans_url` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `midtrans_booking_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'waiting',
+  `midtrans_url` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `midtrans_booking_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `transactions`
---
-
-INSERT INTO `transactions` (`id`, `userID`, `courseID`, `token`, `discountID`, `totalPrice`, `status`, `midtrans_url`, `midtrans_booking_code`, `created_at`, `updated_at`) VALUES
-(8, 4, 2, NULL, NULL, 300000, 'waiting', 'https://app.sandbox.midtrans.com/snap/v3/redirection/96570c5e-0270-4dc7-bf05-3cc8b083c7f5', '8-li6B8', '2022-10-25 20:31:30', '2022-10-25 20:31:30');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -382,11 +308,11 @@ CREATE TABLE `tutor_reviews` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `userID` bigint(20) UNSIGNED NOT NULL,
   `mentorID` bigint(20) UNSIGNED NOT NULL,
-  `reviews` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `reviews` longtext COLLATE utf8_unicode_ci NOT NULL,
   `stars` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -396,34 +322,31 @@ CREATE TABLE `tutor_reviews` (
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `username` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `alamat` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `avatar` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `username` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `alamat` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `avatar` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
   `roleID` bigint(20) UNSIGNED DEFAULT NULL,
   `reviews` double DEFAULT 0,
   `isShown` tinyint(1) NOT NULL DEFAULT 0,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `name`, `email`, `password`, `alamat`, `phone`, `avatar`, `roleID`, `reviews`, `isShown`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'leonardowijaya11', 'Leonardo Wijaya', 'leonardo.wijaya003@binus.ac.id', '$2y$10$BmJvM9lwuWMIB/IACMafcuSH2u1i.wCQPytVsrjGtUBOJbyCkH.nm', 'Jl. Cendrawasih Raya No. 17', '081330229959', NULL, 1, 0, 0, NULL, NULL, '2022-10-13 05:36:41', '2022-10-13 05:36:41', NULL),
-(2, 'Tutor1', 'Tutor 1', 'tutor1@binus.ac.id', '$2y$10$naqxmJFS0CgJrzK8K64/Luhd.OiZ7lWA2ZjCkiRKc7w39jvepqFAS', 'Jl. Cendrawasih Raya No. 17', '081330229959', NULL, 2, 0, 1, NULL, NULL, '2022-10-13 05:36:41', '2022-10-18 02:13:46', NULL),
-(3, 'Guest1', 'Guest 1', 'guest1@binus.ac.id', '$2y$10$sokUa96p0L21iY2FCJSiKePz4Eoth.BdaH1QVTNbeubpZi/bQC0HW', 'Jl. Cendrawasih Raya No. 17', '081330229959', NULL, 3, 0, 0, NULL, NULL, '2022-10-13 05:36:41', '2022-10-13 05:36:41', NULL),
-(4, 'LeonardoWijaya259', 'Leonardo Wijaya', 'leondut40@gmail.com', NULL, NULL, NULL, 'https://lh3.googleusercontent.com/a/ALm5wu1DVaTtBbcjS2gtzsLuzVIZG2LybJ0RujmmKp897Q=s96-c', 3, 0, 0, NULL, 'kYAQj08WxTynkNQnAxVY5y84rZRkeid2VLgyhgiPrQN3AyJtKYtUaZxkHkO6', '2022-10-13 05:36:52', '2022-10-13 05:36:52', NULL),
-(5, 'LeonardoWijaya275', 'Leonardo Wijaya', 'raenelvin29@gmail.com', NULL, NULL, NULL, 'https://lh3.googleusercontent.com/a/ALm5wu28PfIvtKQuSDPgXrjzt0xBQNobc9qjEdzCmAs-=s96-c', 3, 0, 0, NULL, 'uDp9QuWdowRUtRgas7M8ZzrieQcQqOK54F0DjMdZQiHLvDoY9LSs3mjt14Wb', '2022-10-18 02:19:34', '2022-10-18 02:19:34', NULL),
-(6, 'User 335', 'User 3', 'raenelvin30@gmail.com', '$2y$10$OrMcJWzrquvt6TzLx910Geb65rPD9aJjJ6bhGMBbCkBD8SCS46OUG', NULL, '081330229959', NULL, 3, 0, 0, NULL, NULL, '2022-10-18 02:20:47', '2022-10-18 02:20:47', NULL);
+(1, 'leonardowijaya11', 'Leonardo Wijaya', 'leonardo.wijaya003@binus.ac.id', '$2y$10$UZitBKfQVuEqKuw53wVQK.iGvVzKjAlHk..wOT9oJ23/a5Wgfj0V.', 'Jl. Cendrawasih Raya No. 17', '081330229959', NULL, 1, 0, 0, NULL, NULL, '2022-11-05 23:05:58', '2022-11-05 23:05:58', NULL),
+(2, 'Tutor1', 'Tutor 1', 'tutor1@binus.ac.id', '$2y$10$ZvDGfR.JBtvWDodMWObAtO0.y8Ks8Bx6tECCouQsywLH.8URhUoJi', 'Jl. Cendrawasih Raya No. 17', '081330229959', NULL, 2, 0, 0, NULL, NULL, '2022-11-05 23:05:58', '2022-11-05 23:05:58', NULL),
+(3, 'Guest1', 'Guest 1', 'guest1@binus.ac.id', '$2y$10$FsAspDidClXqP3orw2rorOrUwDn6NEjLwkO7t60SfO/yEP6ICkiVS', 'Jl. Cendrawasih Raya No. 17', '081330229959', NULL, 3, 0, 0, NULL, NULL, '2022-11-05 23:05:58', '2022-11-05 23:05:58', NULL);
 
 -- --------------------------------------------------------
 
@@ -438,7 +361,7 @@ CREATE TABLE `user_courses` (
   `startLessonID` bigint(20) UNSIGNED DEFAULT NULL,
   `endLessonID` bigint(20) UNSIGNED DEFAULT NULL,
   `progressLessonID` bigint(20) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Indexes for dumped tables
@@ -560,8 +483,7 @@ ALTER TABLE `roles`
 ALTER TABLE `transactions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `transactions_userid_foreign` (`userID`),
-  ADD KEY `transactions_courseid_foreign` (`courseID`),
-  ADD KEY `transactions_discountid_foreign` (`discountID`);
+  ADD KEY `transactions_courseid_foreign` (`courseID`);
 
 --
 -- Indexes for table `tutor_reviews`
@@ -599,7 +521,7 @@ ALTER TABLE `user_courses`
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `course_reviews`
@@ -611,7 +533,7 @@ ALTER TABLE `course_reviews`
 -- AUTO_INCREMENT for table `course_types`
 --
 ALTER TABLE `course_types`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `discounts`
@@ -635,13 +557,13 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `lessons`
 --
 ALTER TABLE `lessons`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `lesson_groups`
 --
 ALTER TABLE `lesson_groups`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -659,25 +581,25 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `plans`
 --
 ALTER TABLE `plans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `plan_details`
 --
 ALTER TABLE `plan_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `plan_features`
 --
 ALTER TABLE `plan_features`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -689,7 +611,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tutor_reviews`
@@ -701,7 +623,7 @@ ALTER TABLE `tutor_reviews`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user_courses`
@@ -759,7 +681,6 @@ ALTER TABLE `plan_details`
 --
 ALTER TABLE `transactions`
   ADD CONSTRAINT `transactions_courseid_foreign` FOREIGN KEY (`courseID`) REFERENCES `courses` (`id`) ON DELETE SET NULL,
-  ADD CONSTRAINT `transactions_discountid_foreign` FOREIGN KEY (`discountID`) REFERENCES `discounts` (`id`) ON DELETE SET NULL,
   ADD CONSTRAINT `transactions_userid_foreign` FOREIGN KEY (`userID`) REFERENCES `users` (`id`) ON DELETE SET NULL;
 
 --

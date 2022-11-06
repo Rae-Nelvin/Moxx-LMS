@@ -40,10 +40,12 @@
                             Rp. {{ $transactions->totalPrice }}
                         </td>
                         <td class="pl-4 pr-2">
-                            <a href="{{ $transactions->midtrans_url }}" type="button"
-                                class="bg-blue-400 hover:bg-blue-600 rounded-2xl items-center flex justify-center p-2 w-auto font-base text-[10px] text-white text-center cursor-pointer transition-all duration-300 ease-in-out">
-                                Pay Here
-                            </a>
+                            @if ($transactions->status == 'waiting')
+                                <a href="{{ $transactions->midtrans_url }}" type="button"
+                                    class="bg-blue-400 hover:bg-blue-600 rounded-2xl items-center flex justify-center p-2 w-auto font-base text-[10px] text-white text-center cursor-pointer transition-all duration-300 ease-in-out">
+                                    Pay Here
+                                </a>
+                            @endif
                         </td>
                     </tr>
                 @endforeach

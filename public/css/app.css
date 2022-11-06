@@ -2123,6 +2123,10 @@ input[type="range"]::-ms-fill-lower {
   padding-left: 20px;
   padding-right: 20px;
 }
+.px-10 {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
 .py-\[31px\] {
   padding-top: 31px;
   padding-bottom: 31px;
@@ -2134,10 +2138,6 @@ input[type="range"]::-ms-fill-lower {
 .px-\[11px\] {
   padding-left: 11px;
   padding-right: 11px;
-}
-.px-10 {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
 }
 .pt-8 {
   padding-top: 2rem;
@@ -2393,6 +2393,10 @@ input[type="range"]::-ms-fill-lower {
   --tw-text-opacity: 1;
   color: rgb(135 137 142 / var(--tw-text-opacity));
 }
+.text-green-400 {
+  --tw-text-opacity: 1;
+  color: rgb(49 196 141 / var(--tw-text-opacity));
+}
 .text-\[\#FDF9F7\] {
   --tw-text-opacity: 1;
   color: rgb(253 249 247 / var(--tw-text-opacity));
@@ -2400,10 +2404,6 @@ input[type="range"]::-ms-fill-lower {
 .text-\[\#898989\] {
   --tw-text-opacity: 1;
   color: rgb(137 137 137 / var(--tw-text-opacity));
-}
-.text-green-400 {
-  --tw-text-opacity: 1;
-  color: rgb(49 196 141 / var(--tw-text-opacity));
 }
 .underline {
   -webkit-text-decoration-line: underline;

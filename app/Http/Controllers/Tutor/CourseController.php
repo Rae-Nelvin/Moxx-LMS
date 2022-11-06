@@ -38,6 +38,11 @@ class CourseController extends Controller
             'cover' => 'required|mimes:jpeg,png,jpg',
         ]);
 
+        $check = Course::where('title', $request->title)->where('creatorID', Auth::user()->id)->where('courseTypeID', $request->type)->first();
+        if ($check) {
+            return back()->with('fail', 'You already created this course!');
+        }
+
         $data = $request->all();
 
         $imageName = str_replace(' ', '-', $data['title']);
@@ -71,7 +76,7 @@ class CourseController extends Controller
     public function storeNewType(Request $request)
     {
         $request->validate([
-            'type' => 'required'
+            'type' => 'required|unique:course_types,name'
         ]);
 
         CourseType::create([
@@ -163,7 +168,7 @@ class CourseController extends Controller
      */
     public function courseDetail($id)
     {
-        $course = Course::where('id', $id);
+        $course = Course::where('id', $id)->first();
 
         $lessonGroup = DB::table('lesson_groups')
             ->join('courses', 'lesson_groups.courseID', '=', 'courses.id')
@@ -234,7 +239,7 @@ class CourseController extends Controller
      */
     public function renderLesson($courseID, $sectionID, $lessonID)
     {
-        $course = Course::where('id', $courseID);
+        $course = Course::where('id', $courseID)->first();
 
         $lessonGroup = DB::table('lesson_groups')
             ->join('courses', 'lesson_groups.courseID', '=', 'courses.id')
