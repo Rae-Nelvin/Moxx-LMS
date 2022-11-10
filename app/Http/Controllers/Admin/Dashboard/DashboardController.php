@@ -50,10 +50,11 @@ class DashboardController extends Controller
      */
     public function renderPayment()
     {
-        $success = Transaction::where('status', '!=', 'waiting')->count();
+        $success = Transaction::where('status', '!=', 'success')->count();
         $pending = Transaction::where('status', '=', 'waiting')->count();
+        $transactions = Transaction::all();
 
-        return view('admins.dashboard.payment', compact('success', 'pending'));
+        return view('admins.dashboard.payment', compact('success', 'pending', 'transactions'));
     }
 
     /**
@@ -65,7 +66,8 @@ class DashboardController extends Controller
     {
         $user = User::where('roleID', '=', 3)->count();
         $tutor = User::where('roleID', '=', 2)->count();
-        return view('admins.dashboard.userList', compact('user', 'tutor'));
+        $users = User::where('roleID', '!=', 1)->get();
+        return view('admins.dashboard.userList', compact('user', 'tutor', 'users'));
     }
 
     public function renderCreateCourse()

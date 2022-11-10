@@ -1,34 +1,28 @@
 @extends('layouts.guest')
 
 @section('content')
-    <h1 class="font-bold text-[40px]">Dashboard</h1>
-    <div class="flex flex-row flex-nowrap mt-[39px] space-x-10">
-        <div class="bg-white flex flex-row items-center py-[31px] px-[33px] w-1/3">
-            <div class="bg-[#3CCAA1]/30 rounded-full w-[54px] h-[54px]">
-            </div>
-            <div class="ml-[35px] space-y-1">
-                <h1 class="font-bold text-[32px]">{{ $user }}</h1>
-                <h2 class="font-normal text-[22px]">Active Users</h2>
-            </div>
-        </div>
-        <div class="bg-white flex flex-row items-center py-[31px] px-[33px] w-1/3">
-            <div class="bg-[#3CCAA1]/30 rounded-full w-[54px] h-[54px]">
-            </div>
-            <div class="ml-[35px] space-y-1">
-                <h1 class="font-bold text-[32px]">{{ $transaction }}</h1>
-                <h2 class="font-normal text-[22px]">Successfull Transactions</h2>
-            </div>
-        </div>
-        <div class="bg-white flex flex-row items-center py-[31px] px-[33px] w-1/3">
-            <div class="bg-[#3CCAA1]/30 rounded-full w-[54px] h-[54px]">
-            </div>
-            <div class="ml-[35px] space-y-1">
-                <h1 class="font-bold text-[32px]">{{ $course }}</h1>
-                <h2 class="font-normal text-[22px]">Active Courses</h2>
-            </div>
+    
+    <div class="p-8">
+        <div class="flex flex-row justify-between flex-nowrap w-full space-x-10">
+            <a href="{{ route('admin.renderUserList') }}" class="w-1/3">
+                <div class="border-[1px] border-[#7C7C7C]/40 py-5 px-4 rounded-md flex flex-col justify-between h-36 hover:bg-[#3CCAA1] hover:text-white transition-colors duration-300 ease-in-out">
+                    <h1 class="font-semibold text-xl">Active Users</h1>
+                    <h2 class="font-bold text-3xl">{{ $user }} Users</h2>
+                </div>
+            </a>
+            <a href="{{ route('admin.renderCourse') }}" class="w-1/3">
+                <div class="border-[1px] border-[#7C7C7C]/40 py-5 px-4 rounded-md flex flex-col justify-between h-36 hover:bg-[#3CCAA1] hover:text-white transition-colors duration-300 ease-in-out">
+                    <h1 class="font-semibold text-xl">Active Courses</h1>
+                    <h2 class="font-bold text-3xl">{{ $course }} Courses</h2>
+                </div>
+            </a>
+            <a href="{{ route('admin.renderPayment') }}" class="w-1/3">
+                <div class="border-[1px] border-[#7C7C7C]/40 py-5 px-4 rounded-md flex flex-col justify-between h-36 hover:bg-[#3CCAA1] hover:text-white transition-colors duration-300 ease-in-out">
+                    <h1 class="font-semibold text-xl">Accepted Transactions</h1>
+                    <h2 class="font-bold text-3xl">{{ $transaction }} Transactions</h2>
+                </div>
+            </a>
         </div>
     </div>
-    <h1 class="mt-[34px] font-bold text-3xl">Statistics</h1>
-    <div class="bg-white mt-[34px] h-[348px] w-full">
-    </div>
+
 @endsection
