@@ -4,9 +4,9 @@
     <h1 class="font-bold text-[40px]">Top Courses</h1>
     <div class="flex flex-row flex-wrap mt-7 space-x-10">
         @foreach ($shownCourse as $shownCourses)
-            <div class="w-1/4">
+            <div class="w-1/4 border-[#7C7C7C] border-[1px] rounded-md">
                 <div class="bg-[#3CCAA1]/30 relative rounded-lg flex flex-row ">
-                    <img src="{{ asset('storage/' . $shownCourses->photo->imageURL) }}" class="w-full" alt="Class Cover" />
+                    <img src="{{ asset('storage/' . $shownCourses->photo->imageURL) }}" class="w-full rounded-md" alt="Class Cover" />
                     <div class="absolute left-0 bottom-0 flex flex-row justify-between w-full py-[25px] px-[30px]">
                         @if ($shownCourses->isActive == 1)
                             <h3 class="font-light text-base bg-[#50CFAB] px-2 py-1 rounded-3xl">Active</h3>
@@ -23,7 +23,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="bg-white py-[21px] px-[30px]">
+                <div class="py-4 px-6">
                     <h1 class="font-bold text-2xl">{{ $shownCourses->title }}</h1>
                     <h2 class="font-light text-lg">Price : Rp. {{ $shownCourses->price }}</h2>
                     @if ($shownCourses->discountID > 0)
@@ -41,9 +41,9 @@
     <h1 class="font-bold text-[40px]">All Courses</h1>
     <div class="flex flex-row flex-wrap mt-7 space-x-10">
         @foreach ($unshownCourse as $unshownCourses)
-            <div class="w-1/4">
+            <div class="w-1/4 border-[#7C7C7C] border-[1px] rounded-md">
                 <div class="bg-[#3CCAA1]/30 relative rounded-lg flex flex-row ">
-                    <img src="{{ asset('storage/' . $unshownCourses->photo->imageURL) }}" class="w-full"
+                    <img src="{{ asset('storage/' . $unshownCourses->photo->imageURL) }}" class="w-full rounded-md"
                         alt="Class Cover" />
                     <div class="absolute left-0 bottom-0 flex flex-row justify-between w-full py-[25px] px-[30px]">
                         @if ($unshownCourses->isActive == 1)
@@ -61,7 +61,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="bg-white py-[21px] px-[30px]">
+                <div class="py-4 px-6">
                     <h1 class="font-bold text-2xl">{{ $unshownCourses->title }}</h1>
                     <h2 class="font-light text-lg">Price : Rp. {{ $unshownCourses->price }}</h2>
                     @if ($unshownCourses->discountID > 0)

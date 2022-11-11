@@ -1,64 +1,72 @@
 @extends('layouts.guest')
 
 @section('content')
-    <h1 class="font-bold text-[32px]">Create New Course</h1>
+    <h1 class="font-bold text-[24px]">Course information</h1>
     @if (Auth::user()->roleID == 1)
         <form action="{{ route('admin.renderNewCourse') }}" method="POST"
-            class="flex flex-row justify-between mt-[46px] space-x-10" enctype="multipart/form-data" id="courseForm">
+            class="flex flex-row justify-between mt-4 space-x-10 border-[#7C7C7C]/40 border-[1px] rounded-md py-6 px-4" enctype="multipart/form-data" id="courseForm">
         @else
             <form action="{{ route('tutor.newCourse') }}" method="POST"
-                class="flex flex-row justify-between mt-[46px] space-x-10" enctype="multipart/form-data" id="courseForm">
+                class="flex flex-row justify-between mt-4 space-x-10 border-[#7C7C7C]/40 border-[1px] rounded-md py-6 px-4" enctype="multipart/form-data" id="courseForm">
     @endif
     @csrf
     <div class="flex flex-col w-1/2">
-        <h1 class="font-bold text-[24px]">Course information</h1>
-        <label for="Title" class="font-medium text-xl ml-[20px] mt-[31px]">Title</label>
-        <input type="text" name="title" class="bg-white border-0 mt-[17px]" required />
-        @if ($errors->has('title'))
-            <p class="mt-2 text-sm text-red-600">{{ $errors->first('title') }}</p>
-        @endif
-        <label for="Subtitle" class="font-medium text-xl ml-[20px] mt-[20px]">Description</label>
-        <textarea name="subtitle" name="subtitle" cols="30" rows="5" class="bg-white border-0 mt-[19px]"></textarea>
-        <label for="Type" class="font-medium text-xl ml-[20px] mt-[20px]">Type</label>
-        <select name="type" class="bg-white border-0 mt-[17px]" required>
-            @foreach ($data as $datas)
-                <option value="{{ $datas->id }}">{{ $datas->name }}</option>
-            @endforeach
-        </select>
-        <button class="w-full mt-5" type="button" data-modal-toggle="authentication-modal">Add More Type</button>
-        @if ($errors->has('type'))
-            <p class="mt-2 text-sm text-red-600">{{ $errors->first('type') }}</p>
-        @endif
+        <div class="flex flex-col py-4 px-6 rounded-md space-y-[4px]">
+            <label for="Title" class="font-medium text-xl">Title</label>
+            <input type="text" name="title" class="rounded-md border-[#7C7C7C] border-[1px]" placeholder="Course Title" required />
+            @if ($errors->has('title'))
+                <p class="mt-2 text-sm text-red-600">{{ $errors->first('title') }}</p>
+            @endif
+        </div>
+        <div class="flex flex-col py-4 px-6 space-y-[4px]">
+            <label for="Subtitle" class="font-medium text-xl">Description</label>
+            <textarea name="subtitle" name="subtitle" cols="30" rows="5" class="border-[#7C7C7C] border-[1px] rounded-md" placeholder="Course Description..."></textarea>
+        </div>
+        <div class="flex flex-col py-4 px-6 space-y-[4px]">
+            <label for="Price" class="font-medium text-xl">Price</label>
+            <input type="number" step="0.01" name="price" class="border-[#7C7C7C] border-[1px] rounded-md" placeholder="Rp. "
+                required />
+            @if ($errors->has('price'))
+                <p class="mt-2 text-sm text-red-600">{{ $errors->first('price') }}</p>
+            @endif
+        </div>
     </div>
-    <div class="flex flex-col w-1/2">
-        <label for="Price" class="font-medium text-xl ml-[20px] mt-[66px]">Price</label>
-        <input type="number" step="0.01" name="price" class="bg-white border-0 mt-[17px] w-1/3" placeholder="Rp. "
-            required />
-        @if ($errors->has('price'))
-            <p class="mt-2 text-sm text-red-600">{{ $errors->first('price') }}</p>
-        @endif
-        {{-- <label for="Discount" class="font-medium text-xl ml-[20px] mt-[20px]">Discount</label>
-        <select name="discountID" class="bg-white border-0 mt-[17px]">
-            <option value="">None</option>
-            @foreach ($discount as $discounts)
-            <option value="{{ $discounts->id }}">{{ $discounts->token }}</option>
-            @endforeach
-            </select>
-            <button class="w-full mt-5" type="button" data-modal-toggle="discount-modal">Add New Discount</button>
-            @if ($errors->has('type'))
-            <p class="mt-2 text-sm text-red-600">{{ $errors->first('type') }}</p>
-            @endif --}}
-        <label for="Upload Documentation" class="font-medium text-xl ml-[20px]  mt-[27px]">Upload
-            Documentation</label>
-        <input type="file" id="file-cover" name="cover" class="bg-white border-0 mt-[19px]" onchange="loadFile(event)"
-            required>
-        @if ($errors->has('cover'))
-            <p class="mt-2 text-sm text-red-600">{{ $errors->first('cover') }}</p>
-        @endif
-        <img id="output" class="mt-5">
-        <button
-            class="ml-auto bg-[#50CFAB] rounded-lg font-semibold text-lg items-center w-[174px] flex flex-row justify-center text-center py-3 text-white hover:bg-[#4ABA9A] transition-all ease-in-out duration-300 mt-[92px]"
-            form="courseForm">Publish
+    <div class="flex flex-col justify-between w-1/2">
+        <div class="flex flex-col w-full">
+            <div class="flex flex-col py-4 px-6 space-y-[4px]">
+                <label for="Type" class="font-medium text-xl">Type</label>
+                @if ($errors->has('type'))
+                    <p class="mt-2 text-sm text-red-600">{{ $errors->first('type') }}</p>
+                @endif
+                <select name="type" class="border-[#7C7C7C] border-[1px] rounded-md" required>
+                    @foreach ($data as $datas)
+                        <option value="{{ $datas->id }}">{{ $datas->name }}</option>
+                    @endforeach
+                </select>
+                <button class="w-full mt-5 font-medium text-[#7C7C7C] hover:text-black transition-colors duration-300 ease-in-out" type="button" data-modal-toggle="authentication-modal">Add More Type</button>
+            </div>
+            {{-- <label for="Discount" class="font-medium text-xl ml-[20px] mt-[20px]">Discount</label>
+            <select name="discountID" class="bg-white border-0 mt-[17px]">
+                <option value="">None</option>
+                @foreach ($discount as $discounts)
+                <option value="{{ $discounts->id }}">{{ $discounts->token }}</option>
+                @endforeach
+                </select>
+                <button class="w-full mt-5" type="button" data-modal-toggle="discount-modal">Add New Discount</button>
+                @if ($errors->has('type'))
+                <p class="mt-2 text-sm text-red-600">{{ $errors->first('type') }}</p>
+                @endif --}}
+            <div class="flex flex-col py-4 px-6 space-y-[4px]">
+                <label for="Upload Documentation" class="font-medium text-xl">Upload Documentation</label>
+                <input type="file" id="file-cover" name="cover" class="border-[#7C7C7C] border-[1px] rounded-mds" onchange="loadFile(event)"
+                    required>
+                @if ($errors->has('cover'))
+                    <p class="mt-2 text-sm text-red-600">{{ $errors->first('cover') }}</p>
+                @endif
+                <img id="output">
+            </div>
+        </div>
+        <button class="ml-auto mx-6 bg-[#7C7C7C] rounded-lg font-semibold text-lg items-center w-[174px] flex flex-row justify-center text-center py-3 text-white hover:bg-[#50CFAB] transition-all ease-in-out duration-300" form="courseForm">Publish</button>
     </div>
     </form>
 

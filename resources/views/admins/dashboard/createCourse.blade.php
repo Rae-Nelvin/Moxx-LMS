@@ -15,9 +15,9 @@
     <div class="flex flex-row flex-wrap mt-7 space-x-10">
         @if (!$data->isEmpty())
             @foreach ($data as $datas)
-                <div class="w-1/4">
+                <div class="w-1/4 border-[#7C7C7C] rounded-md border-[1px]">
                     <div class="bg-[#3CCAA1]/30 relative rounded-lg flex flex-row ">
-                        <img src="{{ asset('storage/' . $datas->photo->imageURL) }}" class="w-full" alt="Class Cover" />
+                        <img src="{{ asset('storage/' . $datas->photo->imageURL) }}" class="w-full rounded-md" alt="Class Cover" />
                         <div class="absolute left-0 bottom-0 flex flex-row justify-between w-full py-[25px] px-[30px]">
                             @if ($datas->isActive == 1)
                                 <h3 class="font-light text-base bg-[#50CFAB] px-2 py-1 rounded-3xl">Active</h3>
@@ -35,7 +35,7 @@
                             @endif
                         </div>
                     </div>
-                    <div class="bg-white py-[21px] px-[30px]">
+                    <div class="py-4 px-6 space-y-[4px]">
                         <h1 class="font-bold text-2xl">{{ $datas->title }}</h1>
                         <h2 class="font-light text-lg">Price : Rp. {{ $datas->price }}</h2>
                         @if ($datas->discountID > 0)
@@ -44,13 +44,7 @@
                                 {{ $datas->price * ($datas->discount->discounts / 100) }}
                             </h2>
                         @endif
-                        <div class="rating py-3">
-                        <span class="fa fa-star checked "></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        </div>
+                        <h2 class="font-normal text-lg text-[#7C7C7C]">Rating : {{ $datas->reviews }}/5</h2>
                         <div class="flex flex-row flex-wrap space-x-4">
                             <button data-modal-toggle="edit-course-{{ $datas->id }}"
                                 class="bg-blue-400 rounded-2xl items-center flex justify-center py-2 px-4 cursor-pointer hover:bg-blue-700 transition-all duration-300 ease-in-out">
@@ -66,7 +60,7 @@
                 <!-- Primary modal -->
                 <div id="edit-course-{{ $datas->id }}" tabindex="-1" aria-hidden="true"
                     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
-                    <div class="relative p-4 w-full max-w-md h-full md:h-auto">
+                    <div class="relative p-4 w-full max-w-3xl h-full md:h-auto">
                         <!-- Modal content -->
                         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                             <button type="button"
@@ -83,77 +77,67 @@
                             <div class="py-6 px-6 lg:px-8">
                                 <h3 class="mb-4 text-xl font-medium text-gray-900">Edit Course</h3>
                                 <form action="{{ route('tutor.editCourse') }}" method="POST"
-                                    class="flex flex-row justify-between mt-[46px] space-x-10" enctype="multipart/form-data"
+                                    class="flex flex-row justify-between" enctype="multipart/form-data"
                                     id="courseForm">
                                     @csrf
                                     <input type="hidden" name="courseID" value="{{ $datas->id }}">
                                     <div class="flex flex-col w-1/2">
-                                        <h1 class="font-bold text-[24px]">Course information</h1>
-                                        <label for="Title" class="font-medium text-xl ml-[20px] mt-[31px]">Title</label>
-                                        <input type="text" name="title" class="bg-white border-0 mt-[17px]"
-                                            placeholder="{{ $datas->title }}" />
-                                        @if ($errors->has('title'))
-                                            <p class="mt-2 text-sm text-red-600">{{ $errors->first('title') }}</p>
-                                        @endif
-                                        <label for="Subtitle"
-                                            class="font-medium text-xl ml-[20px] mt-[20px]">Description</label>
-                                        <textarea name="subtitle" name="subtitle" cols="30" rows="5" class="bg-white border-0 mt-[19px]"
-                                            placeholder="{{ $datas->description }}"></textarea>
-                                        <label for="Type" class="font-medium text-xl ml-[20px] mt-[20px]">Type</label>
-                                        <select name="type" class="bg-white border-0 mt-[17px]" required>
-                                            @foreach ($type as $types)
-                                                @if ($types->id == $datas->courseTypeID)
-                                                    <option value="{{ $types->id }}" selected>{{ $types->name }}
-                                                    </option>
-                                                @endif
-                                                <option value="{{ $types->id }}">{{ $types->name }}</option>
-                                            @endforeach
-                                        </select>
-                                        <button class="w-full mt-5" type="button"
-                                            data-modal-toggle="authentication-modal">Add More
-                                            Type</button>
-                                        @if ($errors->has('type'))
-                                            <p class="mt-2 text-sm text-red-600">{{ $errors->first('type') }}</p>
-                                        @endif
+                                        <div class="flex flex-col py-4 px-6 rounded-md space-y-[4px]">
+                                            <label for="Title" class="font-medium text-xl">Title</label>
+                                            <input type="text" name="title" class="rounded-md border-[#7C7C7C] border-[1px]" placeholder="{{ $datas->title }}" required />
+                                            @if ($errors->has('title'))
+                                                <p class="mt-2 text-sm text-red-600">{{ $errors->first('title') }}</p>
+                                            @endif
+                                        </div>
+                                        <div class="flex flex-col py-4 px-6 space-y-[4px]">
+                                            <label for="Subtitle" class="font-medium text-xl">Description</label>
+                                            <textarea name="subtitle" name="subtitle" cols="30" rows="5" class="border-[#7C7C7C] border-[1px] rounded-md" placeholder="{{ $datas->description }}"></textarea>
+                                        </div>
+                                        <div class="flex flex-col py-4 px-6 space-y-[4px]">
+                                            <label for="Price" class="font-medium text-xl">Price</label>
+                                            <input type="number" step="0.01" name="price" class="border-[#7C7C7C] border-[1px] rounded-md" placeholder="Rp. {{ $datas->price }}"
+                                                required />
+                                            @if ($errors->has('price'))
+                                                <p class="mt-2 text-sm text-red-600">{{ $errors->first('price') }}</p>
+                                            @endif
+                                        </div>
                                     </div>
-                                    <div class="flex flex-col w-1/2">
-                                        <label for="Price" class="font-medium text-xl ml-[20px] mt-[66px]">Price</label>
-                                        <input type="number" step="0.01" name="price"
-                                            class="bg-white border-0 mt-[17px] w-1/3"
-                                            placeholder="Rp. {{ $datas->price }}" />
-                                        @if ($errors->has('price'))
-                                            <p class="mt-2 text-sm text-red-600">{{ $errors->first('price') }}</p>
-                                        @endif
-                                        <label for="Discount"
-                                            class="font-medium text-xl ml-[20px] mt-[20px]">Discount</label>
-                                        <select name="discountID" class="bg-white border-0 mt-[17px]">
-                                            @foreach ($discount as $discounts)
-                                                @if ($discounts->id == $datas->discountID)
-                                                    <option value="{{ $discounts->id }}" selected>{{ $discounts->token }}
-                                                    </option>
+                                    <div class="flex flex-col justify-between w-1/2">
+                                        <div class="flex flex-col w-full">
+                                            <div class="flex flex-col py-4 px-6 space-y-[4px]">
+                                                <label for="Type" class="font-medium text-xl">Type</label>
+                                                @if ($errors->has('type'))
+                                                    <p class="mt-2 text-sm text-red-600">{{ $errors->first('type') }}</p>
                                                 @endif
+                                                <select name="type" class="border-[#7C7C7C] border-[1px] rounded-md" required>
+                                                    @foreach ($type as $types)
+                                                        <option value="{{ $types->id }}">{{ $types->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <button class="w-full mt-5 font-medium text-[#7C7C7C] hover:text-black transition-colors duration-300 ease-in-out" type="button" data-modal-toggle="authentication-modal">Add More Type</button>
+                                            </div>
+                                            {{-- <label for="Discount" class="font-medium text-xl ml-[20px] mt-[20px]">Discount</label>
+                                            <select name="discountID" class="bg-white border-0 mt-[17px]">
+                                                <option value="">None</option>
+                                                @foreach ($discount as $discounts)
                                                 <option value="{{ $discounts->id }}">{{ $discounts->token }}</option>
-                                            @endforeach
-                                            <option value="0">None</option>
-                                        </select>
-                                        <button class="w-full mt-5" type="button" data-modal-toggle="discount-modal">Add
-                                            New
-                                            Discount</button>
-                                        @if ($errors->has('type'))
-                                            <p class="mt-2 text-sm text-red-600">{{ $errors->first('type') }}</p>
-                                        @endif
-                                        <label for="Upload Documentation"
-                                            class="font-medium text-xl ml-[20px] mt-[27px]">Upload
-                                            Documentation</label>
-                                        <input type="file" id="file-cover" name="cover"
-                                            class="bg-white border-0 mt-[19px]" onchange="loadFile(event)">
-                                        @if ($errors->has('cover'))
-                                            <p class="mt-2 text-sm text-red-600">{{ $errors->first('cover') }}</p>
-                                        @endif
-                                        <img id="output" class="mt-5">
-                                        <button
-                                            class="ml-auto bg-[#50CFAB] rounded-lg font-semibold text-lg items-center w-[174px] flex flex-row justify-center text-center py-3 text-white hover:bg-[#4ABA9A] transition-all ease-in-out duration-300 mt-[92px]"
-                                            form="courseForm">Publish
+                                                @endforeach
+                                                </select>
+                                                <button class="w-full mt-5" type="button" data-modal-toggle="discount-modal">Add New Discount</button>
+                                                @if ($errors->has('type'))
+                                                <p class="mt-2 text-sm text-red-600">{{ $errors->first('type') }}</p>
+                                                @endif --}}
+                                            <div class="flex flex-col py-4 px-6 space-y-[4px]">
+                                                <label for="Upload Documentation" class="font-medium text-xl">Upload Documentation</label>
+                                                <input type="file" id="file-cover" name="cover" class="border-[#7C7C7C] border-[1px] rounded-mds" onchange="loadFile(event)"
+                                                    required>
+                                                @if ($errors->has('cover'))
+                                                    <p class="mt-2 text-sm text-red-600">{{ $errors->first('cover') }}</p>
+                                                @endif
+                                                <img id="output">
+                                            </div>
+                                        </div>
+                                        <button class="ml-auto mx-6 bg-[#7C7C7C] rounded-lg font-semibold text-lg items-center w-[174px] flex flex-row justify-center text-center py-3 text-white hover:bg-[#50CFAB] transition-all ease-in-out duration-300" form="courseForm">Publish</button>
                                     </div>
                                 </form>
                             </div>

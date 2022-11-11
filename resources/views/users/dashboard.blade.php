@@ -21,12 +21,12 @@
     <div class="flex flex-row flex-wrap mt-6 w-full">
         @foreach ($course as $courses)
         <a href="{{ route('user.courseDetail', $courses->id) }}">
-            <div class="max-w-[318px] w-full mr-[37px] mb-[31px]">
+            <div class="max-w-[318px] w-full mr-[37px] mb-[31px] rounded-md border-[#7C7C7C] border-[1px]">
                 <div class="bg-[#3CCAA1]/30 relative rounded-lg flex flex-row">
                     <img
                         src="{{ asset('storage/' . $courses->photo->imageURL) }}"
                         alt=""
-                        class="w-full"
+                        class="w-full rounded-md"
                     />
                 </div>
                 <div class="bg-white py-[18px] px-[20px]">

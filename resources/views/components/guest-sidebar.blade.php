@@ -1,5 +1,5 @@
 <aside class="w-64 border-r-[#7C7C7C]/30 border-[1px]" aria-label="Sidebar">
-    <div class="overflow-y-auto bg-white h-screen py-6 px-4">
+    <div class="overflow-y-hidden bg-white h-screen py-6 px-4">
         <img
             src="{{ asset('images/logo-item.png') }}"
             class="w-[170px]"

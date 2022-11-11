@@ -18,13 +18,12 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body>
-
-        @include('components.guest-navbar')
+    <body class="bg-white min-h-screen h-full flex flex-row flex-nowrap w-full">
+        @include('components.admin-landingPage-sidebar')
         
-        <div class="h-screen flex flex-row flex-wrap">
-            @include('components.admin-landingPage-sidebar')
-            <div class="flex-1 bg-[#FDF9F7] flex-col flex-nowrap py-16 pl-[72px] pr-[110px] w-full">
+        <div class="h-full flex flex-col flex-nowrap w-full">
+            @include('components.guest-navbar')
+            <div class="flex-1 bg-white flex-col flex-nowrap py-16 pl-[72px] pr-[110px] w-full">
 
                 @if(\Session::has('success'))
                     <div id="alert-3" class="flex p-4 mb-4 bg-green-100 rounded-lg dark:bg-green-200" role="alert">
@@ -57,6 +56,6 @@
             </div>
         </div>
 
-        <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
+        <script src="{{ asset('js/flowbite.js') }}"></script>
     </body>
 </html>
