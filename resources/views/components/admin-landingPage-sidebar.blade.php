@@ -43,5 +43,25 @@
                 </a>
             </li>
         </ul>
+        <ul class="mt-14 space-y-[20px]">
+            <li>
+                <a
+                    href="#"
+                    class="{{ request()->is('user/setting') ? 'flex items-center rounded-md bg-[#3CCAA1] py-2 px-4 w-full text-white' : 'flex items-center rounded-md hover:bg-[#3CCAA1] py-2 px-4 w-full text-[#7C7C7C] transition-colors ease-in-out duration-300 hover:text-white' }}"
+                >
+                    <h1 class="font-medium text-base">Settings</h1>
+                </a>
+            </li>
+            <li>
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button
+                        class="py-2 px-4 font-medium text-base w-full text-left text-[#7C7C7C] hover:bg-red-500 hover:text-white transition-colors duration-300 ease-in-out rounded-md"
+                    >
+                        Sign out
+                    </button>
+                </form>
+            </li>
+        </ul>
     </div>
 </aside>

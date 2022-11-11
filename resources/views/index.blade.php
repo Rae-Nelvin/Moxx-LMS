@@ -93,52 +93,40 @@
                 </div>
                 <div class="course-content md:my-24 max-w-screen-xl mx-auto my-12">
                     <div class="w-full md:grid md:grid-cols-12 md:gap-4 md:mt-20 ">
+                        <p class="hidden">{{$i = 1}}</p>
                         @foreach ($course as $courses)
-                            <!-- bagian 1 -->
-                            <div class="md:col-span-3 md:col-end-6 flex items-center justify-center">
-                                <img class="object-cover md:w-72 w-72 "
-                                    src="{{ asset('storage/' . $courses->photo->imageURL) }}" alt=" course-img">
-                            </div>
-                            <div class="md:col-span-5 md:my-auto md:col-start-6 title-course">
+                            @if ($i%2 == 1)
+                                <!-- bagian 1 -->
+                                <div class="md:col-span-3 md:col-end-6 flex items-center justify-center">
+                                    <img class="object-cover md:w-72 w-72 rounded-md"
+                                        src="{{ asset('storage/' . $courses->photo->imageURL) }}" alt=" course-img">
+                                </div>
+                                <div class="md:col-span-5 md:my-auto md:col-start-6 title-course">
+                                    <h1 class="font-bold text-2xl md:text-4xl py-2">
+                                        {{ $courses->title }}
+                                    </h1>
+                                    <p class=" ">{{ $courses->description }}
+                                    </p>
+                                </div>
+                                <!-- bagian 1 -->
+                            @else
+                                <!-- bagian 2 -->
+                                <div class="md:col-span-5 md:my-auto md:col-end-8 title-course my-12 md:order-sm-last"
+                                id="course-2">
                                 <h1 class="font-bold text-2xl md:text-4xl py-2">
                                     {{ $courses->title }}
                                 </h1>
-                                <p class=" ">{{ $courses->description }}
+                                <p class=" ">{{ $courses->title }}
                                 </p>
-                            </div>
-                            <!-- bagian 1 -->
+                                </div>
+                                <div
+                                class="hidden md:col-span-3 md:col-start-8 md:flex items-center justify-center my-12 md:order-sm-start">
+                                <img class="object-cover md:w-72 w-72 rounded-md" src="{{ asset('storage/' . $courses->photo->imageURL) }}" alt=" course-img">
+                                </div>
+                                <!-- bagian 2 -->
+                            @endif
+                            <p class="hidden">{{$i = $i + 1}}</p>
                         @endforeach
-
-                        <!-- bagian 2 -->
-                        <div class="md:col-span-5 md:my-auto md:col-end-8 title-course my-12 md:order-sm-last"
-                            id="course-2">
-                            <h1 class="font-bold text-2xl md:text-4xl py-2">
-                                Designing Powerpoint
-                            </h1>
-                            <p class=" "> amet consectetur adipisicing elit. Ducimus aliquam, cum placeat qui eaque
-                                nihil unde nemo dolorum molestiae. Distinctio sed molestias veritatis laudantium quaerat
-                                minima possimus est corporis sunt!
-                            </p>
-                        </div>
-                        <div
-                            class="hidden md:col-span-3 md:col-start-8 md:flex items-center justify-center my-12 md:order-sm-start">
-                            <img class="object-cover md:w-72 w-72" src="images/item_bootcamp.png" alt=" course-img">
-                        </div>
-                        <!-- bagian 2 -->
-                        <!-- bagian 3 -->
-                        <div class="md:col-span-3 md:col-end-6 flex items-center justify-center">
-                            <img class="object-cover md:w-72 w-72 " src="images/item_bootcamp.png" alt=" course-img">
-                        </div>
-                        <div class="md:col-span-5 md:my-auto md:col-start-6 title-course">
-                            <h1 class="font-bold text-2xl md:text-4xl py-2">
-                                Designing Powerpoint
-                            </h1>
-                            <p class=" "> amet consectetur adipisicing elit. Ducimus aliquam, cum placeat qui eaque
-                                nihil unde nemo dolorum molestiae. Distinctio sed molestias veritatis laudantium quaerat
-                                minima possimus est corporis sunt!
-                            </p>
-                        </div>
-                        <!-- bagian 3 -->
                     </div>
                 </div>
             </div>
