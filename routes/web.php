@@ -4,6 +4,7 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\CourseController;
 use App\Http\Controllers\User\DashboardController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,6 +44,11 @@ Route::group(['middleware' => ['isUser']], function () {
         Route::get('/payment/success', [CheckoutController::class, 'midtransCallback'])->name('paymentSuccess');
         Route::post('/payment/success', [CheckoutController::class, 'midtransCallback']);
     });
+});
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/settings', [DashboardController::class, 'renderSettings'])->name('settings');
+    Route::post('/settings', [UserController::class, 'update'])->name('settingUpdate');
 });
 
 Route::fallback(function () {

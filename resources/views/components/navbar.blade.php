@@ -5,8 +5,8 @@
                 <div class="flex space-x-7">
                     <div>
                         <!-- Website Logo -->
-                        <a href="{{ url ('/')}}" class="flex items-center py-4 px-2">
-                            <img src="{{ asset ('images/logo-item.png')}}" alt="Logo" class="h-10 w-30 mr-2">
+                        <a href="{{ url('/') }}" class="flex items-center py-4 px-2">
+                            <img src="{{ asset('images/logo-item.png') }}" alt="Logo" class="h-10 w-30 mr-2">
                             <!-- <span class="font-semibold text-gray-500 text-lg">Navigation</span> -->
                         </a>
                     </div>
@@ -19,24 +19,35 @@
                         <a href=""
                             class="no-underline py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">About</a>
                         <a href=""
-                            class="no-underline py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Contact Us</a>
+                            class="no-underline py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Contact
+                            Us</a>
                     </div>
                 </div>
                 <!-- Secondary Navbar items -->
                 @auth
-                <div class="nama my-auto">
-                    Halo, {{ Auth::user()->name }}
-                </div>
+                    @if (Auth::user()->roleID == 1)
+                        <a href="{{ route('admin.dashboard') }}" class="nama my-auto">
+                            Halo, {{ Auth::user()->name }}
+                        </a>
+                    @elseif (Auth::user()->roleID == 2)
+                        <a href="{{ route('tutor.dashboard') }}" class="nama my-auto">
+                            Halo, {{ Auth::user()->name }}
+                        </a>
+                    @else
+                        <a href="{{ route('user.dashboard') }}" class="nama my-auto">
+                            Halo, {{ Auth::user()->name }}
+                        </a>
+                    @endif
                 @else
-                <div class="hidden md:flex items-center md:space-x-8 ">
-                    <a href="{{ route('login') }}"
-                        class="no-underline py-2 px-2 font-medium text-gray-500 rounded-full hover:bg-green-500 hover:text-white transition duration-300">Log
-                        In</a>
-                    <a href="{{ route('register') }}"
-                        class="no-underline py-2 px-2 font-medium text-gray-500 rounded-full hover:bg-green-500 hover:text-white transition duration-300">Sign
-                        up</a>
+                    <div class="hidden md:flex items-center md:space-x-8 ">
+                        <a href="{{ route('login') }}"
+                            class="no-underline py-2 px-2 font-medium text-gray-500 rounded-full hover:bg-green-500 hover:text-white transition duration-300">Log
+                            In</a>
+                        <a href="{{ route('register') }}"
+                            class="no-underline py-2 px-2 font-medium text-gray-500 rounded-full hover:bg-green-500 hover:text-white transition duration-300">Sign
+                            up</a>
 
-                </div>
+                    </div>
                 @endauth
                 <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
@@ -53,7 +64,6 @@
         <!-- Mobile menu -->
         <div class="hidden mobile-menu">
             <ul class="px-0">
-
                 <li><a href="#services"
                         class="text-black no-underline block text-sm px-2 py-4 hover:bg-green-500 hover:text-white transition duration-300">Home</a>
                 </li>
@@ -68,22 +78,22 @@
                         Us</a></li>
                 @auth
                 @else
-                <li><a href="{{ url ('login')}}"
-                        class="text-black no-underline block text-sm px-2 py-4 hover:bg-green-500 hover:text-white transition duration-300">Login</a>
-                </li>
-                <li><a href="{{ url ('register')}}"
-                        class="text-black no-underline block text-sm px-2 py-4 hover:bg-green-500 hover:text-white transition duration-300">Sign
-                        up</a></li>
+                    <li><a href="{{ url('login') }}"
+                            class="text-black no-underline block text-sm px-2 py-4 hover:bg-green-500 hover:text-white transition duration-300">Login</a>
+                    </li>
+                    <li><a href="{{ url('register') }}"
+                            class="text-black no-underline block text-sm px-2 py-4 hover:bg-green-500 hover:text-white transition duration-300">Sign
+                            up</a></li>
                 @endauth
             </ul>
         </div>
         <script>
-        const btn = document.querySelector("button.mobile-menu-button");
-        const menu = document.querySelector(".mobile-menu");
+            const btn = document.querySelector("button.mobile-menu-button");
+            const menu = document.querySelector(".mobile-menu");
 
-        btn.addEventListener("click", () => {
-            menu.classList.toggle("hidden");
-        });
+            btn.addEventListener("click", () => {
+                menu.classList.toggle("hidden");
+            });
         </script>
     </nav>
 </header>

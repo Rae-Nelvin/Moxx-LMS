@@ -53,8 +53,9 @@ class DashboardController extends Controller
      *
      * @return void
      */
-    public function renderSetting()
+    public function renderSettings()
     {
-        return view('users.setting');
+        $user = Auth::user();
+        return view('users.settings', compact('user'));
     }
 }
