@@ -17,14 +17,10 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('description')->nullable();
-            $table->unsignedBigInteger('coverID')->nullable();
-            $table->unsignedBigInteger('courseTypeID')->nullable();
-            $table->unsignedBigInteger('creatorID')->nullable();
+            $table->unsignedBigInteger('courseTypeID');
+            $table->unsignedBigInteger('creatorID');
+            $table->enum('isActive', ['On Hold', 'On Review', 'Active']);
             $table->double('price');
-            $table->unsignedBigInteger('discountID')->nullable();
-            $table->boolean('isActive')->default(0);
-            $table->boolean('isShown')->default(0);
-            $table->double('reviews')->nullable()->default(0);
             $table->timestamps();
         });
     }

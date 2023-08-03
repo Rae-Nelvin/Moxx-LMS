@@ -11,6 +11,7 @@ class UserCourse extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $table = 'user_courses';
 
     /**
      * The attributes that are mass assignable.
@@ -20,9 +21,7 @@ class UserCourse extends Model
     protected $fillable = [
         'userID',
         'courseID',
-        'startLessonID',
-        'endLessonID',
-        'progressLessonID'
+        'totalMaterialsDone'
     ];
 
     /**
@@ -36,12 +35,12 @@ class UserCourse extends Model
     }
 
     /**
-     * Get the lesson associated with the UserCourse
+     * Get the user that owns the UserCourse
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function lesson(): HasOne
+    public function user(): BelongsTo
     {
-        return $this->hasOne(Lesson::class, 'id', 'progressLessonID');
+        return $this->belongsTo(User::class, 'userID', 'id');
     }
 }

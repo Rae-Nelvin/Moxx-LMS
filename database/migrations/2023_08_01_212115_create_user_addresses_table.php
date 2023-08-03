@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTutorReviewsTable extends Migration
+class CreateAlamatUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateTutorReviewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tutor_reviews', function (Blueprint $table) {
+        Schema::create('user_addresses', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('userID');
             $table->foreign('userID')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('mentorID');
-            $table->foreign('mentorID')->references('id')->on('users')->onDelete('cascade');
-            $table->longText('reviews');
-            $table->integer('stars');
-            $table->timestamps();
+            $table->string('street_name');
+            $table->string('province');
+            $table->string('city');
+            $table->string('postal_code', 6); 
         });
     }
 
@@ -32,6 +31,6 @@ class CreateTutorReviewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tutor_reviews');
+        Schema::dropIfExists('alamat_users');
     }
 }

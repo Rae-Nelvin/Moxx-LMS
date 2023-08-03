@@ -9,6 +9,7 @@ class Role extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $table = 'roles';
 
     /**
      * The attributes that are mass assignable.

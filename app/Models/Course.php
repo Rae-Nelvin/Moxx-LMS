@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Course extends Model
 {
     use HasFactory;
+    protected $table = 'courses';
 
     /**
      * The attributes that are mass assignable.
@@ -20,45 +21,11 @@ class Course extends Model
     protected $fillable = [
         'title',
         'description',
-        'coverID',
         'courseTypeID',
         'creatorID',
         'price',
-        'discountID',
         'isActive',
-        'reviews',
-        'isShown'
     ];
-
-    /**
-     * Get the photo associated with the Course
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function photo(): HasOne
-    {
-        return $this->hasOne(Photo::class, 'id', 'coverID');
-    }
-
-    /**
-     * Get the discount associated with the Course
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function discount(): HasOne
-    {
-        return $this->hasOne(Discount::class, 'id', 'discountID');
-    }
-
-    /**
-     * Get the user associated with the Course
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function user(): HasOne
-    {
-        return $this->hasOne(User::class, 'id', 'creatorID');
-    }
 
     /**
      * Get the courseType associated with the Course
@@ -71,22 +38,12 @@ class Course extends Model
     }
 
     /**
-     * Get all of the lessonGroup for the Course
+     * Get the creator that owns the Course
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function lessonGroup(): HasMany
+    public function creator(): BelongsTo
     {
-        return $this->hasMany(LessonGroup::class, 'courseID', 'id');
-    }
-
-    /**
-     * Get all of the courseReview for the Course
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function courseReview(): HasMany
-    {
-        return $this->hasMany(CourseReview::class, 'courseID', 'id');
+        return $this->belongsTo(User::class, 'creator_id', 'id');
     }
 }

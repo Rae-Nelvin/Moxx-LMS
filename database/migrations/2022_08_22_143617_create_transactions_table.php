@@ -15,13 +15,15 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('userID')->nullable();
-            $table->foreign('userID')->references('id')->on('users')->onDelete('SET NULL');
-            $table->unsignedBigInteger('courseID')->nullable();
-            $table->foreign('courseID')->references('id')->on('courses')->onDelete('SET NULL');
-            $table->string('token')->nullable();
+            $table->unsignedBigInteger('userID');
+            $table->foreign('userID')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('courseID');
+            $table->foreign('courseID')->references('id')->on('courses')->onDelete('cascade');
+            $table->string('token');
+            $table->unsignedBigInteger('acceptorID');
+            $table->foreign('acceptorID')->references('id')->on('users')->onDelete('cascade');
             $table->double('totalPrice');
-            $table->string('status')->default('waiting');
+            $table->enum('status', ['Unpaid', 'Paid', 'Approved']);
             $table->longText('midtrans_url')->nullable();
             $table->string('midtrans_booking_code')->nullable();
             $table->timestamps();

@@ -25,12 +25,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'alamat',
         'phone',
         'avatar',
         'roleID',
-        'reviews',
-        'isShown'
     ];
 
     /**

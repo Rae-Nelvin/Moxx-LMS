@@ -13,11 +13,12 @@ class CreateLessonsTable extends Migration
      */
     public function up()
     {
-        Schema::create('lessons', function (Blueprint $table) {
+        Schema::create('materials', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('materialGroupID');
+            $table->foreign('materialGroupID')->references('id')->on('lessons')->onDelete('cascade');
             $table->string('title');
-            $table->unsignedBigInteger('lessonGroupID');
-            $table->foreign('lessonGroupID')->references('id')->on('lessons')->onDelete('cascade');
+            $table->string('description')->nullable();
             $table->longText('file');
         });
     }
@@ -29,6 +30,6 @@ class CreateLessonsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lessons');
+        Schema::dropIfExists('materials');
     }
 }

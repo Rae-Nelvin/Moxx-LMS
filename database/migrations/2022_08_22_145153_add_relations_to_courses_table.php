@@ -14,10 +14,8 @@ class AddRelationsToCoursesTable extends Migration
     public function up()
     {
         Schema::table('courses', function (Blueprint $table) {
-            $table->foreign('coverID')->references('id')->on('photos')->onDelete('SET NULL');
-            $table->foreign('courseTypeID')->references('id')->on('course_types')->onDelete('SET NULL');
-            $table->foreign('creatorID')->references('id')->on('users')->onDelete('SET NULL');
-            $table->foreign('discountID')->references('id')->on('discounts')->onDelete('SET NULL');
+            $table->foreign('courseTypeID')->references('id')->on('course_types')->onDelete('cascade');
+            $table->foreign('creatorID')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class CourseReview extends Model
 {
     use HasFactory;
+    protected $table = 'course_reviews';
 
     /**
      * The attributes that are mass assignable.

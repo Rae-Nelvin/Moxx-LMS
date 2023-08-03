@@ -18,7 +18,7 @@ class CreateCourseReviewsTable extends Migration
             $table->unsignedBigInteger('userID');
             $table->foreign('userID')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('courseID')->nullable();
-            $table->foreign('courseID')->references('id')->on('courses')->onDelete('SET NULL');
+            $table->foreign('courseID')->references('id')->on('courses')->onDelete('cascade');
             $table->longText('reviews');
             $table->integer('stars');
             $table->timestamps();

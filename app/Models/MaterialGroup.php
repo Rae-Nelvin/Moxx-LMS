@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Lesson extends Model
+class MaterialGroup extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $table = 'material_groups';
 
     /**
      * The attributes that are mass assignable.
@@ -17,18 +18,17 @@ class Lesson extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'title',
-        'lessonGroupID',
-        'file'
+        'courseID',
+        'title'
     ];
 
     /**
-     * Get the LessonGroup that owns the Lesson
+     * Get the course that owns the LessonGroup
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function LessonGroup(): BelongsTo
+    public function course(): BelongsTo
     {
-        return $this->belongsTo(LessonGroup::class);
+        return $this->belongsTo(Course::class);
     }
 }

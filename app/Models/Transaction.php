@@ -20,7 +20,7 @@ class Transaction extends Model
         'userID',
         'courseID',
         'token',
-        'totalPrice',
+        'acceptorID',
         'status',
         'midtrans_url',
         'midtrans_booking_code'
@@ -44,5 +44,15 @@ class Transaction extends Model
     public function course(): HasOne
     {
         return $this->hasOne(Course::class, 'id', 'courseID');
+    }
+
+    /**
+     * Get the acceptor associated with the Transaction
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function acceptor(): HasOne
+    {
+        return $this->hasOne(User::class, 'id', 'acceptorID');
     }
 }

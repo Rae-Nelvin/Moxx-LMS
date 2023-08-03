@@ -17,14 +17,9 @@ class CreateUserCoursesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('userID');
             $table->foreign('userID')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('courseID')->nullable();
-            $table->foreign('courseID')->references('id')->on('courses')->onDelete('SET NULL');
-            $table->unsignedBigInteger('startLessonID')->nullable();
-            $table->foreign('startLessonID')->references('id')->on('lessons')->onDelete('SET NULL');
-            $table->unsignedBigInteger('endLessonID')->nullable();
-            $table->foreign('endLessonID')->references('id')->on('lessons')->onDelete('SET NULL');
-            $table->unsignedBigInteger('progressLessonID')->nullable();
-            $table->foreign('progressLessonID')->references('id')->on('lessons')->onDelete('SET NULL');
+            $table->unsignedBigInteger('courseID');
+            $table->foreign('courseID')->references('id')->on('courses')->onDelete('cascade');
+            $table->integer('totalMaterialsDone')->default(0);
         });
     }
 
