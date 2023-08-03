@@ -14,7 +14,7 @@ class AddRelationsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreign('roleID')->references('id')->on('roles')->onDelete('SET NULL');
+            $table->foreign('roleID')->references('id')->on('roles')->onDelete('cascade');
         });
     }
 
@@ -26,7 +26,6 @@ class AddRelationsToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign('users_avatarID_foreign');
             $table->dropForeign('users_roleID_foreign');
         });
     }

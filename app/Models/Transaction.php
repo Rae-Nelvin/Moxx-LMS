@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Transaction extends Model
 {
     use HasFactory;
+    const STATUS_VALUES = ['Unpaid', 'Paid', 'Approved'];
 
     /**
      * The attributes that are mass assignable.

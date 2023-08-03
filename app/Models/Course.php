@@ -13,6 +13,8 @@ class Course extends Model
     use HasFactory;
     protected $table = 'courses';
 
+    const IS_ACTIVE_VALUES = ['On Hold', 'On Review', 'Active'];
+
     /**
      * The attributes that are mass assignable.
      *

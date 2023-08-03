@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAlamatUsersTable extends Migration
+class CreateUserAddressesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -20,7 +20,7 @@ class CreateAlamatUsersTable extends Migration
             $table->string('street_name');
             $table->string('province');
             $table->string('city');
-            $table->string('postal_code', 6); 
+            $table->string('postal_code', 20); 
         });
     }
 
@@ -31,6 +31,6 @@ class CreateAlamatUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alamat_users');
+        Schema::dropIfExists('user_addresses');
     }
 }

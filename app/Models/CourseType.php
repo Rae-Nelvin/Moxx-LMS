@@ -9,6 +9,7 @@ class CourseType extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $table = 'course_types';
 
     /**
      * The attributes that are mass assignable.

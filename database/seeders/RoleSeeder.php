@@ -19,10 +19,6 @@ class RoleSeeder extends Seeder
         ]);
 
         Role::create([
-            'name' => 'tutor'
-        ]);
-
-        Role::create([
             'name' => 'guest'
         ]);
     }
