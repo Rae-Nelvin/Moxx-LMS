@@ -1,39 +1,74 @@
 <?php
 
-use App\Http\Controllers\Admin\Dashboard\CourseController;
-use App\Http\Controllers\Admin\Dashboard\DashboardController;
-use App\Http\Controllers\Admin\LandingPage\CoursesController;
-use App\Http\Controllers\Admin\LandingPage\PlanController;
-use App\Http\Controllers\Admin\LandingPage\LandingPageController;
-use App\Http\Controllers\Admin\LandingPage\MentorController;
+use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\CoursePhotoController;
+use App\Http\Controllers\Admin\CourseTypeController;
+use App\Http\Controllers\Admin\MaterialController;
+use App\Http\Controllers\Admin\MaterialGroupController;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\User\TransactionController;
+use App\Http\Controllers\User\UserAddressController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['middleware' => ['isAdmin']], function () {
+// Route::group(['middleware' => ['isAdmin']], function () {
     Route::prefix('admin/')->name('admin.')->group(function () {
-        Route::get('/dashboard', [DashboardController::class, 'render'])->name('dashboard');
-        Route::get('/payment', [DashboardController::class, 'renderPayment'])->name('renderPayment');
-        Route::get('/createCourse', [DashboardController::class, 'renderCreateCourse'])->name('renderCreateCourse');
-        Route::post('/newCourse', [CourseController::class, 'renderNewCourse'])->name('renderNewCourse');
-        Route::get('/course', [DashboardController::class, 'renderCourse'])->name('renderCourse');
-        Route::get('/course/detail/{id}', [CourseController::class, 'courseDetail'])->name('courseDetail');
-        Route::get('/course/detail/{courseID}/{sectionID}/{lessonID}', [CourseController::class, 'renderLesson'])->name('renderLesson');
-        Route::get('/reject/course/{id}', [CourseController::class, 'rejectCourse'])->name('rejectCourse');
-        Route::get('/accept/course/{id}', [CourseController::class, 'acceptCourse'])->name('acceptCourse');
-        Route::get('/userList', [DashboardController::class, 'renderUserList'])->name('renderUserList');
-        Route::prefix('landing-page/')->group(function () {
-            Route::get('/plans', [LandingPageController::class, 'renderPlans'])->name('renderPlans');
-            Route::post('/newPlan', [PlanController::class, 'newPlan'])->name('newPlan');
-            Route::post('/newFeature', [PlanController::class, 'newFeature'])->name('newFeature');
-            Route::post('/editPlan', [PlanController::class, 'editPlan'])->name('editPlan');
-            Route::get('/deletePlan/{id}', [PlanController::class, 'deletePlan'])->name('deletePlan');
-            Route::get('/actionPlan/{id}', [PlanController::class, 'actionPlan'])->name('actionPlan');
-            Route::get('/courses', [LandingPageController::class, 'renderCourses'])->name('renderCourses');
-            Route::get('/courses/showCourses/{id}', [CoursesController::class, 'showToLandingPage'])->name('showCourses');
-            Route::get('/courses/unshowCourses/{id}', [CoursesController::class, 'unshowToLandingPage'])->name('unshowCourses');
-            Route::get('/mentors', [LandingPageController::class, 'renderMentors'])->name('renderMentors');
-            Route::get('/mentors/showMentors/{id}', [MentorController::class, 'showToLandingPage'])->name('showMentors');
-            Route::get('/mentors/unshowMentors/{id}', [MentorController::class, 'unshowToLandingPage'])->name('unshowMentors');
-            Route::get('/testimonies', [LandingPageController::class, 'renderTestimonies'])->name('renderTestimonies');
-        });
+        // Routes to control Users by Admin
+        Route::get('/users', [UserController::class, 'index']);
+        Route::get('/user/{id}', [UserController::class, 'show']);
+        Route::post('/user', [UserController::class, 'store']);
+        Route::patch('/user/{id}', [UserController::class, 'update']);
+        Route::delete('/user/{id}', [UserController::class, 'destroy']);
+
+        // Routes to control Roles by Admin
+        Route::get('/roles', [RoleController::class, 'index']);
+        Route::get('/role/{id}', [RoleController::class, 'show']);
+        Route::post('/role', [RoleController::class, 'store']);
+        Route::patch('/role/{id}', [RoleController::class, 'update']);
+        Route::delete('/role/{id}', [RoleController::class, 'destroy']);
+
+        // Routes to control Course by Admin
+        Route::get('/courses', [CourseController::class, 'index']);
+        Route::get('/course/{id}', [CourseController::class, 'show']);
+        Route::post('/course', [CourseController::class, 'store']);
+        Route::patch('/course/{id}', [CourseController::class, 'update']);
+        Route::delete('/course/{id}', [CourseController::class, 'destroy']);
+
+        // Routes to control CourseType by Admin
+        Route::get('/course-types', [CourseTypeController::class, 'index']);
+        Route::get('/course-type/{id}', [CourseTypeController::class, 'show']);
+        Route::post('/course-type', [CourseTypeController::class, 'store']);
+        Route::patch('/course-type/{id}', [CourseTypeController::class, 'update']);
+        Route::delete('/course-type/{id}', [CourseTypeController::class, 'destroy']);
+        
+        // Routes to control MaterialGroup by Admin
+        Route::get('/material-groups', [MaterialGroupController::class, 'index']);
+        Route::get('/material-group/{id}', [MaterialGroupController::class, 'show']);
+        Route::post('/material-group', [MaterialGroupController::class, 'store']);
+        Route::patch('/material-group/{id}', [MaterialGroupController::class, 'update']);
+        Route::delete('/material-group/{id}', [MaterialGroupController::class, 'destroy']);
+
+        // Routes to control Material by Admin
+        Route::get('/materials', [MaterialController::class, 'index']);
+        Route::get('/material/{id}', [MaterialController::class, 'show']);
+        Route::post('/material', [MaterialController::class, 'store']);
+        Route::patch('/material/{id}', [MaterialController::class, 'update']);
+        Route::delete('/material/{id}', [MaterialController::class, 'destroy']);
+
+        // Routes to control CoursePhoto by Admin
+        Route::get('/course-photos', [CoursePhotoController::class, 'index']);
+        Route::get('/course-photo/{id}', [CoursePhotoController::class, 'show']);
+        Route::post('/course-photo', [CoursePhotoController::class, 'store']);
+        Route::patch('/course-photo/{id}', [CoursePhotoController::class, 'update']);
+        Route::delete('/course-photo/{id}', [CoursePhotoController::class, 'destroy']);
+
+        // Routes to control Transaction by Admin
+        Route::get('/transactions', [TransactionController::class, 'indexAdmin']);
+        Route::get('/transaction/{id}', [TransactionController::class, 'show']);
+        Route::patch('/transaction/{id}', [TransactionController::class, 'update']);
+        Route::delete('/transaction/{id}', [TransactionController::class, 'destroy']);
+
+        // Route to control UserAddress by Admin
+        Route::get('/user-addresses', [UserAddressController::class, 'index']);
     });
-});
+// });

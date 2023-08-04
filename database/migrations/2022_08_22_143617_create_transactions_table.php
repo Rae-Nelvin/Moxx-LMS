@@ -20,7 +20,7 @@ class CreateTransactionsTable extends Migration
             $table->unsignedBigInteger('courseID');
             $table->foreign('courseID')->references('id')->on('courses')->onDelete('cascade');
             $table->string('token');
-            $table->unsignedBigInteger('acceptorID');
+            $table->unsignedBigInteger('acceptorID')->nullable();
             $table->foreign('acceptorID')->references('id')->on('users')->onDelete('cascade');
             $table->double('totalPrice');
             $table->enum('status', ['Unpaid', 'Paid', 'Approved']);
