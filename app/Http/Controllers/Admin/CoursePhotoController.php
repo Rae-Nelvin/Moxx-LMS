@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 class CoursePhotoController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the course photo.
      *
      * @return \Illuminate\Http\Response
      */
@@ -29,7 +29,7 @@ class CoursePhotoController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new course photo.
      *
      * @return \Illuminate\Http\Response
      */
@@ -39,7 +39,7 @@ class CoursePhotoController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created course photo in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -72,7 +72,7 @@ class CoursePhotoController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified course photo.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -102,7 +102,7 @@ class CoursePhotoController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified course photo in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -146,7 +146,7 @@ class CoursePhotoController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified course photo from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

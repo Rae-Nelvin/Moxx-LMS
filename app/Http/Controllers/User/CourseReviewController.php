@@ -17,7 +17,7 @@ class CourseReviewController extends Controller
      */
     public function index()
     {
-        // $courseReviews = CourseReview::where('userID', Auth::user()->id)->get();
+        // $courseReviews = CourseReview::where('userID', Auth::user()->id)->get(); -> Ideal State
         $courseReviews = CourseReview::all();
         if (!$courseReviews) {
             return response()->json([
@@ -40,7 +40,7 @@ class CourseReviewController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created course review in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -73,7 +73,7 @@ class CourseReviewController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified course review.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -103,7 +103,7 @@ class CourseReviewController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified course review in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -140,7 +140,7 @@ class CourseReviewController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified course review from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

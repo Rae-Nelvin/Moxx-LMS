@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 class MaterialController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the material.
      *
      * @return \Illuminate\Http\Response
      */
@@ -38,7 +38,7 @@ class MaterialController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created material in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -66,7 +66,7 @@ class MaterialController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified material.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -96,7 +96,7 @@ class MaterialController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified material in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -132,7 +132,7 @@ class MaterialController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified material from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

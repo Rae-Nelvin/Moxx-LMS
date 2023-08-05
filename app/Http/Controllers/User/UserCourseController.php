@@ -11,13 +11,13 @@ use Illuminate\Support\Facades\Validator;
 class UserCourseController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the user course.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        // $userCourses = UserCourse::where('userID', Auth::user()->id);
+        // $userCourses = UserCourse::where('userID', Auth::user()->id); -> Ideal State
         $userCourses = UserCourse::all();
         if (!$userCourses) {
             return response()->json([
@@ -40,7 +40,7 @@ class UserCourseController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created user course in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -70,7 +70,7 @@ class UserCourseController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified user course.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -100,7 +100,7 @@ class UserCourseController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified user course in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -130,7 +130,7 @@ class UserCourseController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified user course from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

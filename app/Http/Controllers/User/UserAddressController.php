@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 class UserAddressController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the user address.
      *
      * @return \Illuminate\Http\Response
      */
@@ -39,7 +39,7 @@ class UserAddressController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created user address in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -74,7 +74,7 @@ class UserAddressController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified user address.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -104,7 +104,7 @@ class UserAddressController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified user address in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -141,7 +141,7 @@ class UserAddressController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified user address from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

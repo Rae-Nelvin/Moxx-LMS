@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 class CourseController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the courses.
      *
      * @return \Illuminate\Http\Response
      */
@@ -38,7 +38,7 @@ class CourseController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created course in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -69,7 +69,7 @@ class CourseController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified course.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -88,7 +88,7 @@ class CourseController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified course.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -99,7 +99,7 @@ class CourseController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified course in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -138,7 +138,7 @@ class CourseController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified course from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
